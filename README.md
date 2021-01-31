@@ -1,5 +1,9 @@
 # CallSheets
 
+## NOTICE
+
+This repository has not been updated in a while. I'll be working to update it and the dependencies it has, but as of now, while the push looks recent, I have simply recently moved it into github.  Please don't grab this thinking it will run properly.  Thank you.
+
 ## Developer Install
 
 Using this project and running it
