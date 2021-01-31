@@ -1,0 +1,29 @@
+<template name="entityTypeSetup">
+    <div class="CADContainer">
+    {{#if isInRole 'GlobalAdmin'}}
+        <h4>Entity Type Setup</h4>
+        <div class="row">
+            <div class="col s4 input-field">
+                <input type="text" class="entityTypeName" id="entityTypeName" />
+                <label for="entityTypeName">Type Name</label>
+            </div>
+            <div class="col s4 input-field">
+                <input type="text" class="entityTypeDesc" id="entityTypeDesc" />
+                <label for="entityTypeDesc">Type Description</label>
+            </div>
+            <div class="col s2">
+                <label>
+                    <input type="checkbox" class="entityTypeActive" id="entityTypeActive">
+                    <span>Active</span>
+                </label>
+            </div>
+            <div class="col s2">
+                <a class="btn-floating btn-large waves-effect waves-light green addEntityType"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+    {{/if}}
+        <div class="entityGridInfo">
+            {{> entityTypeGrid}}
+        </div>
+    </div>
+</template>

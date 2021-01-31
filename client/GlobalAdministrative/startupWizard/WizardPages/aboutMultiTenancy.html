@@ -1,0 +1,48 @@
+<template name="aboutMultiTenancy">
+        <h5>Multi-tenancy</h5>
+        <p class="flow-text">
+            The system is designed to be fully multi-tenant capable.  Each tenant is an 'Entity'. When running through the 
+            wizard, you'll be asked to create an initial Global Entity (or tenant).  This tenant can be used to fully control 
+            and use the system as a single tenant, but it is highly recommended that you create the Global Entity and restrict 
+            user membership of that entity to personnel you wish to have full control over the system in the Role of Global Admin.
+        </p>
+        <p class="flow-text">
+            Next, you'll create a new Entity to be the Global Entity (just remember there can only be 1 Global entity in the system).  Assign yourself to that entity, and verify your account.
+        </p>
+        <p class="flow-text">
+            Then start assigning user level personnel to this entity.
+        </p>
+        <p class="flow-text">
+            Finally, the system uses a Parent -> Child relation for entities. 
+        </p>
+        <p class="flow-text">
+            <strong>For Example:</strong>
+        </p>
+        <p class="flow-text">
+                You may have a dispatch center that dispatches for multiple client agencies. Each of those client agencies can be setup as their own Entity / Tenant under the dispatch Parent Entity.  You can set a new Entity as a Parent (separate Tenant in the system) by selecting that option from the drop-down menu during setup.
+        </p>
+        <div class="row">
+            <div class="col s6">
+                <p class="flow-text">
+                    Central Dispatch<br />
+                    |- - AAA Taxi<br />
+                    |- - Alvin's Car Service<br />
+                    |- - Encore Limos<br />
+                    |- - Patrick's Party Vans<br />
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <dir class="col s12">
+                <p class="flow-text">
+                    Click 'Next' and you'll first select the System Type.  This is an important step, so please choose carefully.
+                </p>
+                <p class="flow-text">
+                    After you select the System Type, you'll create your Global Entity.
+                </p>
+                <p class="flow-text">
+                    You can create other Entities while on that step.  After you Create your initial entites, click 'Next', and you'll be asked to assign yourself to your global entity.
+                </p>
+            </dir>
+        </div>
+</template>

@@ -1,0 +1,32 @@
+<template name="callCardResponseTab">
+    <table class="striped highlight">
+        <thead>
+            <tr class="flow-text">
+                <th>Unit</th>
+                <th>AS</th>
+                <th>ER</th>
+                <th>AR</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each units}}
+        {{#if $eq isClear false}}
+            <tr class="thin flow-text">
+                <td class="thin">
+                    {{> unitIndicator}}
+                </td>
+                <td class="thin">
+                    {{assignTime}}
+                </td>
+                <td class="thin">
+                    {{enrouteTime}}
+                </td>
+                <td class="thin">
+                    {{arriveTime}}
+                </td>
+            </tr>
+        {{/if}}
+        {{/each}}
+        </tbody>
+    </table>
+</template>

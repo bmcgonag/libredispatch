@@ -1,0 +1,16 @@
+<template name="callSheetFormHeader">
+    <div class="row">
+        <div class="col s4">
+            Call Date/Time: <span id="callDateTime">{{#if $eq mode "ViewCallDetail"}}{{callDate}}{{/if}}</span>
+        </div>
+        <div class="col s4">
+            Call Number: <span id="callNumber">{{#if $eq mode "ViewCallDetail"}}{{call.callNo}}{{/if}}</span>
+        </div>
+        <div class="col s2">
+            Qucik Call: <span id="quickCallNumber">{{#if $eq mode "ViewCallDetail"}}{{call.quickCallNo}}{{/if}}</span>
+        </div>
+        <div class="col s2">
+            Call Status: <span id="callStatus">{{#if $eq mode "ViewCallDetail"}}{{call.callStatus}}{{/if}}</span>
+        </div>
+    </div>
+</template>

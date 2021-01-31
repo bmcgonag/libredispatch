@@ -1,0 +1,8 @@
+.subTypesGrid {
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.formEntrySubTypes {
+    height: 20%;
+}

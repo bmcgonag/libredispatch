@@ -1,0 +1,10 @@
+<template name="makeInput">
+    <input type="text" class="input makeInput" id="makeInput" list="makeList" />
+    <label for="makeInput">Make</label>
+    <datalist id="makeList">
+        <option value=""></option>
+        {{#each makeOptions}}
+            <option value="{{make_code}}">{{make_code}}</option>
+        {{/each}}
+    </datalist>
+</template>

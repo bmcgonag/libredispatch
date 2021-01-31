@@ -1,0 +1,19 @@
+<template name="unitTypesList">
+    {{#with unitTypeList}}
+    <div class="row">
+        <div class="input-field col s12">
+            {{#if this.count}}
+            <select id="unitType" class="input unitType {{#if $eq typeReq true}}red lighten-2{{/if}} {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}}{{/if}}">
+                <option value="" disabled selected>Choose One...</option>
+                {{#each this}}
+                    <option value="{{unitType}}">{{unitType}}</option>
+                {{/each}}
+            </select>
+            <label for="unitType">Unit Type *</label>
+            {{else}}
+                <option value="">You need to contact your system admin</option>
+            {{/if}}
+        </div>
+    </div>
+    {{/with}}
+</template>

@@ -1,0 +1,83 @@
+<template name="unitSubTypeResultsGrid">
+    <div class="row">
+        <div class="col s12">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Sub-type
+                        </th>
+                        <th>
+                            Sub-type Color
+                        </th>
+                        {{#if isInRole 'GlobalAdmin'}}
+                        <th>
+                            Unit Entity
+                        </th>
+                        <th>
+                            Unit Parent Entity
+                        </th>
+                        <th>
+                            System Sub-type
+                        </th>
+                        {{/if}}
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each unitSubTypes}}
+                        {{#if $neq editId _id}}
+                            <tr id="{{_id}}" class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}">
+                                <td>
+                                    {{unitType}}
+                                </td>
+                                <td>
+                                    {{unitSubType}}
+                                </td>
+                                <td>
+                                    <span class="badge left" style="background: {{unitSubTypeColorCode}}; color: white;">{{unitSubTypeColorCode}}</span>
+                                </td>
+                                {{#if isInRole 'GlobalAdmin'}}
+                                <td>
+                                    {{unitEntity}}
+                                </td>
+                                <td>
+                                    {{parentEntity}}
+                                </td>
+                                <td>
+                                    {{#if $eq isSystem true}}<i class="material-icons">done</i>{{/if}}
+                                </td>
+                                {{/if}}
+                                <td>
+                                    <i class="material-icons iconPointer deleteSubType">delete</i>
+                                    <i class="material-icons iconPointer editSubType">edit</i>
+                                </td>
+                            </tr>
+                        {{else}}
+                            <tr>
+                                <td>
+                                    {{unitType}}
+                                </td>
+                                <td>
+                                    <input type="text" class="input unitSubType" id="unitSubTypeEditable" value="{{unitSubType}}" />
+                                </td>
+                                <td>
+                                    <input type="color" class="input unitSubTypeColor" id="unitSubTypeColorEditable" value="{{unitSubTypeColorCode}}" />
+                                </td>
+                                <td>
+                                    <i class="material-icons iconPointer changeSubType">done</i>
+                                    <i class="material-icons iconPointer cancelChangeSubType">cancel</i>
+                                </td>
+                            </tr>
+                        {{/if}}
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

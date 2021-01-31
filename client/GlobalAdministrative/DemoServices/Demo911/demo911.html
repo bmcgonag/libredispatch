@@ -1,0 +1,77 @@
+<template name="demo911">
+    {{#if isInRole "Demo"}}
+    <div class="CADContainer">
+        <h4>911 Demo Module</h4>
+        <p class="flow-text">
+            This module is strctly designed to help mock up 911 Calls for Demonstration purposes.
+        </p>
+        <p class="flow-text">To mock up a new incoming 911 call, please make selectioins, then click the button below.</p>
+        <hr />
+        <div class="row">
+            <div class="col s12 m6 l6 input-field">
+                <select name="chooseEntity" id="chooseEntity" class="chooseEntity">
+                    <option value="" disabled selected></option>
+                    {{#each agencyEntities}}
+                        <option value="{{entityParent}}">{{entityParent}}</option>
+                    {{/each}}
+                </select>
+                <label for="chooseEntity">Choose Entity to Create a 911 Call</label>
+            </div>
+            <div class="col s12 m6 l6 input-field">
+                <select name="aniOrRapid" id="aniOrRapid">
+                    <option value="" disabled selected></option>
+                    <option value="Ani">Ani/Ali</option>
+                    <option value="Rapid">RapidSOS</option>
+                </select>
+                <label for="aniOrRapid">Ani/Ali or RapidSOS</label>
+            </div>
+            <div class="col s12 m6 l6 input-field">
+                <select name="newOrRebid" id="newOrRebid">
+                    <option value="" disabled selected></option>
+                    <option value="new">New</option>
+                    <option value="rebid">Rebid</option>
+                </select>
+                <label for="newOrRebid">New Call or Rebid</label>
+            </div>
+            <div class="col s12 m6 l6 input-field">
+                <select name="cellOrLand" id="cellOrLand">
+                    <option value="" disabled selected></option>
+                    <option value="Cell">Cell</option>
+                    <option value="Land">Land Line</option>
+                    <option value="VOIP">VOIP</option>
+                </select>
+                <label for="cellOrLand">Cell Call or Landline</label>
+            </div>
+            <div class="col s12 m6 l6 input-field">
+                <select name="callfromType" id="callfromType" class="callfromType">
+                    <option value="" disabled selected></option>
+                    <option value="RESD">Residential</option>
+                    <option value="BUSN">Business</option>
+                </select>
+                <label for="callfromType">Landline Call From Type</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <h5>911 By Address Master</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6 input-field">
+                <input type="text" class="cityName911" id="cityName911" />
+                <label for="cityName911">City</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l6">
+                <a class="waves-effect waves-light btn-large generate911Call green" id="generate911Call">Generate 911 Call</a>
+            </div>
+        </div>
+    </div>
+    {{else}}
+        <div class="container">
+            <h4>Incorrect Location in Application</h4>
+            <p class="flow-text">You appear to have reached this page in error.  You can navigate to areas of the application you have access to, by using the menu icon int he upper left corner of the application window.  If you believe you should have access to this area, please contact your system administrator for assistance.</p>
+        </div>
+    {{/if}}
+</template>

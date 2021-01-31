@@ -1,0 +1,230 @@
+<template name="zoneAddressInfo">
+    <div class="row {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <select name="mainJurisdiction" id="mainJurisdiction">
+                <option value="" selected></option>
+                {{#each mainJurisList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="mainJurisdiction">Main Jurisdiction</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="mainZone" id="mainZone">
+                <option value="" selected></option>
+                {{#each mainZoneList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="mainZone">Main Zone</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="mainDistrict" id="mainDistrict">
+                <option value="" selected></option>
+                {{#each mainDistrictList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="mainDistrict">Main District</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="mainBeat" id="mainBeat">
+                <option value="" selected></option>
+                {{#each mainBeatList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="mainBeat">Main Beat</label>
+        </div>
+    </div>
+    <div class="row {{#if $eq userPrefs.themeOverall 'Light'}}grey lighten-2{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <select name="policeJurisdiction" id="policeJurisdiction">
+                <option value="" selected></option>
+                {{#each policeJurisList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="policeJurisdiction">Police Jurisdiction</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="policeZone" id="policeZone">
+                <option value="" selected></option>
+                {{#each policeZoneList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="policeZone">Police Zone</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="policeDistrict" id="policeDistrict">
+                <option value="" selected></option>
+                {{#each policeDistrictList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="policeDistrict">Police District</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="policeBeat" id="policeBeat">
+                <option value="" selected></option>
+                {{#each policeBeatList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="policeBeat">Police Beat</label>
+        </div>
+    </div>
+    <div class="row {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <select name="fireJurisdiction" id="fireJurisdiction">
+                <option value="" selected></option>
+                {{#each fireJurisList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="fireJurisdiction">Fire Jurisdiction</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="fireZone" id="fireZone">
+                <option value="" selected></option>
+                {{#each fireZoneList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="fireZone">Fire Zone</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="fireDistrict" id="fireDistrict">
+                <option value="" selected></option>
+                {{#each fireDistrictList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="fireDistrict">Fire District</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="fireBeat" id="fireBeat">
+                <option value="" selected></option>
+                {{#each fireBeatList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="fireBeat">Fire Beat</label>
+        </div>
+    </div>
+    <div class="row {{#if $eq userPrefs.themeOverall 'Light'}}grey lighten-2{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <select name="EMSJurisdiction" id="EMSJurisdiction">
+                <option value="" selected></option>
+                {{#each EMSJurisList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="EMSJurisdiction">EMS Jurisdiction</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="EMSZone" id="EMSZone">
+                <option value="" selected></option>
+                {{#each EMSZoneList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="EMSZone">EMS Zone</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="EMSDistrict" id="EMSDistrict">
+                <option value="" selected></option>
+                {{#each EMSDistrictList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="EMSDistrict">EMS District</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="EMSBeat" id="EMSBeat">
+                <option value="" selected></option>
+                {{#each EMSBeatList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="EMSBeat">EMS Beat</label>
+        </div>
+    </div>
+    <div class="row {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <select name="wreckerJurisdiction" id="wreckerJurisdiction">
+                <option value="" selected></option>
+                {{#each wreckerJurisList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="wreckerJurisdiction">Wrecker Jurisdiction</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="wreckerZone" id="wreckerZone">
+                <option value="" selected></option>
+                {{#each wreckerZoneList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="wreckerZone">Wrecker Zone</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="wreckerDistrict" id="wreckerDistrict">
+                <option value="" selected></option>
+                {{#each wreckerDistrictList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="wreckerDistrict">Wrecker District</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="wreckerBeat" id="wreckerBeat">
+                <option value="" selected></option>
+                {{#each wreckerBeatList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="wreckerBeat">Wrecker Beat</label>
+        </div>
+    </div>
+    <div class="row {{#if $eq userPrefs.themeOverall 'Light'}}grey lighten-2{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <select name="dispatchJurisdiction" id="dispatchJurisdiction">
+                <option value="" selected></option>
+                {{#each dispatchJurisList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="dispatchJurisdiction">Dispatch Jurisdiction</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="dispatchZone" id="dispatchZone">
+                <option value="" selected></option>
+                {{#each dispatchZoneList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="dispatchZone">Dispatch Zone</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="dispatchDistrict" id="dispatchDistrict">
+                <option value="" selected></option>
+                {{#each dispatchDistrictList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="dispatchDistrict">Dispatch District</label>
+        </div>
+        <div class="input-field col s3">
+            <select name="dispatchBeat" id="dispatchBeat">
+                <option value="" selected></option>
+                {{#each dispatchBeatList}}
+                    <option value="{{jurisdictionName}}">{{jurisdictionName}}</option>
+                {{/each}}
+            </select>
+            <label for="dispatchBeat">Dispatch Beat</label>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,201 @@
+<template name="callTypeSetup">
+    
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="CADContainer">
+        <h4>Call Type Setup<i class="material-icons iconPointer tooltipped" data-position="bottom"  data-html="true" data-tooltip="<p>Call Types are set as pre-defined selections for the dispatcher to identify the reason<br />for a call that's been dispatched.</p><p>Each call can be assigned a Call Type, which is also set with a default priority if setup.  The priority<br />can be overridden by the user after the Call Type is selected.</p>">help</i></h4>
+        <br />
+
+        <div class="row">
+            <div class="input-field col s12 m6 l3">
+                    <input tabindex="1" type="text" class="input callTypeName" id="callTypeName" value="{{#if $eq modeSet "edit"}}{{formCallTypes.callTypeName}}{{/if}}" />
+                    <label>Call Type Name</label>
+            </div>
+            <div class="input-field col s12 m6 l3">
+                <input tabindex="2" type="text" class="input callTypeDescription" id="callTypeDescription" value="{{#if $eq modeSet "edit"}}{{formCallTypes.callTypeDescription}}{{/if}}" />
+                <label for="callTypeDescription">Call Type Description</label>
+            </div>
+            <div class="input-field col s12 m6 l3">
+                <div id="callTypePriorityInfo">
+                    <select tabindex="3" id="callTypePriorityAssc" class="input callTypePriorityAssc">
+                        {{#if $eq modeSet "edit"}}
+                            <option value="{{formCallTypes.callTypePriority}}" selected>{{formCallTypes.callTypePriority}}</option>
+                        {{else}}
+                            <option value="None" selected>None</option>
+                        {{/if}}
+                        {{#each callPriorities}}
+                            <option value="{{callTypePriority}}">{{callTypePriority}}</option>
+                        {{/each}}
+                    </select>
+                    <label>Call Type Priority</label>
+                </div>
+            </div>
+            <div class="col s12 m6 l3">
+                <div class="row">
+                    <div class="col s12">
+                        <label>
+                            <input tabindex="4" type="checkbox" id="activeCallType" checked="{{#if $eq modeSet "edit"}}{{#if $eq formCallTypes.active true}}checked{{/if}}{{/if}}" />
+                            <span>Active</span>
+                        </label>
+                    </div>
+                    <div class="col s12">
+                        <label>
+                            <input tabindex="5" type="checkbox" class="systemType" id="systemType" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" checked="{{#if $eq modeSet 'edit'}}{{#if $eq formCallTypes.systemType true}}checked{{/if}}{{/if}}" />
+                            <span>System Type</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h5>Viewing Associations<i class="material-icons iconPointer tooltipped" data-position="bottom"  data-html="true" data-tooltip="<p>Viewing Associations are special attributes added to Call Types which allow them to be set as only<br /> viewable by specific groups or users. The Associations can be manually overridden as needed for emergency situations.</p>">help</i></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 m6 l3">
+                <select tabindex="6" name="entityCallTypeAssoc" id="entityCallTypeAssoc" class="entityCallTypeAssoc" multiple>
+                    <option value="" disabled selected>Choose One...</option>
+                    {{#each entityList}}
+                        <option value="{{entityName}}">{{entityName}}</option>
+                    {{/each}}
+                </select>
+                <label for="entityCallTypeAssoc">Agency / Entity Association</label>
+            </div>
+            <div class="input-field col s12 m6 l3">
+                <select tabindex="7" name="unitTypeCallTypeAssoc" id="unitTypeCallTypeAssoc" class="unitTypeCallTypeAssoc" multiple>
+                    <option value="" disabled selected>Choose One...</option>
+                    {{#each unitTypesList}}
+                        <option value="{{unitType}}">{{unitType}}</option>
+                    {{/each}}
+                </select>
+                <label for="unitTypeCallTypeAssoc">Unit Type Association</label>
+            </div>
+            <div class="input-field col s12 m6 l3">
+                <select tabindex="8" name="subtypeCallTypeAssoc" id="subtypeCallTypeAssoc" class="subtypeCallTypeAssoc" multiple>
+                    <option value="" disabled selected>Choose One...</option>
+                    {{#each subTypesOptions}}
+                        <option value="{{unitSubType}}">{{unitType}} - {{unitSubType}}</option>
+                    {{/each}}
+                </select>
+                <label for="subtypeCallTypeAssoc">Unit Sub-Type Association</label>
+            </div>
+            <div class="input-field col s12 m6 l3">
+                <select tabindex="9" name="userGroupCallAssoc" id="userGroupCallAssoc" class="userGroupCallAssoc" multiple>
+                    <option value="" disabled selected>Choose One...</option>
+                    {{#each getUserGroups}}
+                        <option value="{{groupName}}">{{groupName}}</option>
+                    {{/each}}
+                </select>
+                <label for="userGroupCallAssoc">User Group Association</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 l3">
+                <label>
+                    <input tabindex="10" type="checkbox" id="allowViewAssocOverride" />
+                    <span>Allow View Association Override</span>
+                </label>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col s12 m4 l4">
+                <a class="waves-effect waves-light btn orange cancelCallTypeBtn" id="cancelCallType">Cancel</a>
+            </div>
+            <div class="col s12 m4 l4 center">
+                <a class="waves-effect waves-light btn blue copySystemCallTypes" id="copySystemCallTypes">Copy System Types</a>
+            </div>
+            <div class="col s12 m4 l4">
+                {{#if $eq modeSet "edit"}}
+                    <a class="waves-effect waves-light btn addCallTypeBtn btn-pull-right" id="saveEditCallType"><i class="material-icons left">done</i> Save Edits</a>
+                {{else}}
+                    <a class="waves-effect waves-light btn addCallTypeBtn btn-pull-right" id="addCallType"><i class="material-icons left">done</i> Save</a>
+                {{/if}}
+                
+            </div>
+        </div>
+        <br />
+        <div id="currentCallTypes" class="displaySet">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Call Type
+                                </th>
+                                <th>
+                                    Description
+                                </th>
+                                <th>
+                                    Priority
+                                </th>
+                                <th>
+                                    Agency / Entity Assoc
+                                </th>
+                                <th>
+                                    Unit Type Assoc
+                                </th>
+                                <th>
+                                    SubType Assoc
+                                </th>
+                                <th>
+                                    User Group Assoc
+                                </th>
+                                <th>
+                                    Allow Assoc Override
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each activeCallTypes}}
+                            <tr class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                                <td>
+                                    {{callTypeName}}
+                                </td>
+                                <td>
+                                    {{callTypeDescription}}
+                                </td>
+                                <td>
+                                    <span class="badge left" style="background-color:{{priorityColor}};color:white">{{callTypePriority}}</span>
+                                </td>
+                                <td>
+                                    {{entityCallTypeAssoc}}
+                                </td>
+                                <td>
+                                    {{unitTypeCallTypeAssoc}}
+                                </td>
+                                <td>
+                                    {{subtypeCallTypeAssoc}}
+                                </td>
+                                <td>
+                                    {{userGroupCallAssoc}}
+                                </td>
+                                <td>
+                                    {{#if $eq allowViewAssocOverride true}}<i class="material-icons">done</i>{{/if}}
+                                </td>
+                                <td>
+                                    <i class="material-icons clickable editCallType">mode_edit</i>
+                                    <i class="material-icons clickable deleteCallType">delete</i>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {{> confirmationDialogModal}}
+    </div>
+    {{else}}
+    <div class="CADContainer">
+        <h4>Call Type Setup</h4>
+        <p class="flow-text">
+            You appear to have reached the Call Type Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+        </p>
+    </div>
+    {{/if}}
+</template>

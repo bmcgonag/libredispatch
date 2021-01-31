@@ -1,0 +1,21 @@
+<template name="unitServiceSetup">
+  {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <li class="tab col s3"><a href="#manSetup">Manual Unit Setup</a></li>
+        <li class="tab col s3"><a href="#importUnits">Import Units</a></li>
+      </ul>
+    </div>
+    <div id="manSetup" class="col s12">{{> manualUnitSetup}}</div>
+    <div id="importUnits" class="col s12">{{> importUnits}}</div>
+  </div>
+  {{else}}
+      <div class="CADContainer">
+          <h4>Unit Service Setup</h4>
+          <p class="flow-text">
+              You appear to have reached the Unit Service Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+          </p>
+      </div>
+  {{/if}}
+</template>

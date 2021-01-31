@@ -1,0 +1,18 @@
+<template name="howReceived">
+    <select id="howRecvd" class="input howRecvd">
+        <option value="Phone">Phone</option>
+        {{#if $eq from911 true}}
+        <option value="911" selected>911</option>
+        {[else]}
+        <option value="911">911</option>
+        {{/if}}
+        <option value="Radio">Radio</option>
+        <option value="Walk-in">Walk-in</option>
+        <option value="OIA">OIA</option>
+        <option value="Transfer">Transfer</option>
+        <option value="Email">Email</option>
+        <option value="SMS">SMS / Chat / Text</option>
+        <option valeu="Other">Other</option>
+    </select>
+    <label for="howRecvd">How Received</label>
+</template>

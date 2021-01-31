@@ -1,0 +1,66 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-base@1.4.0             # Packages every Meteor app needs to have
+mobile-experience@1.0.5       # Packages for a great mobile UX
+mongo@1.6.2                   # The database Meteor supports right now
+blaze-html-templates@1.0.4 # Compile .html files into Meteor Blaze views
+reactive-var@1.0.11            # Reactive variable for tracker
+jquery@1.11.10                  # Helpful client-side library
+tracker@1.2.0                 # Meteor's client-side reactive programming library
+
+standard-minifier-css@1.5.3   # CSS minifier run for production mode
+standard-minifier-js@2.4.1    # JS minifier run for production mode
+es5-shim@4.8.0                # ECMAScript 5 compatibility for older browsers.
+ecmascript@0.12.4              # Enable ECMAScript2015+ syntax in app code
+shell-server@0.4.0            # Server-side component of the `meteor shell` command
+
+dynamic-import@0.5.1
+
+# autopublish@1.0.7             # Publish all data to the clients (for prototyping)
+# insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
+
+accounts-base@1.4.3                  # Base Accounts package for Meteor
+accounts-password@1.5.1             # Accounts password handling package
+useraccounts:unstyled           # an unstyled user accounts package
+raix:handlebar-helpers          # helpers inside handlebars vs in js file
+
+kadira:flow-router              # routing system
+kadira:blaze-layout             # blaze layout system
+momentjs:moment                 # date / time manipulation engine
+alanning:roles                  # user roles / permissions control
+meteortoys:allthings            # in browser tools for checking collections an more
+fortawesome:fontawesome         # font awesome icons
+
+aldeed:template-extension       # extra controls for templates in DOM
+aldeed:collection2              # define a schema for the data to adhere to with reactivity.
+mizzao:autocomplete             # for the @mentions functionality
+npm-bcrypt@0.9.3
+flowkey:hotkeys                 # hotkeys javascript library
+harrison:papa-parse             # csv parsing library
+
+session@1.2.0                   # handles session variables in production
+email@1.2.3                     # ability to email users from application
+bevanhunt:leaflet
+sacha:spin
+
+fourseven:scss@4.5.4        # necessary for materialize css
+#appworkshop:materialize     # Material Design based css and jquery library
+
+mizzao:user-status          # track user online / offline status
+http@1.4.2
+
+appshore:leaflet-awesome-markers #leaflet marker styling
+deanius:promise             # promise library for client side meteor
+underscore@1.0.10
+
+#testing
+practicalmeteor:faker       # create fake data for testing
+meteortesting:mocha         # mocha testing framework for meteor
+jcbernack:reactive-aggregate
+
+dispatch:mocha-phantomjs 
+dispatch:mocha-browser

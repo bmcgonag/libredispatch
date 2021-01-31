@@ -1,0 +1,5 @@
+.titleGridScroll {
+    height: 70vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}

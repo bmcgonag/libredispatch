@@ -1,0 +1,20 @@
+<template name="confirmationDialogModal">
+    <div class="modal modal-small-sts {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}" id="confirmationDialog">
+        <div class="modal-header">
+            <h5 id="#titleHeader">{{confirmTitle}}</h5>
+        </div>
+        <div class="modal-content">
+            <p id="informationAreaModal" class="flow-text">{{confirmContent}}</p>
+        </div>
+        <div class="modal-footer {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+            <div class="row">
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn-large cancelConfirm orange left" id="cancelConfirm">Cancel</a>
+                </div>
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn-large confirm green right" id="confirm">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

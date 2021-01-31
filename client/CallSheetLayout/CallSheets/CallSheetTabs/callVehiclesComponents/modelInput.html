@@ -1,0 +1,12 @@
+<template name="modelInput">
+    <input type="text" class="input modelInput" id="modelInput" list="modelList" />
+    <label for="modelInput">Model</label>
+    <datalist id="modelList">
+        <option value=""></option>
+        {{#each modelOptions}}
+            {{#each make_info}}
+                <option value="{{model_code}}">{{model_desc}}</option>
+            {{/each}}
+        {{/each}}
+    </datalist>
+</template>

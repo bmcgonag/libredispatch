@@ -1,0 +1,8 @@
+.shortWidth {
+    width: 20vw;
+}
+
+.entityGridInfo {
+    height: 70vh;
+    overflow-y: auto;
+}

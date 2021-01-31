@@ -1,0 +1,38 @@
+<template name="severityGrid">
+    <div class="row">
+        <div class="col s12">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} responsive-table">
+                <thead>
+                    <tr>
+                        <th class="thin"><strong>Severity Level</strong></th>
+                        <th class="thin">Added On</th>
+                        <th class="thin">Addeed By</th>
+                        {{#if isInRole 'GlobalAdmin'}}
+                        <th class="thin">Entity Parent</th>
+                        <th class="thin">User ENtity</th>
+                        {{/if}}
+                        <th class="thin">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each severityLevels}}
+                        <tr class="severityRow" id="{{_id}}">
+                            <td class="thin" style="background: {{severityColor}}; color: {{severityText}}">{{severityName}}</td>
+                            <td class="thin">{{addedOnDate}}</td>
+                            <td class="thin">{{addedBy}}</td>
+                            {{#if isInRole 'GlobalAdmin'}}
+                                <td class="thin">{{severityEntityParent}}</td>
+                                <td class="thin">{{severityUserEntity}}</td>
+                            {{/if}}
+                            <td class="thin">
+                                <i class="material-icons clickable deleteAlertSeverityType">delete</i>
+                                <i class="material-icons clickable editAlertSeverityType">mode_edit</i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+</template>

@@ -1,0 +1,54 @@
+<template name="notesTableView">
+    <table>
+        <thead>
+            <tr>
+                <th class="twenty">
+                    Note By:
+                </th>
+                <th class="twenty">
+                    Note On:
+                </th>
+                <th class="sixty">
+                    Note:
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <div id="notesGridBody" class="notesCSGrid">
+        <table>
+            <tbody>
+                {{#if $eq mode "NewCallSheet"}}
+                    {{#each unsavedNote}}
+                        <tr>
+                            <td class="twenty">
+                                {{addedBy}}
+                            </td>
+                            <td class="twenty">
+                                {{formatNoteDate addedOn}}
+                            </td>
+                            <td class="sixty">
+                                {{note}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                {{else if $eq mode "ViewCallDetail"}}
+                    {{#each notesForCall}}
+                        {{#each notes}}
+                            <tr>
+                                <td class="twenty">
+                                    {{addedBy}}
+                                </td>
+                                <td class="twenty">
+                                    {{formatNoteDate addedOn}}
+                                </td>
+                                <td class="sixty">
+                                    {{note}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                    {{/each}}
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+</template>

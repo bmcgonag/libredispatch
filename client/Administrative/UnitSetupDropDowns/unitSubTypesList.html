@@ -1,0 +1,13 @@
+<template name="unitSubTypesList">
+    <div class="row">
+        <div class="input-field col s12">
+            <select id="unitSubType" class="input unitSubType {{#if $eq subTypeReq true}}red lighten-2{{/if}}">
+                <option value="" disabled selected>Choose One...</option>
+                {{#each unitSubTypes}}
+                    <option value="{{unitSubType}}">{{unitSubType}}</option>
+                {{/each}}
+            </select>
+            <label for="unitSubType">Unit Sub-type *</label>
+        </div>
+    </div>
+</template>

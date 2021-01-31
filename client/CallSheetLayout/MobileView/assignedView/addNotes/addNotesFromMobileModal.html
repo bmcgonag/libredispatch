@@ -1,0 +1,27 @@
+<template name="addNotesFromMobileModal">
+    <div class="modal {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}" id="addNotesFromMobile">
+        <div class="modal-header">
+            <h5 id="#titleHeader">
+                Add Notes
+            </h5>
+        </div>
+        <div class="modal-content myModalContent">
+            <div class="row">
+                <div class="col s12 m12 l12 input-field">
+                    <textarea class="materialize-textarea mobileNotesArea addNotesMobile flow-text" maxlength="500" data-length="500" id="addNotesMobile"></textarea>
+                    <label for="addNotesMobile">Add Notes</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer popupFooter {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <a class="waves-effect waves-light btn-large cancelAddNotes orange left">Cancel</a>
+                </div>
+                <div class="col s12 m6 l6">
+                    <a class="waves-effect waves-light btn-large saveAddNotes green right">Save Note</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

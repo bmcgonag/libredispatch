@@ -1,0 +1,122 @@
+<template name="vehMakeImport">
+    <h3>Import Vehicle Makes and Models</h3>
+    <div class="row">
+        <div class="col s3 contentInfo">
+            <label class="custom-file-upload">
+            <input type="file" name="makeModelFile" id="makeModelFile" accept=".csv" />
+            Click here to Select a .csv file to import
+            </label>
+        </div>
+        <div class="col s3 contentInfo">
+            <label id="customFileUpload" class="custom-file-waiting">
+                selected file will show here
+            </label>
+        </div>
+        <div class="col s3">
+            <select id="importFileType">
+                <option value="" disabled selected>Choose a File Type...</option>
+                <option value="makesModels">Vehicle Make and Models</option>
+                <option value="styles">Vehicle Styles</option>
+                <option value="vehColors">Vehicle Colors</option>
+            </select>
+            <label for="importFileType">Select Import Type</label>
+        </div>
+        <div class="col s3">
+            <a class="waves-effect waves-light btn-large setupBtn" id="convert"><i class="material-icons left">input</i> Import Veh Make Model CSV</a>
+        </div>
+    </div>
+    <hr />
+    <div id="Vehicle Value Lists">
+        <div class="row">
+            <div class="col s12">
+              <ul class="tabs">
+                <li class="tab col s3"><a href="#vehMakeModelTab">Veh Makes / Models</a></li>
+                <li class="tab col s3"><a href="#vehStylesTab">Veh Styles</a></li>
+                <li class="tab col s3"><a href="#vehColorsTab">Veh Colors</a></li>
+              </ul>
+            </div>
+            <div id="vehMakeModelTab" class="col s12">
+                <h5>Vehicle Makes and Models</h5>
+                <div class="vehMakesScroll">
+                    <table class="highlight striped">
+                        <thead>
+                            <tr>
+                                <th>Make Code</th>
+                                <th>Information</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each getMakesModels}}
+                                <tr>
+                                    <td>{{make_code}}</td>
+                                    <td>
+                                        <table class="striped">
+                                            <thead>
+                                                <th>Model Code</th>
+                                                <th>Make / Model Description</th>
+                                                <th>Model Description</th>
+                                            </thead>
+                                            <tbody>
+                                                {{#each make_info}}
+                                                <tr>
+                                                    <td>{{model_code}}</td>
+                                                    <td>{{make_model_desc}}</td>
+                                                    <td>{{model_desc}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="vehStylesTab" class="col s12">
+                <h5>Vehicle Styles</h5>
+                <div class="vehMakesScroll">
+                    <table class="highlight striped">
+                        <thead>
+                            <tr>
+                                <th>Style Code</th>
+                                <th>Style</th>
+                                <th>Vehicle Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each getStyles}}
+                                <tr>
+                                    <td>{{style_code}}</td>
+                                    <td>{{style}}</td>
+                                    <td>{{vehicle_type}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="vehColorsTab" class="col s12">
+                <h5>Vehicle Colors</h5>
+                <div class="vehMakesScroll">
+                    <table class="highlight striped">
+                        <thead>
+                            <tr>
+                                <th>Vehicle Color Code</th>
+                                <th>Vehicle Color Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each getColors}}
+                                <tr>
+                                    <td>{{veh_color_code}}</td>
+                                    <td>{{veh_color_desc}}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

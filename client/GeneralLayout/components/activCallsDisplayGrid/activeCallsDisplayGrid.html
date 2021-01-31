@@ -1,0 +1,137 @@
+<template name="activeCallsDisplayGrid">
+    <div id="activeCallsMain">
+        <div class="row {{#if $in myPopOut.themeOverall 'Dark' 'Custom'}}{{myPopOut.themeBackground}} {{myPopOut.themeTextColor}}{{/if}}">
+            <div class="col s12">
+                <table>
+                    <thead>
+                        <tr class="thin">
+                            <td class="xshort thin sortCalls" id="QCHeader">
+                                <strong>QC</strong>{{#if $eq sortBy "QCHeaderdown"}}<i class="material-icons right">keyboard_arrow_down</i>{{else if $eq sortBy "QCHeaderup"}}<i class="material-icons right">keyboard_arrow_up</i>{{/if}}
+                            </td>
+                            <td class="long thin sortCalls" id="LocationHeader">
+                                <strong>Location</strong>{{#if $eq sortBy "LocationHeaderdown"}}<i class="material-icons right">keyboard_arrow_down</i>{{else if $eq sortBy "LocationHeaderup"}}<i class="material-icons right">keyboard_arrow_up</i>{{/if}}
+                            </td>
+                            <td class="short thin sortCalls" id="TypeHeader">
+                                <strong>Type</strong>{{#if $eq sortBy "TypeHeaderdown"}}<i class="material-icons right">keyboard_arrow_down</i>{{else if $eq sortBy "TypeHeaderup"}}<i class="material-icons right">keyboard_arrow_up</i>{{/if}}
+                            </td>
+                            <td class="xshort thin sortCalls" id="DispHeader">
+                                <strong>Disp</strong>{{#if $eq sortBy "DispHeaderdown"}}<i class="material-icons right">keyboard_arrow_down</i>{{else if $eq sortBy "DispHeaderup"}}<i class="material-icons right">keyboard_arrow_up</i>{{/if}}
+                            </td>
+                            <td class="xshort thin sortCalls" id="OSHeader">
+                                <strong>OS</strong>{{#if $eq sortBy "OSHeaderdown"}}<i class="material-icons right">keyboard_arrow_down</i>{{else if $eq sortBy "OSHeaderup"}}<i class="material-icons right">keyboard_arrow_up</i>{{/if}}
+                            </td>
+                            <td class="short thin sortCalls" id="CallNoHeader">
+                                <strong>Call No</strong>{{#if $eq sortBy "CallNoHeaderdown"}}<i class="material-icons right">keyboard_arrow_down</i>{{else if $eq sortBy "CallNoHeaderup"}}<i class="material-icons right">keyboard_arrow_up</i>{{/if}}
+                            </td>
+                            <td class="short thin sortCalls" id="elapsedTime">
+                                <strong>Elapsed Time</strong>
+                            </td>
+                            <td class="xshort thin sortCalls" id="UnitsAssnHeader">
+                                <strong># Units</strong>{{#if $eq sortBy "UnitsAssnHeaderdown"}}<i class="material-icons right">keyboard_arrow_down</i>{{else if $eq sortBy "UnitsAssnHeaderup"}}<i class="material-icons right">keyboard_arrow_up</i>{{/if}}
+                            </td>
+                            <td class="xshort thin">Call</td>
+                        </tr>
+                    </thead>
+                </table>
+                <ul class="collapsible callCollapse{{#if $eq myPopOut.callsGridPopOut "Yes"}} popout{{/if}} ezpandable">
+                    {{#each activeCallSet}}
+                    <li>
+                        <div class="activeCallHeader collapsible-header {{#if $eq myPopOut.callsGridExpandDefault true}}active{{/if}} {{#if $eq infoCounts.responseCount 0}}blue white-text{{else}}{{#if $in myPopOut.themeOverall 'Dark' 'Custom'}}{{myPopOut.themeBackground}} {{myPopOut.themeTextColor}}{{/if}}{{/if}}" style="width: 100%">
+                            <table>
+                                <tbody>
+                                    <tr class="thin searchable activeCallRow callInDispatch">
+                                        <td class="xshort thin"><strong>{{quickCallNo}}</strong></td>
+                                        <td class="long thin"><strong>{{location}}</strong></td>
+                                        <td class="short thin" style="background: {{priorityColor}}"><strong>{{type}}</strong></td>
+                                        <td class="xshort thin"><strong>{{dispTime}}</strong></td>
+                                        <td class="xshort thin"><strong>{{OSTime}}</strong></td>
+                                        <td class="short thin"><strong>{{callNo}}</strong></td>
+                                        <td class="short thin"><a class="{{#if $eq infoCounts.responseCount 0}}white-text{{/if}} tooltipped" data-position="top" data-delay="50" data-tooltip="{{elapsedTime.total}}">{{elapsedTime.disp}}</a></td>
+                                        <td class="xshort thin infoCount"><strong>{{infoCounts.responseCount}}</strong></td>
+                                        <td class="xshort thin"><a href="#callSheetModalSmall" class="modal-trigger"><i class="material-icons right openCallSheetModal">filter_center_focus</i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <div class="col s12">
+                                    <ul class="tabs {{#if $in myPopOut.themeOverall 'Dark' 'Custom'}}{{myPopOut.themeBackground}} {{myPopOut.themeTextColor}}{{/if}}">
+                                        <li class="tab col s3"><a class="active" href="#unitAssignmentInfo_{{callNo}}">Response</a></li>
+                                        {{#if $eq systemInfo.systemType 'Public Safety'}}
+                                            <li class="tab col s3"><a href="#call911Info_{{callNo}}">911 Calls ({{emerCallsCount}})</a></li>
+                                        {{/if}}
+                                        <li class="tab col s3 valign-wrapper callNoteInfo" id="callNoteTab_{{callNo}}"><a href="#callNoteInfo_{{callNo}}">Notes ({{infoCounts.noteCount}})</a></li>
+                                    </ul>
+                                </div>
+                                <div id="unitAssignmentInfo_{{callNo}}" class="unitInfo col s12">
+                                    <table class="{{#if $eq myPopOut.themeOverall 'Light'}}striped{{/if}} responsive-table">
+                                        <thead>
+                                            <tr class="thin {{#if $in myPopOut.themeOverall 'Dark' 'Custom'}}{{myPopOut.themeBackground}} {{myPopOut.themeTextColor}}{{else}}grey lighten-3{{/if}}">
+                                                <th>Unit</th>
+                                                <th>Assigned</th>
+                                                <th>En Route</th>
+                                                <th>Arrived</th>
+                                                <th>Start Trans</th>
+                                                <th>End Trans</th>
+                                            {{#if $eq systemInfo.systemType 'Public Safety'}}
+                                                <th>Case Number(s)</th>
+                                            {{/if}}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each units}}
+                                            {{#if $nin currentStatus "Cleared" "DeAssigned"}}
+                                            <tr class="thin activeUnitOnCall searchable">
+                                                <td class="thin">
+                                                    <span class="badge unitOnCall left" style="background: {{statusColor}}; color: {{textColor}};" data-callid="{{../_id}}" callId="{{../_id}}" callNo="{{../callNo}}">{{unit}} {{#if $eq primaryUnit true}}**{{/if}}</span>
+                                                </td>
+                                                <td class="thin">{{assignedTime}}</td>
+                                                <td class="thin">{{enRouteTime}}</td>
+                                                <td class="thin">{{arrivedTime}}</td>
+                                                <td class="thin">{{transportStarted}}</td>
+                                                <td class="thin">{{transportEnded}}</td>
+                                                {{#if $eq systemInfo.systemType 'Public Safety'}}
+                                                    <td class="thin">{{caseNumbers}}</td>
+                                                {{/if}}
+                                            </tr>
+                                            {{/if}}
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {{#if $eq systemInfo.systemType 'Public Safety'}}
+                                <div id="call911Info_{{callNo}}" class="call911Info col s12">
+                                    {{> grid911}}
+                                </div>
+                                {{/if}}
+                                <div id="callNoteInfo_{{callNo}}" class="callNoteInfo col s12">
+                                    <table class="{{#if $eq myPopOut.themeOverall 'Light'}}highlight striped{{/if}} responsive-table">
+                                        <thead>
+                                            <tr class="thin {{#if $in myPopOut.themeOverall 'Dark' 'Custom'}}{{myPopOut.themeBackground}} {{myPopOut.themeTextColor}}{{else}}grey lighten-3{{/if}}">
+                                                <th>Entered By</th>
+                                                <th>Entered On</th>
+                                                <th>Note Text</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each notes}}
+                                                <tr class="thin activeUnitOnCall searchable">
+                                                    <td class="thin">{{addedBy}}</td>
+                                                    <td class="thin">{{noteUpdOn}}</td>
+                                                    <td class="thin">{{note}}</td>
+                                                </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{> callSheetModalSmall}}
+</template>

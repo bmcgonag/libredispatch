@@ -1,0 +1,15 @@
+.notesAssignedView  {
+    height: 35vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.responseAssignedView {
+    height: 22vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.fullWidth {
+    width: 100%;
+}

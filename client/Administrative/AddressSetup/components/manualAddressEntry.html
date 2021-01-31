@@ -1,0 +1,99 @@
+<template name="manualAddressEntry">
+    <br />
+    <h5>Manual Entry</h5>
+    <div class="row">
+        <div class="input-field col s3">
+            <select name="addressType" id="addressType">
+                <option value="" disabled selected></option>
+                <option value="Street Address">Street Address</option>
+                <option value="Intersection">Intersection</option>
+                <option value="Block Location">Block Location</option>
+                <option value="Other">Other</option>
+            </select>
+            <label for="addressType">Address Type</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s2">
+            <input type="text" class="blockNumber" id="blockNumber" maxlength="12" />
+            <label for="blockNumber">Block Number</label>
+        </div>
+        <div class="input-field col s2">
+            <select name="preDirection" id="preDirection">
+                {{> directionSel}}
+            </select>
+            <label for="preDirection">Pre-Direction</label>
+        </div>
+        <div class="input-field col s4">
+            <input type="text" class="streetName" id="streetName" />
+            <label for="streetName">Street Name</label>
+        </div>
+        <div class="input-field col s2">
+            <select name="streetType" id="streetType" class="streetType">
+                {{> streetTypeList}}
+            </select>
+            <label for="streetType">Street Type</label>
+        </div>
+        <div class="input-field col s2">
+            <select name="postDirection" id="postDirection">
+                {{> directionSel}}
+            </select>
+            <label for="postDirection">Post-Direction</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s2">
+            <select name="suiteAptType" id="suiteAptType">
+                {{> buildingTypeList}}
+            </select>
+            <label for="suiteAptType">Building Type</label>
+        </div>
+        <div class="input-field col s2">
+            <input type="text" class="suiteAptNo" id="suiteAptNo" />
+            <label for="suiteAptNo">Suite / Apt No</label>
+        </div>
+        <div class="input-field col s4">
+            <input type="text" class="cityName" id="cityName" />
+            <label for="cityName">City Name</label>
+        </div>
+        <div class="input-field col s2">
+            <select name="stateAbbrev" id="stateAbbrev" class="stateAbbrev">
+                {{> stateSelections}}
+            </select>
+            <label for="stateAbbrev">State</label>
+        </div>
+        <div class="input-field col s2">
+            <input type="text" id="zipCode" class="zipCode" maxlength="10" />
+            <label for="zipCode">Zip / Postal Code</label>
+        </div>
+    </div>
+    <ul class="collapsible popout" data-collapsible="expandable">
+        <li>
+          <div class="collapsible-header {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}"><h5>Extended Information</h5></div>
+          <div class="collapsible-body {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+              {{> extendedAddressInfo}}
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}"><h5>Zone Information</h5></div>
+          <div class="collapsible-body {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                {{> zoneAddressInfo}}
+          </div>
+        </li>
+        <li>
+          <div class="collapsible-header {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}"><h5>Service Providers</h5></div>
+          <div class="collapsible-body {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                {{> serviceProviderInfo}}
+          </div>
+        </li>
+    </ul>
+    <br />
+    <div class="row">
+        <div class="col s6">
+            <a class="waves-effect waves-light btn orange left cancelAddAddress">Cancel</a>
+        </div>
+        <div class="col s6">
+            <a class="waves-effect waves-light btn green right saveAddress">Save</a>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,39 @@
+<template name="manualUnitSetup">
+    <h4>Manual Unit Setup</h4>
+    <div class="row">
+        <div class="input-field col s6">
+            {{#if $eq allowAddUnits false}}
+                <div>
+                    Please Select an Entity to add Call Signs.
+                </div>
+            {{else}}
+                <label>Call Sign</label>
+                <div class="callSignChips {{#if $eq divRequired true}}red lighten-2{{/if}}"></div>
+            {{/if}}
+        </div>
+        <div class="col s6">
+            {{> entitiesList}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            {{> unitTypesList}}
+        </div>
+        <div class="input-field col s6">
+            {{> unitSubTypesList}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            {{> unitDivisionList}}
+        </div>
+        <div class="input-field col s6">
+            {{> unitDivisionSecList}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s4">
+            <a class="waves-effect waves-light btn-large setupBtn gree addUnits" id="addUnits"><i class="material-icons left">add</i> Add Units</a>
+        </div>
+    </div>
+</template>

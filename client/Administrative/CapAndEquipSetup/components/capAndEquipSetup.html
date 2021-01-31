@@ -1,0 +1,65 @@
+<template name="capAndEquipSetup">
+    <div class="row" id="capAndEquipHeader">
+        <div class="col s12 m12 l12">
+            <h5>Capabilities and Equipment</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l4 input-field">
+            <select name="capOrEquip" id="capOrEquip">
+                {{#if $eq capMode "Edit"}}
+                    <option value="{{editData.type}}" selected>{{editData.type}}</option>
+                {{else}}
+                    <option value="" disabled selected></option>
+                {{/if}}
+                <option value="Capability">Capability</option>
+                <option value="Equipment">Equipment</option>
+            </select>
+            <label for="capOrEquip">Capability Or Equipment</label>             
+        </div>
+        <div class="col s12 m4 l4 input-field">
+            <input type="text" class="capDescription" id="capDescription" data-length="150" maxlength="150" value="{{#if $eq capMode 'Edit'}}{{editData.description}}{{/if}}" />
+            <label for="capDescription">Description</label>
+        </div>
+        <div class="col s12 m4 l4 input-field">
+            <input type="text" class="capAbbrev" id="capAbbrev" data-length="10" maxlength="10" value="{{#if $eq capMode 'Edit'}}{{editData.abbrev}}{{/if}}" />
+            <label for="capABbrev">Abbreviation</label> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l4 input-field">
+            <select name="personOrApparatus" id="personOrApparatus" class="personOrApparatus">
+                {{#if $eq capMode "Edit"}}
+                    <option value="{{editData.unitOrPerson}}" selected>{{editData.unitOrPerson}}</option>
+                {{else}}
+                    <option value="" disabled selected></option>
+                {{/if}}
+                <option value="Personnel">Personnel</option>
+                <option value="Apparatus">Apparatus</option>
+                <option value="Both">Both</option>
+            </select>
+            <label for="personOrApparatus">Person Or Apparatus</label>
+        </div>
+        <div class="col s12 m4 l4">
+            <label>
+                <input type="checkbox" class="capEquipSystem" id="capEquipSystem" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" checked="{{#if $eq capMode 'Edit'}}{{#if $eq edditData.isSystem true}}checked{{/if}}{{/if}}" />
+                <span>System Capability</span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l4">
+            <a class="waves-effect waves-light btn cancelCapEntry orange left" id="cancelCapEntry">Cancel</a>
+        </div>
+        <div class="col s12 m4 l4 center">
+            <a class="waves-effect waves-light btn blue copyCapAndEquip" id="copyCapAndEquip">Copy System Capabilities</a>
+        </div>
+        <div class="col s12 m4 l4">
+            {{#if $eq capMode "Edit"}}
+                <a class="waves-effect waves-light btn updateCapEntry green right" id="updateCapEntry">Save Changes</a>
+            {{else}}
+                <a class="waves-effect waves-light btn saveCapEntry green right" id="saveCapEntry">Save</a>
+            {{/if}}
+        </div>
+    </div>
+</template>

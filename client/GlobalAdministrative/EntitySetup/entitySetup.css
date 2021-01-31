@@ -1,0 +1,9 @@
+.incorrect {
+    background: red;
+    color: yellow;
+}
+
+.entityGridStyle {
+    height: 55vh;
+    overflow-y: auto;
+}

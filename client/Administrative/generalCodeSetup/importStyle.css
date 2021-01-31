@@ -1,0 +1,44 @@
+/* CSS declarations go here */
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-upload:hover {
+    background: #00f5ff;
+}
+
+.custom-file-selected {
+    background: green;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-waiting {
+    background: #e2e2e2;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.stateCodeTableScroll {
+    height: 65vh;
+    overflow-y: scroll;
+}

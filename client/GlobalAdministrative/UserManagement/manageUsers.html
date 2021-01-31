@@ -1,0 +1,213 @@
+<template name="manageUsers">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+        <h5>Manage Users</h5>
+        {{#if $eq editModeTrue true}}
+            {{#each editUser}}
+                <div id="editExistingUser">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" class="userFullName" id="userFullName" value="{{usersFullName}}" />
+                            <label for="userFullName">Users Full Name</label>
+                        </div>
+                        <div class="col s6">
+                            <label>User Email</label><br /> {{userEmail}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 input-field">
+                            <select name="userRole" id="userRole">
+                                <option value="{{isAdmin}}" selected>{{isAdmin}}</option>
+                                <option value="GlobalAdmin">Global Admin</option>
+                                <option value="LocalAdmin">Local Admin</option>
+                                <option value="DispatchAdmin">Dispatch Admin</option>
+                                <option value="DispatchUser">Dispatcher</option>
+                                <option value="MobileAdmin">Mobile Supervisor</option>
+                                <option value="MobileUser">Mobile User</option>
+                                <option value="allUsers">View Only</option>
+                            </select>
+                            <label for="userRole">User Role</label>
+                        </div>
+                        <div class="col s6 input-field">
+                            <select name="assignEntity" id="assignEntity" class="assignEntity">
+                                <option value="{{usersAssignedEntity}}">{{usersAssignedEntity}}</option>
+                                {{#each entities}}
+                                    <option value="{{entityName}}">{{entityName}}</option>
+                                {{/each}}
+                            </select>
+                            <label for="assignEntity">Assign User Entity</label>
+                        </div>
+                    </div>
+                    <hr />
+                    <h5>Change This User's Password:</h5>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="password" class="newUserPassword" id="newUserPassword" />
+                            <label for="newUserPassword">Enter New Password for User</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="password" class="newUserPassRpt" id="newUserPassRpt" />
+                            <label for="newUserPassRpt">Repeat New Password for User</label>
+                        </div>
+                        <div class="col s2">
+                            <a class="waves-effect waves-light btn blue changePasswordForUser" id="changePasswordForUser">Change</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <a class="waves-effect waves-light btn orange cancelAddUser" id="cancelAddUser">Cancel</a>
+                        </div>
+                        <div class="col s6">
+                            <a class="waves-effect waves-light btn editUserInfo btn-pull-right" id="editUserInfo"><i class="material-icons left">done</i> Save Edits</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div id="addNewUser">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" class="userFullName" id="userFullName" />
+                        <label for="userFullName">Users Full Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="email" class="userEmail" id="userEmail" />
+                        <label for="userEmail">Users Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6 input-field">
+                        <select name="userRole" id="userRole">
+                            <option value="" disabled selected></option>
+                            <option value="GlobalAdmin">Global Admin</option>
+                            <option value="LocalAdmin">Local Admin</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Dispatcher">Dispatcher</option>
+                            <option value="MobileSupervisro">Mobile Supervisor</option>
+                            <option value="MobileUser">Mobile User</option>
+                            <option value="ViewOnly">View Only</option>
+                        </select>
+                        <label for="userRole">User Role</label>
+                    </div>
+                    <div class="col s6 input-field">
+                        <select name="assignEntity" id="assignEntity" class="assignEntity">
+                            <option value=""></option>
+                            {{#each entities}}
+                                <option value="{{entityName}}">{{entityName}}</option>
+                            {{/each}}
+                        </select>
+                        <label for="assignEntity">Assign User Entity</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <a class="waves-effect waves-light btn orange cancelAddUser" id="cancelAddUser">Cancel</a>
+                    </div>
+                    <div class="col s6">
+                        <a class="waves-effect waves-light btn addUser btn-pull-right" id="addUser"><i class="material-icons left">done</i> Add User</a>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+        <br />
+        <hr />
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                    <li class="tab col s3"><a href="#unverifiedUsers">Un-verified Users</a></li>
+                    <li class="tab col s3"><a href="#verifiedUsers">Verified Users</a></li>
+                </ul>
+            </div>
+            <div id="unverifiedUsers" class="col s12">
+                <h5>Un-verified Users List</h5>
+                <div class="row">
+                    <div class="cols 12">
+                        <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Full Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Role
+                                    </th>
+                                    <th>
+                                        Entity
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each unverifiedUsersList}}
+                                <tr class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                                    <td class="thin">{{profile.userFullName}}</td>
+                                    <td class="thin">{{userEmail}}</td>
+                                    <td class="thin">{{isAdmin}}</td>
+                                    <td class="thin">{{profile.usersEntity}}</td>
+                                    <td class="thin">
+                                        <i class="material-icons iconPointer deleteUser">delete</i>
+                                        <i class="material-icons iconPointer editUser">edit</i>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="verifiedUsers" class="col s12">
+                <h5>Users List</h5>
+                <div class="row">
+                    <div class="col s12">
+                        <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Full Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Role
+                                    </th>
+                                    <th>
+                                        Entity
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each verifiedUsersList}}
+                                <tr class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                                    <td class="thin">{{profile.userFullName}}</td>
+                                    <td class="thin">{{userEmail}}</td>
+                                    <td class="thin">{{isAdmin}}</td>
+                                    <td class="thin">{{profile.usersEntity}}</td>
+                                    <td class="thin">
+                                        <i class="material-icons iconPointer deleteUser">delete</i>
+                                        <i class="material-icons iconPointer editUser">edit</i>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+            <h5>You don't appear to have permissions to view this area. If you believe this is a mistake, please contact your system administrator. You can navigate to your main screen using the menu (<i class="material-icons">menu</i>) in the upper left.</h5>
+        {{/if}}
+    </div>
+    {{> confirmationDialogModal}}
+</template>

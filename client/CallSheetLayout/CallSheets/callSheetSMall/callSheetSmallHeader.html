@@ -1,0 +1,21 @@
+<template name="callSheetSmallHeader">
+    <span class="material-icons myCSModalClose">close</span>
+    <div class="row">
+        <div class="col s11">
+            <div class="row">
+                <div class="col s6">
+                    Call Date/Time: <span id="callDateTime">{{#if $eq mode "ViewCallDetail"}}{{callDate}}{{/if}}</span>
+                </div>
+                <div class="col s6">
+                    Call Number: <span id="callNumber">{{#if $eq mode "ViewCallDetail"}}{{call.callNo}}{{/if}}</span>
+                </div>
+                <div class="col s6">
+                    Qucik Call: <span id="quickCallNumber">{{#if $eq mode "ViewCallDetail"}}{{call.quickCallNo}}{{/if}}</span>
+                </div>
+                <div class="col s6">
+                    Call Status: <span id="callStatus">{{#if $eq mode "ViewCallDetail"}}{{call.callStatus}}{{/if}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

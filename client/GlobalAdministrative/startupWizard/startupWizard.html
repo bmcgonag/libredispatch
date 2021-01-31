@@ -1,0 +1,118 @@
+<template name="startupWizard">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin'}}
+            <h4>Startup Wizard{{#if Template.subscriptionsReady}} - {{currentStep}}{{/if}}</h4>
+            {{#if $eq pageReady false}}
+                <p class="flow-text">Welcome to the Open Dispatch Startup Wizard. This is a run once wizard to help you get the base values configured for using your new system.</p>
+                <p class="flow-text">If you need to stop at any point, the wizard will start back at the step after the last completed portion of the wizard.</p>
+                <p class="flow-text">It's important to complete the setup steps in order for the system to become fully functional.  If for any reason you are unable to complete the Wizard, you can still perform all configuration through the Global Administration, and Administration menu options.</p>
+                <br />
+                <hr />
+                <div class="row">
+                    <div class="col s6">
+
+                    </div>
+                    <div class="col s6">
+                            <a class="waves-effect waves-light btn-large nextWizard green right" id="nextWizard">Next &gt;&gt;</a>
+                    </div>
+                </div>
+            {{/if}}
+            {{#each currentPage}}
+                {{#if $lt pageNo 1}}
+                    <p class="flow-text">Welcome to the Open Dispatch Startup Wizard. This is a run once wizard to help you get the base values configured for using your new system.</p>
+                    <p class="flow-text">If you need to stop at any point, the wizard will start back at the step after the last completed portion of the wizard.</p>
+                    <p class="flow-text">It's important to complete the setup steps in order for the system to become fully functional.  If for any reason you are unable to complete the Wizard, you can still perform all configuration through the Global Administration, and Administration menu options.</p>
+                {{/if}}
+                {{#if $eq pageNo 1}}
+                    {{> aboutMultiTenancy}}
+                {{/if}}
+                {{#if $eq pageNo 2}}
+                    {{> systemTypeSetup}}
+                {{/if}}
+                {{#if $eq pageNo 3}}
+                    {{> entityTypeSetup}}
+                {{/if}}
+                {{#if $eq pageNo 4}}
+                    {{> entitySetup}}
+                {{/if}}
+                {{#if $eq pageNo 5}}
+                    {{> aboutUserMgmt}}
+                {{/if}}
+                {{#if $eq pageNo 6}}
+                    {{> userInfo}}
+                {{/if}}
+                {{#if $eq pageNo 7}}
+                    {{> manageUsers}}
+                {{/if}}
+                {{#if $eq pageNo 8}}
+                    {{> aboutUnitSetup}}
+                {{/if}}
+                {{#if $eq pageNo 9}}
+                    {{> unitTypeSetup}}
+                {{/if}}
+                {{#if $eq pageNo 10}}
+                    {{> unitSubTypeSetup}}
+                {{/if}}
+                {{#if $eq pageNo 11}}
+                    {{> unitDivisionSetup}}
+                {{/if}}
+                {{#if $eq pageNo 12}}
+                    {{> aboutCodeSetup}}
+                {{/if}}
+                {{#if $eq pageNo 13}}
+                    {{> callPrioritySetup}}
+                {{/if}}
+                {{#if $eq pageNo 14}}
+                    {{> callTypeSetup}}
+                {{/if}}
+                {{#if $eq pageNo 15}}
+                    {{> quickNotesSetup}}
+                {{/if}}
+                {{#if $eq pageNo 16}}
+                    {{> dispositionSetup}}
+                {{/if}}
+                {{#if $eq pageNo 17}}
+                    {{> transTypeSetup}}
+                {{/if}}
+                {{#if $eq pageNo 18}}
+                    {{> outOfVehicleSetup}}
+                {{/if}}
+                {{#if $eq pageNo 19}}
+                    {{> wreckerRotationSetup}}
+                {{/if}}
+                {{#if $eq pageNo 20}}
+                    {{> completeWizard}}
+                {{/if}}
+                <hr />
+                <br />
+                <div class="pageFooter">
+                    <div class="row">
+                        <div class="col s6">
+                            {{#if $gt pageNo 0}}
+                                <a class="waves-effect waves-light btn-large backWizard orange left" id="backWizard">&lt;&lt; Back</a>
+                            {{/if}}
+                        </div>
+                        <div class="col s6">
+                            {{#if $neq pageNo 20}}
+                                <a class="waves-effect waves-light btn-large nextWizard green right" id="nextWizard">Next &gt;&gt;</a>
+                            {{else}}
+                                <a class="waves-effect waves-light btn-large completeWizard green right" id="completeWizard">Finish</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+        {{else}}
+            <div class="row">
+                <div class="col s12 red yellow-text">
+                    <p class="flow-text">WARNING!</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <p class="flow-text">You appear to have come to a page without appropriate permissions.  This page is for Global System Administrators only. Please contact your Global System Administrator, or login with the appropriate permissions level to continue system setup.</p>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

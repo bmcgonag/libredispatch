@@ -1,0 +1,5 @@
+.oovListScrollable {
+    max-height: 750% !important;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}

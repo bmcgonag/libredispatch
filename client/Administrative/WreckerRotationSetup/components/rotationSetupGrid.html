@@ -1,0 +1,35 @@
+<template name="rotationSetupGrid">
+    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}selected highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <thead>
+            <tr>
+                <th>Rotation Type</th>
+                <th>Rotation Order</th>
+                <th>Wrecker Service</th>
+                <th>Last Used with This Rotation</th>
+                <th>Move Up or Down in Rotation</th>
+                <th>Remove From Rotation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rotations}}
+                <tr class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                    <td>{{rotationType}}</td>
+                    <td>{{rotationPosition}}</td>
+                    <td>{{rotationService}}</td>
+                    <td>{{lastUsed}}</td>
+                    <td>
+                        {{#if $neq rotationPosition 1}}
+                            <i class="material-icons clickable moveUp">arrow_upward</i>
+                        {{/if}}
+                        {{#if $neq maxRotationPosition rotationPosition}}
+                            <i class="material-icons clickable moveDown">arrow_downward</i>
+                        {{/if}}
+                    </td>
+                    <td>
+                        <i class="material-icons clickable deleteFromRotation">delete</i>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>

@@ -1,0 +1,49 @@
+<template name="importCollections">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin'}}
+        <h4>Import Data Collections</h4>
+        <div class="row">
+          <div class="col s12 m12">
+            <div class="card-panel red lighten-1">
+              <span class="white-text">WARNING: Imports should only ever be run from the server, and not a client machine.
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col s4 contentInfo">
+                <label class="custom-file-upload">
+                <input type="file" name="importFile" id="importFile" accept=".json" />
+                Click here to Select a .csv file to import
+                </label>
+            </div>
+            <div class="col s4 contentInfo">
+                <label id="collectionFileUpload" class="custom-file-waiting">
+                    selected file will show here
+                </label>
+            </div>
+            <div class="input-field col s4">
+                <input type="text" class="pathToFile" id="pathToFile" />
+                <label for="pathToFile">Full Server Path to File</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s4">
+                <input type="text" class="mongoServerAddress" id="mongoServerAddress" />
+                <label for="mongoServerAddress">Mongo Server Address</label>
+            </div>
+            <div class="input-field col s4">
+                <input type="text" class="mongoServerPort" id="mongoServerPort" />
+                <label for="mongoServerPort">Mongo Server Port</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4">
+                <a class="waves-effect waves-light btn-large importCollection" id="importCollection"><i class="material-icons left">input</i> Import Collection</a>
+            </div>
+        </div>
+        {{else}}
+            <h5>You don't appear to have permissions to view this area. If you believe this is a mistake, please contact your system administrator. You can navigate to your main screen using the menu (<i class="material-icons">menu</i>) in the upper left.</h5>
+        {{/if}}
+    </div>
+</template>

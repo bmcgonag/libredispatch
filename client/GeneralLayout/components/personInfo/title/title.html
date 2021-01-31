@@ -1,0 +1,8 @@
+<template name="title">
+    <select name="title" id="{{id}}" class="title">
+        {{#each titles}}
+            <option value="{{abbrev}}">{{abbrev}} - {{full}}</option>
+        {{/each}}
+    </select>
+    <label for="title">Title</label>
+</template>

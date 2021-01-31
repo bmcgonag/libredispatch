@@ -1,0 +1,38 @@
+<template name="titleSetupGrid">
+    <table class="highlight striped responsive-table">
+        <thead>
+            <tr>
+                <th>
+                    Type
+                </th>
+                <th>
+                    Title Abbreviation
+                </th>
+                <th>
+                    Title Full
+                </th>
+                <th>
+                    System Title
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each titles}}
+                <tr class="thin">
+                    <td class="thin">{{type}}</td>
+                    <td class="thin">{{abbrev}}</td>
+                    <td class="thin">{{full}}</td>
+                    <td class="thin">{{#if $eq isSystem true}}<i class="material-icons">done</i>{{/if}}</td>
+                    <td class="thin">
+                        <i class="material-icons deleteTitle iconPointer">delete</i>
+                        <i class="material-icons editTitle iconPointer">edit</i>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{> confirmationDialogModal}}
+</template>

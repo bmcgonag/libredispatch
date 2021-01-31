@@ -1,0 +1,4 @@
+<template name="latAndLon">
+    <input type="text" id="latAndLonInfo" class="latAndLonInfo" value="{{#if $eq callLocSet true}}{{callLatLon}}{{/if}}{{#if $eq from911 true}}{{latLonFrom911}}{{/if}}" />
+    <label for="latAndLonInfo">Coordinates</label>
+</template>

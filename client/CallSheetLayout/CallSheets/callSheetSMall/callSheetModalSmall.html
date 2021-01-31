@@ -1,0 +1,8 @@
+<template name="callSheetModalSmall">
+    <div class="myCSModal" id="callSheetModalSmall">
+        <div class="myCSModal-content {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+            {{> callSheetSmallHeader}}
+            {{> callSheetSmallBody}}
+        </div>
+    </div>
+</template>

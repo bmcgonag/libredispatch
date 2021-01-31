@@ -1,0 +1,30 @@
+
+/* Modal Header */
+
+.myModal-header,
+.myModal-footer {
+    background: #4A708B;
+    color: #ffffff;
+    margin: auto;
+    width: 80%;
+    padding: 2%;
+    border: 1px solid #888;
+}
+
+
+/* Modal Content */
+
+.myModal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 2%;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.myModalClose {
+    position: relative;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}

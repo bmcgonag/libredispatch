@@ -1,0 +1,97 @@
+<template name="alertTypes">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+            <h4>Alert Types Setup</h4>
+            <div class="row">
+                <div class="col s12 m4 l4 input-field">
+                    <input type="text" class="alertTypeName" id="alertTypeName" value="{{#if $eq alertTypeMode 'Edit'}}{{alertTypeData.alertTypeName}}{{/if}}" />
+                    <label for="alertTypeName">Alert Type name</label>
+                </div>
+                <div class="col s12 m4 l4 input-field">
+                    <select name="alertTypeAssoc" class="alertTypeAssoc" id="alertTypeAssoc">
+                        <option value="{{#if $eq alertTypeMode 'Edit'}}{{alertTypeData.alertTypeAssoc}}{{/if}}" selected>{{#if $eq alertTypeMode 'Edit'}}{{alertTypeData.alertTypeAssoc}}{{/if}}</option>
+                        <option value="Address">Address</option>
+                        <option value="Gun">Gun</option>
+                        <option value="Name">Name</option>
+                        <option value="Property">Property</option>
+                        <option value="Vehicle">Vehicle</option>
+                    </select>
+                    <label for="alertTypeAssoc">Type Association</label>
+                </div>
+                <div class="col s12 m4 l4 input-field">
+                    <select name="typeSeverityLevel" class="typeSeverityLevel" id="typeSeverityLevel">
+                        <option value="{{#if $eq alertTypeMode 'Edit'}}{{alertTypeData.alertTypeSeverity}}{{/if}}" selected>{{#if $eq alertTypeMode 'Edit'}}{{alertTypeData.alertTypeSeverity}}{{/if}}</option>
+                        {{#each severityLevels}}
+                            <option value="{{severityName}}">{{severityName}}</option>
+                        {{/each}}
+                    </select>
+                    <label for="typeSeverityLevel">Severity Level</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m4 l4 input-field">
+                    <select name="alertNotificationType" id="alertNotificationType">
+                        {{#if $eq alertTypeMode 'Edit'}}
+                            <option value="{{alertTypeData.alertNotifyType}}" selected>{{alertTypeData.alertNotifyType}}</option>
+                            <option value="None">None</option>
+                        {{else}}
+                            <option value="None" selected>None</option>
+                        {{/if}}
+                        <option value="Pop-Up">Pop-up</option>
+                        <option value="Lower Screen Overlay">Lower Screen Overlay</option>
+                        <option value="Notification Icon">Notification Icon</option>
+                        <option value="Notification Icon and Lower Screen Overlay">Notification Icon and Lower Screen Overlay</option>
+                        <option value="Notification Icon and Pop-up">Notification Icon and Pop-up</option>
+                    </select>
+                    <label for="alertNotificationType">Notification Type</label>
+                </div>
+                <div class="col s12 m4 l4 input-field">
+                    <select name="alertNotificationSound" id="alertNotificationSound">
+                        {{#if $eq alertTypeMode 'Edit'}}
+                            <option value="{{alertTypeData.alertNotifySound}}" selected>{{alertTypeData.alertNotifySound}}</option>
+                            <option value="None">None</option>
+                        {{else}}
+                            <option value="None" selected>None</option>
+                        {{/if}}
+                        <option value="Information Ding">Information Ding</option>
+                        <option value="Use Caution">Use Caution</option>
+                        <option value="Danger">Danger</option>
+                        <option value="Wanted Siren">Wanted Siren</option>
+                        <option value="Whoop Siren">Whoop Siren</option>
+                    </select>
+                    <label for="alertNotificationSound">Notification Sound</label>
+                </div>
+                <div class="col s12 m4 l4">
+                    <label>
+                        <input type="checkbox" class="systemAlertType" id="systemAlertType" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" checked="{{#if $eq alertTypeMode 'Edit'}}{{#if $eq alertTypeData.isSystem true}}checked{{/if}}{{/if}}" />
+                        <span>System Alert Type</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m4 l4">
+                    <a class="waves-effect waves-light btn orange cancelBtn" id="cancelAlertType">Cancel</a>
+                </div>
+                <div class="col s12 m4 l4 center">
+                    <a class="waves-effect waves-light btn blue copyAlertType" id="copyAlertType">Copy System Alert Type</a>
+                </div>
+                <div class="col s12 m4 l4">
+                    {{#if $eq alertTypeMode "add"}}
+                        <a class="waves-effect waves-light btn btn-pull-right addBtn" id="addAlertType"><i class="material-icons left">done</i> Save</a>
+                    {{else}}
+                        <a class="waves-effect waves-light btn btn-pull-right addBtn" id="saveEditAlertType"><i class="material-icons left">done</i> Save Edits</a>
+                    {{/if}}
+                </div>
+                
+            </div>
+            <hr />
+            <br />
+            {{> alertTypeGrid}}
+        {{else}}
+                <h4>Alert Types Setup</h4>
+                <p class="flow-text">
+                    You appear to have reached the Alert Tyes Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+                </p>
+        {{/if}}
+    </div>
+</template>

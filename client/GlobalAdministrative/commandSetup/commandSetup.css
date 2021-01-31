@@ -1,0 +1,4 @@
+.commandsTable {
+    height: 37vh;
+    overflow-y: scroll;
+}

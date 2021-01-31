@@ -1,0 +1,21 @@
+<template name="universalCodes">
+    <div class="row">
+        <div class="col s6">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header active grey white-text"><h5>Universals<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "universalPersons" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} universalsRow{{/if}} collection-item setupBtn" id="universalPersons"><div>Persons<a href="#!" class="secondary-content"><i class="material-icons">person</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "universalVehicles" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} universalsRow{{/if}} collection-item setupBtn" id="universalVehicles"><div>Vehicles<a href="#!" class="secondary-content"><i class="material-icons">person</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "universalAddresses" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} universalsRow{{/if}} collection-item setupBtn" id="universalAddresses"><div>Addresses<a href="#!" class="secondary-content"><i class="material-icons">person</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "universalProperty" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} universalsRow{{/if}} collection-item setupBtn" id="universalProperty"><div>Property<a href="#!" class="secondary-content"><i class="material-icons">person</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "universalGuns" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} universalsRow{{/if}} collection-item setupBtn" id="universalGuns"><div>Guns<a href="#!" class="secondary-content"><i class="material-icons">person</i></a></div></li>
+                            
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,44 @@
+<template name="extendedAddressInfo">
+    <div class="row">
+        <div class="input-field col s6">
+            <input type="text" class="landmark" id="landmark" />
+            <label for="landmark">Landmark(s)</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="text" class="intersectingStreet" id="intersectingStreet" />
+            <label for="intersectingStreet">Intersecting Street 1</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="text" class="intersectingStreet2" id="intersectingStreet2" />
+            <label for="intersectingStreet2">Intersecting Street 2</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s2">
+            <input type="text" class="latitude" id="latitude" />
+            <label for="latitude">Latitude</label>
+        </div>
+        <div class="input-field col s2">
+            <input type="text" class="longitude" id="longitude" />
+            <label for="longitude">Longitude</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="hazardInfo" id="hazardInfo" />
+            <label for="hazardInfo">Hazard Information</label>
+        </div>
+        <div class="col s2">
+            <br />
+            <label>
+                <input type="checkbox" id="danger" class="danger" />
+                <span>Danger</span>
+            </label>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <textarea name="directions" class="materialize-textarea" id="directions" maxlength="1000" data-length="1000"></textarea>
+            <label for="directions">Directions</label>
+        </div>
+    </div>
+</template>

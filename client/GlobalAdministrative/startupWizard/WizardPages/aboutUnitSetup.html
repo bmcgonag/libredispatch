@@ -1,0 +1,89 @@
+<template name="aboutUnitSetup">
+    <div class="row">
+        <div class="col s12">
+            <h5>Unit Types</h5>
+            <p class="flow-text">
+                Being a system designed to handle dispatch of various units, it's important to setup Unit Types.  There is a hierarchy to the Unit Types that allow for very detailed unit classification. 
+            </p>
+            <p class="flow-text">
+                The unit classification hierarchy is as follows:
+            </p>
+            <p class="flow-text">
+                Additionally, expandable sections exist throughout this system.  Click on the section headers below to see mroe detailed information for each before moving on.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <h5>Unit Type</h5>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li>
+                                <p class="flow-text">Unit Sub-Types</p>
+                            </li>
+                            <li>
+                                <p class="flow-text">Unit Divisions</p>
+                            </li>
+                        </ul> 
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s6">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <h5>Unit Types</h5>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li class="flow-text">
+                                Main Differing Types of Dispatchable Units
+                            </li>
+                            <li class="flow-text">
+                                <strong>Example: </strong>Law, Fire, Medical, Funeral Home, Tow Service
+                            </li>
+                            <li class="flow-text">
+                                <strong>Example: </strong>Ride, Delivery
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <h5>Unit Sub-types</h5>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li class="flow-text">
+                                For each Unit Type there are defined sub-types
+                            </li>
+                            <li class="flow-text">
+                                <strong>Example: </strong>Type = Law<br /> - - <strong>Sub-types</strong> = Police, Sheriff, Constable, State Patrol
+                            </li>
+                            <li class="flow-text">
+                                <strong>Example: </strong>Type = Ride<br /> - - <strong>Sub-types</strong> = Car Service, Ride Share, Taxi, Limousine, Van, Bus
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <h5>Unit Divisions</h5>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li class="flow-text">For each Unit Sub-type, Unit Divisions are setup to more distinctly classify units by purpose, duty, capapbility.</li>
+                            <li class="flow-text"><strong>Example: </strong>Sub-type = Police<br /> - - <strong>Division</strong> = Patrol, CID, CSU, SRT, K9, Gangs, Narcotics, Admin, Paddy, UC</li>
+                            <li class="flow-text"><strong>Example: </strong>Sub-type = Taxi<br /> - - <strong>Division</strong> = Car, SUV, Van</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>

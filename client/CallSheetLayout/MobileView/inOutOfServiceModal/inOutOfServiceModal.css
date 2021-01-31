@@ -1,0 +1,19 @@
+.modal {
+    height: 45% !important;
+}
+
+.popupFooter {
+    height:60px;
+    width: 100%;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 10pt;
+    left: 0pt;
+}
+
+.mobileModalButtons {
+    width: 100%;
+}

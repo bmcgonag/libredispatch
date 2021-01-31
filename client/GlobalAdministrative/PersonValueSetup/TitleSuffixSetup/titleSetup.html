@@ -1,0 +1,52 @@
+<template name="titleSetup">
+    <div class="CADContainer">
+        <h5>Person Title / Suffix Setup</h5>
+        <div class="row">
+            <div class="col s12 m6 l3 input-field">
+                <select name="tsType" id="tsType" class="tsType">
+                    {{#if $eq titleMode 'edit'}}
+                        <option value="{{titleInfo.type}}">{{titleInfo.type}}</option>
+                    {{else}}
+                        <option value="" disabled selected>Choose one...</option>
+                    {{/if}}
+                    <option value="Title">Title</option>
+                    <option value="Suffix">Suffix</option>
+                </select>
+                <label for="tsType">Type</label>
+            </div>
+            <div class="col s12 m6 l3 input-field">
+                <input type="text" class="titleAbbrev" id="titleAbbrev" value="{{#if $eq titleMode 'edit'}}{{titleInfo.titleAbbrev}}{{/if}}" />
+                <label for="titleAbbrev">Title Abbreviation</label>
+            </div>
+            <div class="col s12 m6 l3 input-field">
+                <input type="text" class="titleFull" id="titleFull" value="{{#if $eq titleMode 'edit'}}{{titleInfo.titleFull}}{{/if}}" />
+                <label for="titleFull">Title Full</label>
+            </div>
+            <div class="col s12 m6 l3">
+                <label>
+                    <input type="checkbox" class="systemTitle" id="systemTitle" checked="{{#if $eq titleMode 'edit'}}{{#if $eq titleInfo.isSystem true}}checked{{/if}}{{/if}}" />
+                    <span>System</span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn orange cancelAddTitle" id="cancelAddTitle">Cancel</a>
+            </div>
+            <div class="col s6">
+                {{#if $eq titleMode 'edit'}}
+                    <a class="waves-effect waves-light btn changeTitle btn-pull-right" id="changeTitle"><i class="material-icons left">done</i> Save Changes</a>
+                {{else}}
+                    <a class="waves-effect waves-light btn addTitle btn-pull-right" id="addTitle"><i class="material-icons left">done</i> Save</a>
+                {{/if}}
+            </div>
+        </div>
+        <div class="titleGridScroll">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    {{> titleSetupGrid}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

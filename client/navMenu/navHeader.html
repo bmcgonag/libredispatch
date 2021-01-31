@@ -1,0 +1,109 @@
+<template name="navHeader">
+    <!-- nav start -->
+    <div class="navbar-fixed">
+        <nav class="{{#if $eq headerColorSet true}}{{headerBarColor}}{{else}}blue darken-4{{/if}}" >
+          <div class="nav-wrapper nav-sticky">
+            <div class="row">
+              <div class="col s3">
+                <ul class="left">
+                    {{#if currentUser}}
+                        <li><a href="#" class="menuNavBtn"><i class="material-icons menuNavBtn sidenav-trigger" data-target="cadSidenav">menu</i></a></li>
+                        {{#if isInRole 'GlobalAdmin, LocalAdmin, DispatchAdmin, DispatchUser'}}
+                            <li><a href="#" id="newCallModal">New Call</a></li>
+                        {{/if}}
+                    {{/if}}
+                    <li>
+                        {{#if currentUser.profile.usersEntity}}
+                            <a href="#!" class="brand-logo">CAD</a>
+                        {{else}}
+                            <a href="#!" class="brand-logo">Dispatch</a>
+                        {{/if}}
+                    </li>
+                </ul>
+              </div>
+              <div class="col s5">
+                {{#if currentUser}}
+                <form class="search-input">
+                    <div class="input-field">
+                        <i class="material-icons prefix">search</i>
+                        <input id="fullSearch" type="search" />
+                    </div>
+                </form>
+                {{/if}}
+              </div>
+              <div class="col s4">
+                {{#if currentUser}}
+                <ul class="right">
+                    <!-- Dropdown Structure -->
+                    <ul id='splitWindows' class='dropdown-content'>
+                        <li class="{{#if $eq unitGridSeparate false}}parkUnits{{else}}splitUnitsOut{{/if}}"><a href="#" class="{{#if $eq unitGridSeparate false}}parkUnits{{else}}splitUnitsOut{{/if}}">{{#if $eq unitGridSeparate false}}<i class="material-icons parkUnitsGrid parkUnits iconPointer">call_merge</i>{{else}}<i class="material-icons splitUnitsOut iconPointer">call_split</i>{{/if}}Units</a></li>
+                        <li><a href="#">Calls</a></li>
+                        <li><a href="#">Map</a></li>
+                    </ul>
+                    <!-- Dropdown Trigger -->
+                    <li><a class='dropdown-trigger' href='#' data-target='splitWindows'>Split / Merge</a></li>
+                    <li><a href="#" class="viewNotifications"><i class="material-icons viewNotifications iconPointer">notifications</i></a></li>
+                    {{#if isInRole 'MobileAdmin, MobileUser'}}
+                        {{#if $neq myAssignedUnit "None"}}
+                            <li class="{{#if $eq userInService true}}white-text{{else}}grey-text{{/if}} myServStat iconPointer"><a href="#">{{myAssignedUnit.callSign}}{{#if $eq myAssignedUnit.isPrimaryUser true}}**{{/if}}</a></li>
+                        {{else}}
+                            <li class="iconPointer goInServiceNav"><a href="#" class="iconPointer goInService">Go In Service</a></li>
+                        {{/if}}
+                    {{/if}}
+                    <li><a href="#" class="currentUser">{{currentUser.username}}</a></li>
+                    <li><a href="#" class="roleOfUser">{{currentUser.roles}}</a></li>
+                </ul>
+                {{/if}}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <!-- nav end -->
+
+    <ul id="cadSidenav" class="sidenav">       
+        {{#if isInRole 'GlobalAdmin'}}
+            <li><a href="#" class="navBtn collection-item" id="globalAdmin"><i id="globalAdmin" class="fa fa-cog fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Global Admin Settings</a></li>
+        {{/if}}
+
+        {{#if isInRole 'GlobalAdmin, LocalAdmin'}}
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Admin</a></li>
+            <li><a href="#" class="navBtn collection-item" id="manageUsers"><i id="manageUsers" class="fa fa-plus fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; User Info</a></li>
+            <li><a href="#" class="navBtn collection-item" id="admin"><i id="admin" class="fa fa-cog fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Admin Settings</a></li>
+        {{/if}}
+
+            
+        {{#if isInRole 'GlobalAdmin, LocalAdmin, DispatchAdmin, DispatchUser'}}
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Dispatch</a></li>
+            <li><a href="#" class="navBtn collection-item" id="inServiceUnits"><i id="inServiceUnits" class="fa fa-user fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Unit Activation</a></li>
+            <li><a href="#" class="navBtn collection-item" id="addUserToUnits"><i id="addUserToUnits" class="fa fa-user fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Add User to Unit</a></li>
+            <li><a href="#" class="navBtn collection-item" id="omv_dispatch_view"><i id="omv_dispatch_view" class="fa fa-user fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; OMV Dispatch</a></li>
+        {{/if}}
+
+        {{#if isInRole 'GlobalAdmin, LocalAdmin, MobileAdmin, MobileUser'}}
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">Mobile</a></li>
+            <li><a href="#" class="navBtn collection-item" id="calls_view"><i id="calls_view" class="fa fa-user fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Mobile View</a></li>
+        {{/if}}
+
+        {{#if isInRole 'GlobalAdmin, LocalAdmin, DispatchUser, DispatchAdmin, MobileUser, MobileAdmin'}}
+            <li><div class="divider"></div></li>
+            <li><a class="subheader">General</a></li>
+            <li><a href="#" class="navBtn collection-item" id="universalCodes"><i id="universalCodes" class="fa fa-globe fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Universals</a></li>
+        {{/if}}
+
+        {{#if isInRole 'GlobalAdmin, LocalAdmin, DispatchUser, DispatchAdmin, MobileUser, MobileAdmin, Rider'}}
+            <li><a href="#" class="navBtn collection-item" id="orderRide"><i id="orderRide" class="fa fa-taxi fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Order a Ride</a></li>
+            <li><a href="#" class="navBtn collection-item" id="messaging"><i id="messaging" class="fa fa-envelope fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Messaging</a></li>
+            <li><a href="#" class="navBtn collection-item" id="alerts"><i id="alerts" class="fa fa-exclamation-triangle fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; Alert</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="#" class="navBtn collection-item" id="userSettings"><i id="userSettings" class="fa fa-cog fa-fw myNav navBtn" aria-hidden="true"></i>&nbsp; My Settings</a></li>
+        {{/if}}
+            <li><div class="divider"></div></li>
+            <li><a href="#" class="signOut collection-item" id="signOut"><i class="fa fa-sign-out fa-fw myNav signOut" aria-hidden="true"></i>&nbsp; Logout</a></li>
+    </ul>
+    {{> callSheetModalSmall}}
+    {{> inOutOfServiceModal}}
+</template>

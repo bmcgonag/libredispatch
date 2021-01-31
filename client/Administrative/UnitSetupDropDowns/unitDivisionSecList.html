@@ -1,0 +1,15 @@
+<template name="unitDivisionSecList">
+    <div class="row">
+        <div class="input-field col s12">
+            <select id="unitSecondaryDivision" class="input unitDivision">
+                <option value="" disabled selected>Choose One...</option>
+                {{#each unitDivisionsFound}}
+                    {{#each unitDivisions}}
+                        <option value="{{division}}">{{division}}</option>
+                    {{/each}}
+                {{/each}}
+            </select>
+            <label for="unitSecondaryDivision">Secondary Division</label>
+        </div>
+    </div>
+</template>

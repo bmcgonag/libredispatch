@@ -1,0 +1,32 @@
+<template name="unitTypeSetupGrid">
+    <div class="row">
+        <div class="col s12">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <td>
+                            Unit Type
+                        </td>
+                        <td>
+                            Actions
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each unitTypeNames}}
+                    <tr class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                        <td class="thin">
+                            {{unitType}}
+                        </td>
+                        <td class="thin">
+                            <i class="material-icons iconPointer deleteUnitType">delete</i>
+                            <i class="material-icons iconPointer editUnitType">edit</i>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+</template>

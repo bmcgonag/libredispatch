@@ -1,0 +1,30 @@
+.scroll {
+
+}
+
+.scroll tr {
+  display: flex;
+}
+
+.scroll td {
+  flex: 1 auto;
+}
+
+.scroll thead tr:after {
+  content: '';
+  overflow-y: scroll;
+  visibility: hidden;
+  height: 0;
+}
+
+.scroll thead th {
+  flex: 1 auto;
+  display: block;
+}
+
+.scroll tbody {
+  display: block;
+  width: 100%;
+  overflow-y: auto;
+  height: 200px;
+}

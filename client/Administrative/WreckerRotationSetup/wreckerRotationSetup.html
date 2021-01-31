@@ -1,0 +1,102 @@
+<template name="wreckerRotationSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="CADContainer">
+        <h4>Wrecker Rotation Setup<i class="material-icons iconPointer tooltipped" data-position="right"  data-html="true" data-tooltip="<p>Wreckers, Funeral Homes, and Other vehicles are setup in Unit Setup.</p><p>This section is used to setup the rotation schedule, if one is used, for those units.</p>">help</i></h4>
+        <div class="row">
+            <div class="input-field col s6">
+                {{> unitTypesList}}
+            </div>
+            <div class="input-field col s6">
+                <select name="rotationFrequency" id="rotationFrequency">
+                    <option value="" disabled selected></option>
+                    <option value="By Click">By Click</option>
+                    <option value="By Day">By Day</option>
+                    <option value="By Week">By Week</option>
+                    <option value="By Month">By Month</option>
+                </select>
+                <label for="rotationFrequency">Rotation Frequency</label>
+            </div>
+        </div>
+        <div class="row">
+            {{#if $eq rotTypeSel "Wrecker"}}
+            <div class="input-field col s6">
+                <select name="towCapability" id="towCapability">
+                    <option value="" disabled selected></option>
+                    <option value="Light">Light</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Heavy">Heavy</option>
+                    <option value="Specialized">Specialized</option>
+                </select>
+                <label for="towCapability">Towing Capability</label>
+            </div>
+            {{/if}}
+        </div>
+        {{#if $eq showWreckerServices true}}
+        <div class="row">
+            <div class="input-field col s6">
+                <select name="wreckerProvider" id="wreckerProvider" class="input-select">
+                    <option value="" selected></option>
+                    {{#each unitProviders}}
+                        {{#each unitDivisions}}
+                            <option value="{{division}}">{{division}}</option>
+                        {{/each}}
+                    {{/each}}
+                </select>
+                <label for="wreckerProvider">Wrecker Service / Provider</label>
+            </div>
+            <div class="input-field col s6">
+                <input type="number" class="rotationPosition" id="rotationPosition" />
+                <label for="rotationPosition">Rotation Position</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                {{#if $eq rotTypeSel "By Day"}}
+                    <select name="whatDayBegin" class="whatDayBegin" id="whatDayBegin">
+                        <option value="Today">Today</option>
+                        <option value="Sunday">Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                    </select>
+                    <label for="whatDayBegin">Rotation Begins On</label>
+                {{else if $eq rotFreqSel "By Week"}}
+                    <select name="weekStartDay" id="weekStartDay" class="weekStartDay">
+                        <option value="Sunday">Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Saturday">Saturday</option>
+                    </select>
+                    <label for="weekStartDay">Week Starts On</label>
+                {{/if}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn orange cancelRotationEntry left">Cancel</a>
+            </div>
+            <div class="col s6">
+                <a class="waves-effect waves-light btn green saveRotationEntry right"><i class="material-icons left">done</i>Add to Rotation</a>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    <br />
+    <hr />
+    <br />
+    <div class="row">
+        <div class="col s12">
+            {{> rotationSetupGrid}}
+        </div>
+    </div>
+    {{else}}
+        <div class="CADContainer">
+            <h4>Wrecker Rotation Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Wrecker Rotation Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

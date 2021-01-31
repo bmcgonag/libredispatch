@@ -1,0 +1,47 @@
+<template name="unitDivisionResultsGrid">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <th>
+                            Unit Type
+                        </th>
+                        <th>
+                            Unit Sub-type
+                        </th>
+                        <th>
+                            Division
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each units}}
+                        <tr id="{{_id}}" class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}">
+                            <td>
+                                {{unitType}}
+                            </td>
+                            <td>
+                                {{unitSubType}}
+                            </td>
+                            <td>
+                                {{#each unitDivisions}}
+                                    <div class="chip" style="background: {{../unitSubTypeColorCode}}">
+                                        {{division}}
+                                    </div>
+                                {{/each}}
+                            </td>
+                            <td>
+                                <i class="material-icons iconPointer deleteDivisions">delete</i>
+                                <i class="material-icons iconPointer editDivisions">edit</i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

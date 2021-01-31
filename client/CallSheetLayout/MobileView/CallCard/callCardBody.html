@@ -1,0 +1,33 @@
+<template name="callCardBody">
+    <div class="row">
+        {{#if $eq cardBodySettings.bodyPriorityText true}}
+        <div class="col s12 m6 l6">
+            <span class="flow-text" style="background: {{priorityColor}};">{{priority}}</span>
+        </div>
+        {{/if}}
+        {{#if $eq tenantSettings.assignSelf true}} <!-- Rule 1 - allowed to assign self? -->
+            {{#if $eq unitStatus 'Available'}} <!-- Rule 2 - Must be available -->
+                {{#if $eq myServStatus "goOutService"}} <!-- Rule 3 - must be in service -->
+                    <div class="col s12 m6 l6 mobileModuleBtn">
+                        <a class="waves-effect waves-light btn assignMe green right">Assign</a>
+                    </div>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+        {{#if $eq cardBodySettings.bodyCallDateTime true}}
+        <div class="col s12 m12 l12">
+            <span class="flow-text">{{sentToDis}}</span>
+        </div>
+        {{/if}}
+        {{#if $eq cardBodySettings.bodyCallAddress true}}
+        <div class="col s12 m12 l12">
+            <span class="flow-text">{{location}}</span>
+        </div>
+        {{/if}}
+        {{#if $eq cardBodySettings.bodyResponseTable true}}
+        <div class="col s12 m12 l12">
+            {{> callCardResponseTab}}
+        </div>
+        {{/if}}
+    </div>
+</template>

@@ -1,0 +1,72 @@
+<template name="entitySetup">
+    {{#if isInRole 'GlobalAdmin'}}
+    <div class="CADContainer">
+        {{#if $eq noTypes true}}
+        <div class="row red darken-2 white-text">
+            <div class="col s12">
+                <p class="flow-text">You need to setup Entity Types before continuing with Entity Setup!</p>
+            </div>
+        </div>
+        {{/if}}
+        <h4>Add a New Entity</h4>
+        <div class="row">
+            <div class="input-field col s3">
+                <label for="entityName">Entity Name</label>
+                <input type="text" class='input entityName {{#if $eq entityNameCorrect "incorrect"}}red white-text{{/if}}' id="entityName" />
+            </div>
+            <div class="input-field col s3">
+                <select class="input entityType" id="entityType">
+                    <option value="" disabled selected></option>
+                    {{#each entityTypesList}}
+                        <option value="{{entityTypeName}}">{{entityTypeName}}</option>
+                    {{/each}}
+                </select>
+                <label for="entityType">Entity Type</label>
+            </div>
+            <div class="input-field col s3">
+                <select class="input subEntityOf" id="subEntityOf">
+                    <option value="" disabled selected></option>
+                    <option value="parent">None / Parent</option>
+                    {{#each entities}}
+                        <option value="{{entityName}}">{{entityName}}</option>
+                    {{/each}}
+                </select>
+                <label for="subEntityOf">Sub-Entity Of</label>
+            </div>
+            <div class="col s3">
+                <label>
+                    <input type="checkbox" class="isGlobal" id="isGlobal" />
+                    <span>Global Entity</span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s2">
+                <input type="text" class="entityORI input" id="entityORI" />
+                <label for="entityORI">ORI</label>
+            </div>
+            <div class="input-field col s2">
+                <input type="tel" class="input entityPrimaryPhone {{#if $eq entryCorrect 'incorrect'}}red white-text{{/if}}" id="entityPrimaryPhone" />
+                <label for="entityPrimaryPhone">Primary Phone</label>
+            </div>
+            <div class="input-field col s6">
+                <input type="text" class="input entityPrimaryAddress" id="entityPrimaryAddress" />
+                <label for="entiyPrimaryAddress">Primary Address</label>
+            </div>
+            <div class="col s2">
+                <a class="btn-floating btn-large waves-effect waves-light green addEntity"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="entityGridStyle">
+            {{> entityGrid}}
+        </div>
+    </div>
+    {{else}}
+    <div class="CADContainer">
+        <h5>You don't appear to have permissions to view this area. If you believe this is a mistake, please contact your system administrator. You can navigate to your main screen using the menu (<i class="material-icons">menu</i>) in the upper left.</h5>
+    </div>
+    {{/if}}
+</template>

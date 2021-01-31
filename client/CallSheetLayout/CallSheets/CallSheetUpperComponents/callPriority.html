@@ -1,0 +1,13 @@
+<template name="callPriority">
+    <select id="callPriority" class="callPriority">
+        {{#if $eq priOfSelType ""}}
+            <option value="" disabled selected></option>
+        {{else}}
+            <option value="{{priOfSelType}}" selected>{{priOfSelType}}</option>
+        {{/if}}
+        {{#each callTypePriorities}}
+            <option value="{{callTypePriority}}" style="color: {{priorityColor}}">{{callTypePriority}}</option>
+        {{/each}}
+    </select>
+    <label for="callPriority">Priority</label>
+</template>

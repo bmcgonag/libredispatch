@@ -1,0 +1,16 @@
+<template name="dispositionsList">
+    <table id="dispoMenu" class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} dispo-menu z-depth-4">
+        <tbody>
+            {{#each dispositionsOptions}}
+                <tr class="thin dispo">
+                    <td class="thin">
+                        {{dispoAbbrev}}
+                    </td>
+                    <td class="thin">
+                        {{dispoText}}
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>

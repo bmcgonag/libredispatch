@@ -1,0 +1,130 @@
+<template name="dispatchSMV">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin,DispatchAdmin,DispatchUser'}}
+    <div class="row">
+        {{#if $eq gridParking true}}
+            {{#if $eq userPrefs.unitsGridLayout "Left"}}
+            <div class="col s12 m6 l4">
+                <div class="card {{#if $eq userPrefs.show911Grid 'Always Visible'}}unitsWith911{{else}}unitsListView{{/if}}">
+                    <div class="card-content">
+                        {{> unitsList}}
+                    </div>
+                </div>
+                {{#if $eq userPrefs.show911Grid 'Always Visible'}}
+                <div class="card unitsWith911">
+                    <div class="card-content">
+                            {{> incoming911}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            {{/if}}
+            {{#if $eq userPrefs.unitsGridLayout "Both Sides"}}
+            <div class="col s12 m3 l3">
+                <div class="card {{#if $eq userPrefs.show911Grid 'Always Visible'}}unitsWith911{{else}}unitsListView{{/if}}">
+                    <div class="card-content">
+                        {{> unitsList}}
+                    </div>
+                </div>
+                {{#if $eq userPrefs.show911Grid 'Always Visible'}}
+                <div class="card unitsWith911">
+                    <div class="card-content">
+                            {{> incoming911}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            {{/if}}
+        {{/if}}
+        
+        <div class="{{grids}}">
+            {{#if $eq userPrefs.callsGridOnTop true}}
+            <div class="row">
+                <div class="col s12 {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                    <div class="card dispatchView">
+                        <div class="card-content">
+                            {{> activeCallsDisplayGrid}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            <div class="row">
+                {{#if $eq userPrefs.notesAndMap "Notes Left"}}
+                    <div class="col s12 mapView">
+                        {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}
+                            {{> mapViewDark}}
+                        {{else}}
+                            {{> mapView}}
+                        {{/if}}
+                    </div>
+                {{else if $eq userPrefs.notesAndMap "Notes Right"}}
+                    <div class="col s12 mapView">
+                        {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}
+                            {{> mapViewDark}}
+                        {{else}}
+                            {{> mapView}}
+                        {{/if}}
+                    </div>
+                {{/if}}
+            </div>
+            {{#if $eq userPrefs.callsGridOnTop false}}
+                <div class="row">
+                    <div class="col s12 {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                        <div class="card dispatchView">
+                            <div class="card-content">
+                                {{> activeCallsDisplayGrid}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+        {{#if $eq gridParking true}}
+            {{#if $eq userPrefs.unitsGridLayout "Both Sides"}}
+            <div class="col s12 m4 l3">
+                <div class="card {{#if $eq userPrefs.show911Grid 'Always Visible'}}unitsWith911{{else}}unitsListView{{/if}}">
+                    <div class="card-content">
+                        {{> unitsList}}
+                    </div>
+                </div>
+                {{#if $eq userPrefs.show911Grid 'Always Visible'}}
+                <div class="card unitsWith911">
+                    <div class="card-content">
+                            {{> incoming911}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            {{/if}}
+            {{#if $eq userPrefs.unitsGridLayout "Right"}}
+            <div class="col s12 m6 l4 unitsListView">
+                <div class="card {{#if $eq userPrefs.show911Grid 'Always Visible'}}unitsWith911{{else}}unitsListView{{/if}}">
+                    <div class="card-content">
+                        {{> unitsList}}
+                    </div>
+                </div>
+                {{#if $eq userPrefs.show911Grid 'Always Visible'}}
+                <div class="card unitsWith911">
+                    <div class="card-content">
+                            {{> incoming911}}
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+            {{/if}}
+        {{/if}}
+    </div>
+    {{> dispositionsList}}
+    {{> startTransModal}}
+    {{> endTransModal}}
+    {{else}}
+        <div class="CADContainer">
+            <h4>
+                Main Dispatch View
+            </h4>
+            <p class="flow-text">
+                You appear to have reached this view without appropriate permissions.  If you believe this is in error, contact your system administrator immediately to have the issue corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

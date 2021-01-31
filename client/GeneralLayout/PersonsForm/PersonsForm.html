@@ -1,0 +1,44 @@
+<template name="personsForm">
+    <div class="CADContainer">
+        <h5>Persons</h5>
+        <div class="row">
+            <div class="s12 m12 l12">
+                Name: {{title}} {{firstName}} {{middleName}} {{lastName}}, {{suffix}} 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l2 input-field">
+                {{> firstName id="fnamePersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> middleName id="mnamePersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> lastName id="lnamePersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> dob id="dobPersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> dlNo id="dlNoPersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> dlState id="dlStatePersons"}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l2 input-field">
+                {{> ssn id="ssnPersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> pob id="pobPersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> title id="titlePersons"}}
+            </div>
+            <div class="col s12 m4 l2 input-field">
+                {{> suffix id="suffixPersons"}}
+            </div>
+        </div>
+    </div>
+</template>

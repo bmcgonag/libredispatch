@@ -1,0 +1,24 @@
+<template name="userGroupGrid">
+    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} responsive-table">
+        <thead>
+            <tr>
+                <th>Group Name</th>
+                <th>Group Members</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each userGroupsActive}}
+                <tr id="{{_id}}" class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}">
+                    <td class="thin">{{groupName}}</td>
+                    <td class="thin">{{groupMembers}}</td>
+                    <td class="thin">
+                        <i class="material-icons clickableIcon removeGroup">delete</i>
+                        <i class="material-icons clickableIcon editGroup">edit</i>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{> confirmationDialogModal}}
+</template>

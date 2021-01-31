@@ -1,0 +1,86 @@
+<template name="callSheetSmallBody">
+    <div class="row">
+        <div class="col s11">
+            <div class="row">
+                <div class="input-field col s12 m6 l4">
+                    {{> callLocation}}
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    {{> callType}}
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    {{> callPriority}}
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    {{> howReceived}}
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    {{> crossStreets}}
+                </div>
+                <div class="input-field col s12 m6 l4">
+                    {{> latAndLon}}
+                </div>
+            </div>
+        </div>
+        <div class="col s1">
+            <a class="btn-floating btn-large waves-effect waves-light {{#if $eq canSendModal "disabled"}}disabled{{else}}pulse{{/if}} green saveCall"><i class="material-icons">done</i></a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs  {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <li class="tab col s2">
+                    <a href="#notesTab" class="active">Notes</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#callersTab">Caller</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#vehiclesTab">Vehicles</a>
+                    </li>
+                <li class="tab col s2">
+                    <a href="#subjectsTab">Subjects</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#ncicTab">NCIC</a>
+                </li>
+                <li class="tab col s2">
+                    <a href="#nine11Tab">911 Info</a>
+                </li>
+            </ul>
+        </div>
+        <div id="notesTab" class="col s12">
+            <div class="row">
+                <div class="input-field col s10">
+                    {{> callNotesEntry}}
+                </div>
+                <div class="col s2">
+                    <br />
+                    <a class="btn-floating btn-large waves-effect waves-light {{#if $eq canAddNotes false}}disabled{{else}}pulse{{/if}} green addNote"><i class="material-icons">add</i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    {{> notesTableView}}
+                </div>
+            </div>
+        </div>
+        <div id="callersTab" class="col.s12">
+            {{> callSheetFormCallers}}
+        </div>
+        <div id="vehiclesTab" class="col s12">
+            {{> callSheetFormVehicles}}
+        </div>
+        <div id="subjectsTab" class="col s12">
+            {{> CallSheetFormSubjects}}
+        </div>
+        <div id="ncicTab" class="col s12">
+
+        </div>
+        <div id="nine11Tab" class="col s12">
+
+        </div>
+    </div>
+   
+</template>

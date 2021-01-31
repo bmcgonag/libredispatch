@@ -1,0 +1,13 @@
+<template name="entitiesList">
+    <div class="row">
+        <div class="input-field col s12">
+            <select id="entitySelection" class="unitEntity {{#if $eq entityReq true}}red lighten-2{{/if}}">
+                <option value="" disabled selected>Choose One...</option>
+                {{#each activeEntities}}
+                    <option valeu="{{entityName}}">{{entityName}}</option>
+                {{/each}}
+            </select>
+            <label for="unitEntity">Unit Entity</label>
+        </div>
+    </div>
+</template>

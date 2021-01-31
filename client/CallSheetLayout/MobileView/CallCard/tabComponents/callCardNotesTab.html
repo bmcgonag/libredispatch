@@ -1,0 +1,24 @@
+<template name="callCardNotesTab">
+    <ul class="collection">    
+        <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+            <tbody>
+            {{#each notes}}
+                <tr class="thin">
+                    <td>
+                        <tr>
+                            <td class="thin">
+                                {{updatedBy}}{{addedBy}} <span class="right">{{updatedTime}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="thin">
+                                <p class="flow-text">{{note}}</p>
+                            </td>
+                        </tr>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        </table>   
+    </ul>
+</template>

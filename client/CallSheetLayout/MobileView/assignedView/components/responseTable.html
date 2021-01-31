@@ -1,0 +1,34 @@
+<template name="responseTable">
+    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <thead>
+            <tr class="flow-text">
+                <th>Unit</th>
+                <th>AS</th>
+                <th>ER</th>
+                <th>AR</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each unitsOnCall}}
+        {{#each units}}
+            {{#if $eq isClear false}}
+                <tr class="thin flow-text {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{unitId}}">
+                    <td class="thin">
+                        {{> unitIndicator}}
+                    </td>
+                    <td class="thin">
+                        {{assignTime}}
+                    </td>
+                    <td class="thin">
+                        {{enrouteTime}}
+                    </td>
+                    <td class="thin">
+                        {{arriveTime}}
+                    </td>
+                </tr>
+            {{/if}}
+        {{/each}}
+        {{/each}}
+        </tbody>
+    </table>
+</template>

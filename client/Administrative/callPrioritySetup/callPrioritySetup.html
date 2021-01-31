@@ -1,0 +1,87 @@
+<template name="callPrioritySetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <h4>Call Priority Setup<i class="material-icons iconPointer tooltipped" data-position="bottom"  data-html="true" data-tooltip="<p>Call Priority is used to set and display a prioritization level for dispatch events.</p><p>Each Call Type set, can be given one of these priority levels by default,<br /> but can have the priority overridden by the dispatcher as needed.</p>">help</i></h4>
+    <br />
+    <div class="row">
+        <div class="input-field col s12 m6 l6">
+          <input id="callPriorityName" type="text" class="callPriority" value="{{#if $eq priorityMode 'edit'}}{{editPriData.callTypePriority}}{{/if}}" />
+          <label for="callPriorityName">Call priority</label>
+        </div>
+        <div class="col s12 m6 l6">
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    Priority Color <input type="color" class="input callPriorityColor" id="callPriorityColor" value="{{#if $eq priorityMode 'edit'}}{{editPriData.priorityColor}}{{/if}}" />
+                </div>
+                <dov class="col s12 m12 l12">
+                    <label>
+                        <input type="checkbox" class="prioritySystem" id="prioritySystem" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" checked="{{#if $eq priorityMode 'edit'}}{{#if $eq editPriData.systemPriority true}}checked{{/if}}{{/if}}" />
+                        <span>System Priority</span>
+                    </label>
+                </dov>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l4">
+            <a class="waves-effect waves-light btn orange cancelBtn" id="cancelCallPriority">Cancel</a>
+        </div>
+        <div class="col s12 m4 l4 center">
+            <a class="waves-effect waves-light btn blue copySystemPriorities" id="copySystemPriorities">Copy System Priorities</a>
+        </div>
+        {{#if $eq priorityMode "edit"}}
+            <div class="col s12 m4 l4">
+                <a class="waves-effect waves-light btn btn-pull-right addBtn" id="saveEditCallPriority"><i class="material-icons left">done</i> Save Changes</a>
+            </div>
+        {{else}}
+            <div class="col s12 m4 l4">
+                <a class="waves-effect waves-light btn btn-pull-right addBtn" id="addCallPriority"><i class="material-icons left">done</i> Save</a>
+            </div>
+        {{/if}}
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="column">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}" id="callPriorityTable">
+                <thead>
+                    <tr>
+                        <th class="priority">
+                            Call Priority
+                        </th>
+                        <th class="color">
+                            Priority Color
+                        </th>
+                        <th class="actions center">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each callPriorities}}
+                    <tr class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                        <td class="priority">
+                            {{callTypePriority}}
+                        </td>
+                        <td class="color" style="background-color:{{priorityColor}};color:white">
+                            <span>{{priorityColor}}</span>
+                        </td>
+                        <td class="actions center">
+                            <i class="material-icons clickable editCallPriority">mode_edit</i>
+                            <i class="material-icons clickable deleteCallPriority">delete</i>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+    {{else}}
+    <div class="CADContainer">
+        <h4>Call Priority Setup</h4>
+        <p class="flow-text">
+            You appear to have reached the Call Priority Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+        </p>
+    </div>
+{{/if}}
+</template>

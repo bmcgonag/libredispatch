@@ -1,0 +1,22 @@
+<template name="OOVTypesList">
+    <table id="oovTypesMobile" class="striped highlight">
+        <thead>
+            <tr>
+                <th>OOV Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each oovTypes}}
+                <tr class="oovMobile oovTypeRow flow-text iconPointer">
+                    <td>
+                        {{oovTypeName}}
+                    </td>
+                    <td>
+                        {{oovDescription}}
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>

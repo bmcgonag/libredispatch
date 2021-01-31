@@ -1,0 +1,74 @@
+
+.headerCall {
+    font-weight: bold;
+}
+
+.ele-pull-right {
+    font-weight: bold;
+    float: right;
+    text-align: center;
+}
+
+.mobileCallList {
+    width: 100%;
+}
+
+.alert-pull-right {
+    background: red;
+    color: white;
+    font-weight: bold;
+    float: right;
+    text-align: center;
+}
+
+.flexText{
+    font-size: 0.8vw;
+    font-weight: bold;
+}
+
+.pull-right {
+    text-align: right;
+}
+
+.collapsible-header-mobile-calls {
+    margin: 0!important;
+}
+
+.right-call-no {
+    display: block;
+}
+
+.row-border {
+    border-bottom: 1px #2d2d2d;
+}
+
+.notesScroll {
+    height: 40vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: var(--my-tabarea-color);
+}
+
+.my-card-content {
+    background: var(--my-card-content-color);
+}
+
+
+.callCardInfo {
+    margin-left: 5%;
+}
+
+.cardLike {
+    width:100%;
+    position:relative;
+}
+
+.cardLike::before {
+    height:100%;
+    content:' ';
+    position: absolute;
+    top: 0;
+    width: 5%;
+    left: 0;
+    background-color: var(--my-priority-color);
+}

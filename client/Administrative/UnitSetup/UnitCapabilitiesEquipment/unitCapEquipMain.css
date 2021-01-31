@@ -1,0 +1,5 @@
+.unitEquipGridHeight {
+    height: 60vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}

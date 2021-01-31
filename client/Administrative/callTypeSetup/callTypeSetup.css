@@ -1,0 +1,5 @@
+.displaySet {
+    height: 45vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}

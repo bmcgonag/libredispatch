@@ -1,0 +1,96 @@
+<template name="moduleButtons">
+    <div class="row">
+        <div class="col s12">
+            <!-- Buttons from left are context sensitive -->
+
+            <!-- Setup the Home view of buttons first -->
+            {{#if $eq mobileContext 'home'}}
+                <div class="row">
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light {{#if $eq mobileGridContext "calls"}}blue darken-3 yellow-text{{else}}grey darken-2{{/if}} btn-large mobileModuleBtn callsViewMobile">Calls</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light {{#if $eq mobileGridContext "units"}}blue darken-3 yellow-text{{else}}grey darken-2{{/if}} btn-large mobileModuleBtn unitsViewMobile">Units</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light grey darken-2 btn-large mobileModuleBtn siaView {{#if $nin myCurrStatus 'Available' 'None'}}disabled{{/if}}">SIA</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light {{#if $eq alertOnCall true}}red{{else}}blue{{/if}} darken-2 btn-large mobileModuleBtn assignedView {{#if $in myCurrStatus 'Available' 'None'}}disabled{{/if}}">Assigned</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light grey darken-2 btn-large mobileModuleBtn ncicView">Tags/NCIC</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light green darken-3 btn-large mobileModuleBtn homeView">Home</a>
+                    </div>
+                </div>
+            {{/if}}
+
+            <!-- We will change the buttons at the bottom if the user goes to the assigned view -->
+            {{#if $eq mobileContext 'assigned'}}
+                <div class="row">
+                    <div class="col m2 l2 s12">
+                        {{#if $eq myCurrStatus 'AS'}}
+                            <a class="waves-effect waves-light blue darken-2 btn-large mobileModuleBtn enRoute">En Route</a>
+                        {{else if $eq myCurrStatus 'ER'}}
+                            <a class="waves-effect waves-light blue darken-2 btn-large mobileModuleBtn arrive {{#if $in myCurrStatus 'Available' 'AS' 'AR' 'AR / TR'}}disabled{{/if}}">Arrive</a>
+                        {{else}}
+                            <a class="waves-effect waves-light blue darken-2 btn-large mobileModuleBtn clear {{#if $in myCurrStatus 'Available' 'AS' 'ER' 'AS / Hld'}}disabled{{/if}}">Clear</a>
+                        {{/if}}
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class='dropdown-trigger blue darken-2 btn-large mobileModuleBtn' data-target='mblCallActions'>Call Actions</a>
+                        <ul id='mblCallActions' class='dropdown-content'>
+                            <li><a href="#!" id="startTransportMobile">Start Transport</a></li>
+                            <li><a href="#!" id="endTransportMobile">End Transport</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" id="changeLocationMobile">Change Location</a></li>
+                            <li class="divider" tabindex="-1"></li>
+                            <li><a href="#!" id="fireControlMobile">Fire Control</a></li>
+                            <li><a href="#!" id="fireOutMobile">Fire Out</a></li>
+                        </ul>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-2 btn-large mobileModuleBtn deassign {{#if $in myCurrStatus 'Available' 'AR' 'AR / TR'}}disabled{{/if}}">De-Assign</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-2 btn-large mobileModuleBtn addNotes {{#if $eq myCurrStatus 'Available'}}disabled{{/if}}">Add Notes</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-2 btn-large mobileModuleBtn ncicView">Tags/NCIC</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light green darken-3 btn-large mobileModuleBtn homeView">Home</a>
+                    </div>
+                </div>
+            {{/if}}
+
+            {{#if $eq mobileContext 'sia'}}
+                <div class="row">
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-4 btn-large mobileModuleBtn outOfVehicle">Out of Vehicle</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-4 btn-large mobileModuleBtn mobileWatches">Watches</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-4 btn-large mobileModuleBtn mobileTraffic">Traffic</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-4 btn-large mobileModuleBtn selfInitiatedCall">Self-initiated Call</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light blue darken-4 btn-large mobileModuleBtn ncicView">Tags/NCIC</a>
+                    </div>
+                    <div class="col m2 l2 s12">
+                        <a class="waves-effect waves-light green darken-3 btn-large mobileModuleBtn homeView">Home</a>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+    {{> mobileDispositionList}}
+    {{> addNotesFromMobileModal}}
+    {{> OOVMobile}}
+</template>

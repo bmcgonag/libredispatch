@@ -1,0 +1,7 @@
+<template name="homeView">
+    {{#if currentUser}}
+        {{> dispatchSMV}}
+    {{else}}
+        {{> pleaseLogin}}
+    {{/if}}
+</template>

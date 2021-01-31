@@ -1,0 +1,43 @@
+<template name="messageArea">
+        <div class="messageViewing" id="messageViewing">
+            {{#each convoInfo}}
+
+                <div class="row messageContentRow">
+                    {{#if $eq sender currentUser.username}}
+                        <div class="col s9 ISentIt">
+                            <div class="row">
+                                <div class="col s12">
+                                    <i>{{messageAddedAt}}</i>
+                                </div>
+                                <div class="col s12">
+                                    {{messageText}}
+                                </div>
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="col s9 offset-s3 TheySentIt">
+                            <div class="row">
+                                <div class="col s12">
+                                    <i>{{messageAddedAt}}</i>
+                                </div>
+                                <div class="col s12">
+                                    {{messageText}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+
+    <div class="messageWriting" id="messageWriting">
+        <div class="row">
+            <div class="col s10 input-field">
+                <input type="text" class="messageInput" id="messageInput" placeholder="Enter Message" data-length="500" />
+            </div>
+            <div class="col s2">
+                <a class="btn-floating btn-large waves-effect waves-light blue sendMessageOut"><i class="material-icons">send</i></a>
+            </div>
+        </div>
+    </div>
+</template>

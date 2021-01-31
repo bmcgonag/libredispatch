@@ -1,0 +1,19 @@
+.menuNavBtn {
+    cursor: pointer;
+}
+
+input[id="search"] {
+    height: 45px !important; 
+    margin-top: 10px !important;
+    border-radius: 5px;
+}
+.search-input{
+    background-color: #0f087a ;
+    height: 45px !important; 
+    margin-top: 10px !important;
+    border-radius: 5px;
+}
+nav .input-field i {
+    top: -8px !important;
+    left: 0 !important;
+}

@@ -1,0 +1,100 @@
+<template name="mobileSettingsTab">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <h5>Mobile Settings</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3 input-field">
+            <select name="callListPosition" id="callListPosition" class="callListPosition">
+                <option value="{{myMobileSettings.mobileCallListPosition}}">{{myMobileSettings.mobileCallListPosition}}</option>
+                <option value="Left">Left</option>
+                <option value="Right">Right</option>
+                <option value="Bottom">Bottom</option>
+                <option value="Top">Top</option>
+            </select>
+            <label for="callListPosition">Call List Position</label>
+        </div>
+        <div class="col s12 m4 l3">
+            <label>
+                <input type="checkbox" class="growCallOnExpand" id="growCallOnExpand" checked="{{#if $eq myMobileSettings.growCallOnExpand true}}checked{{/if}}" />
+                <span>Large Call Card when Expanded</span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <p class="flow-text">Fields to show on Card Header</p> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <label>
+                <input type="checkbox" class="headerCallDateTime" id="headerCallDateTime" checked="{{#if $eq myMobileSettings.headerCallDateTime true}}checked{{/if}}" />
+                <span>Call Date / Time</span>
+            </label>
+        </div>
+        <div class="col s12 m4 l3">
+            <label>
+                <input type="checkbox" class="headerCallAddress" id="headerCallAddress" checked="{{#if $eq myMobileSettings.headerCallAddress true}}checked{{/if}}" />
+                <span>Call Address</span>
+            </label>
+        </div>
+        <div class="col s12 m4 l3">
+            <label>
+                <input type="checkbox" class="headerPriorityText" id="headerPriorityText" checked="{{#if $eq myMobileSettings.headerPriorityText true}}checked{{/if}}" />
+                <span>Call Priority Text</span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <p class="flow-text">Fields to show on Card Body</p> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <label>
+                <input type="checkbox" class="bodyCallDateTime" id="bodyCallDateTime" checked="{{#if $eq myMobileSettings.bodyCallDateTime true}}checked{{/if}}" />
+                <span>Call Date / Time</span>
+            </label>
+        </div>
+        <div class="col s12 m4 l3">
+            <label>
+                <input type="checkbox" class="bodyCallAddress" id="bodyCallAddress" checked="{{#if $eq myMobileSettings.bodyCallAddress true}}checked{{/if}}" />
+                <span>Call Address</span>
+            </label>
+        </div>
+        <div class="col s12 m4 l3">
+            <label>
+                <input type="checkbox" class="bodyPriorityText" id="bodyPriorityText" checked="{{#if $eq myMobileSettings.bodyPriorityText true}}checked{{/if}}" />
+                <span>Call Priority Text</span>
+            </label>
+        </div>
+        <div class="col s12 s4 l3">
+            <label>
+                <input type="checkbox" class="bodyResponseTable" id="bodyResponseTable" checked="{{#if $eq myMobileSettings.bodyResponseTable true}}checked{{/if}}" />
+                <span>Response Info</span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <p class="flow-text">Tab Order</p> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6 l4 input-field">
+            <select name="mobileTabOrder" id="mobileTabOrder" class="mobileTabOrder">
+                <option value="{{myMobileSettings.mobileTabOrder}}">{{myMobileSettings.mobileTabOrder}}</option>
+                <option value="Response, Notes, Alerts">Response, Notes, Alerts</option>
+                <option value="Response, Alerts, Notes">Response, Alerts, Notes</option>
+                <option value="Notes, Alerts, Response">Notes, Alerts, Response</option>
+                <option value="Notes, Response, Alerts">Notes, Response, Alerts</option>
+                <option value="Alerts, Response, Notes">Alerts, Response, Notes</option>
+                <option value="Alerts, Notes, Response">Alerts, Notes, Response</option>
+            </select>
+            <label for="mobileTabOrder">Mobile Card Tab Order</label>
+        </div>
+    </div>
+</template>

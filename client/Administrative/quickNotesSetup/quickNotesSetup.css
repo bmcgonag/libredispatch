@@ -1,0 +1,12 @@
+.shortNote {
+    width: 10%;
+}
+
+.longNote {
+    width: 70%;
+}
+
+.quickNotesScroll {
+    height: 45vh;
+    overflow-y: scroll;
+}

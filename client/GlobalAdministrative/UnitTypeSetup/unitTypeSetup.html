@@ -1,0 +1,53 @@
+<template name="unitTypeSetup">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin'}}
+            <h5>Manage Unit Types</h5>
+            <div class="row">
+              <div class="col s12 m12">
+                <div class="card-panel red lighten-1">
+                  <span class="white-text">WARNING: Adding or Modifying Unit Types can have dramatic (potentially negative) effects on client systems and workflow. Please only add new Unit Types if a client is not yet live.  A script should be run on all updated systems to add these new types as well.
+                  </span>
+                </div>
+              </div>
+            </div>
+            {{#if $eq unitTypeNameEditMode "new"}}
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="text" class="unitTypeName {{#if $eq nameReqVal true}}red lighten-2 white-text{{/if}}" id="unitTypeName" maxlength="20" data-length="20" />
+                    <label for="unitTypeName">Unit Type Name</label>
+                </div>
+            </div>
+            {{else}}
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="text" class="unitTypeName {{#if $eq nameReqVal true}}red lighten-2 white-text{{/if}}" id="unitTypeName" value="{{utName.unitType}}" maxlength="20" data-length="20" />
+                    <label for="unitTypeName">Unit Type Name</label>
+                </div>
+            </div>
+            {{/if}}
+            <div class="row">
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn orange cancelAddUnitType" id="cancelAddUnitType">Cancel</a>
+                </div>
+                {{#if $eq unitTypeNameEditMode "new"}}
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn SaveUnitType btn-pull-right" id="SaveUnitType"><i class="material-icons left">done</i> Save</a>
+                </div>
+                {{else}}
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn UpdateUnitType btn-pull-right" id="UpdateUnitType"><i class="material-icons left">edit</i> Update</a>
+                </div>
+                {{/if}}
+            </div>
+            <hr />
+            {{> unitTypeSetupGrid}}
+        {{else}}
+        <div class="row">
+            <div class="col s12">
+                <h4>Unit Type Setup</h4>
+                <p class="flow-text">You don't appear to have the necessary permissions to view this module.  You can return to your site home, by utilizing the menu ( <i class="material-icons">menu</i> ) in the upper left corner.</p>
+            </div>
+        </div>   
+        {{/if}}
+    </div>
+</template>

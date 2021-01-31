@@ -1,0 +1,31 @@
+<template name="globalAdminSetup">
+    {{#if isInRole 'GlobalAdmin'}}
+    <div class="row">
+        <div class="col s6">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header active grey white-text"><h5>Global Administrative Setup<i class="material-icons">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "systemTypeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="systemTypeSetup"><div>System Type Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "entityTypeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="entityTypeSetup"><div>Entity Type Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "entitySetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="entitySetup"><div>Entity Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "unitTypeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="unitTypeSetup"><div>Unit Type Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "manageUsersView" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="manageUsersView"><div>Manage Users<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "contextMenuSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="contextMenuSetup"><div>Context Menu Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "commandSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="commandSetup"><div>Command Setup<a hred="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "exportCollections" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="exportCollections"><div>Export Collections<a hred="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "importCollections" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="importCollections"><div>Import Collections<a hred="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "titleSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} globalSetupRow{{/if}} collection-item setupBtn" id="titleSetup"><div>Person - Title Setup<a hred="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {{else}}
+    <div class="CADContainer">
+        <h5>You don't appear to have permissions to view this area. If you believe this is a mistake, please contact your system administrator. You can navigate to your main screen using the menu (<i class="material-icons">menu</i>) in the upper left.</h5>
+    </div>
+    {{/if}}
+</template>

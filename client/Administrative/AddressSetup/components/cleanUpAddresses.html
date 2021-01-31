@@ -1,0 +1,20 @@
+<template name="cleanUpAddresses">
+    <br />
+    <h5>Clean Up Addresses</h5>
+    <div class="row">
+        <div class="col s12 red white-text">
+            <p>
+                NOTE: Address clean-up is a bulk action which will attempt to clean up all addresses at one time.  This operation in no way attempts backup data first.  You should not run this operation without having a full backup first.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3">
+            <a class="waves-effect waves-light btn tooltipped" data-position="bottom" data-tooltip="This action will update the Address Strings by trying to remove leading and trailing spaces." id="trimAddressString">Trim Address String</a>
+        </div>
+        <div class="col s3">
+            <a class="waves-effect waves-light btn tooltipped" data-position="bottom" data-tooltip="This action will attempt to geo-code (get X, Y coordinates) each address." id="geocodeAddresses">Geocode Addresses</a>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+</template>

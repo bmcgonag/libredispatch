@@ -1,0 +1,14 @@
+.dispo-menu-mobile {
+    background: #fff;
+    display: none;
+    position: absolute;
+    width: auto;
+    font-size: 14px;
+    z-index: 9;
+}
+
+.makeItScrollable {
+    height: 70%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}

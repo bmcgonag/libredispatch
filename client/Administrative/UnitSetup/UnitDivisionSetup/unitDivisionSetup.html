@@ -1,0 +1,38 @@
+<template name="unitDivisionSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="CADContainer">
+        <h4>Unit Division Setup</h4>
+        <p>
+            Select a Unit Type, then Sub-Type, and setup as many unit Divisions as you'd like.
+        </p>
+
+        <div class="row">
+            <div class="col s3 input-field">
+                {{> unitTypesList}}
+            </div>
+            <div class="col s3 input-field">
+                {{> unitSubTypesList}}
+            </div>
+            <div class="col s3 input-field">
+                <label>Division *</label>
+                <div class="{{#if $eq divRequired true}}red lighten-2{{/if}} divisionChips" id="divisionChips"></div>
+            </div>
+            <div class="input-field col s3">
+                <a class="btn-floating btn-large waves-effect waves-light green addDivision"><i class="material-icons">add</i></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 unitDivScroll">
+                {{> unitDivisionResultsGrid}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+        <div class="CADContainer">
+            <h4>Unit Division Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Unit Division Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

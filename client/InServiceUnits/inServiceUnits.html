@@ -1,0 +1,54 @@
+<template name="inServiceUnits">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin,LocalAdmin,DispatchAdmin,DispatchUser'}}
+        <div class="row">
+            <div class="col s12">
+                <h4>Unit Activation</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 unitDisplayList">
+                <table class="highlight bordered">
+                    <thead>
+                        <tr>
+                            <th>Call Sign</th>
+                            <th>Type</th>
+                            <th>Sub-Type</th>
+                            <th>Capabilities</th>
+                            <th>Current Status</th>
+                            <th>Service Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="searchable">
+                        {{#each getUnits}}
+                            <tr class="thin">
+                                <td class="thin">{{callSign}}</td>
+                                <td class="thin">{{type}}</td>
+                                <td class="thin">{{subType}}</td>
+                                <td class="thin">{{primaryDivision}} {{#if secondaryDivision}}/ {{secondaryDivision}}{{/if}}</td>
+                                <td class="thin">{{currentStatus}}</td>
+                                <td class="thin">{{serviceStatus}}</td>
+                                <td class="thin">
+                                    {{#if $eq serviceStatus "OutOfService"}}
+                                        <div class="chip inServiceNow serviceButton">Add To Service</div>
+                                    {{else if $eq serviceStatus "InService"}}
+                                        <div class="chip outServiceNow serviceButton green">Remove From Service</div>
+                                    {{/if}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {{else}}
+            <div class="row">
+                <div class="cols12">
+                    <h4>Unit Activation</h4>
+                    <p class="flow-text">It appears you have reached the Unit Activation view without having the appropriate permissions.  If you believe this to be in error, please contact your system administrator to have this issue corrected.</p>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

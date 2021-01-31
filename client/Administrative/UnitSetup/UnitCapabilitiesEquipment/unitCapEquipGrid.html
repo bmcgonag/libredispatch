@@ -1,0 +1,44 @@
+<template name="unitCapEquipGrid">
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <table class="highlight striped">
+                <thead>
+                    <tr>
+                        <th>Unit #</th>
+                        <th>Capabilities</th>
+                        <th>Equipment</th>
+                        <th>Primary Division</th>
+                        <th>Secondary Division</th>
+                        <th>Sub-Type</th>
+                        <th>Type</th>
+                        <th>Entity</th>
+                        <th>Parent Entity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each unitsFound}}
+                        <tr id="{{_id}}" class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}">
+                            <td>{{callSign}}</td>
+                            <td>{{capabilities}}</td>
+                            <td>{{equipment}}</td>
+                            <td>{{primaryDivision}}</td>
+                            <td>{{secondaryDivision}}</td>
+                            <td>{{subType}}</td>
+                            <td>{{type}}</td>
+                            <td>{{unitEntity}}</td>
+                            <td>{{parentEntity}}</td>
+                            <td class="input-field">
+                                <select name="unitCapEquipActions" class="unitCapEquipActions">
+                                    <option value="" disabled selected></option>
+                                    <option value="Edit">Edit</option>
+                                    <option value="Delete">Delete</option>
+                                </select>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

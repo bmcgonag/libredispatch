@@ -1,0 +1,13 @@
+<template name="callType">
+    <select id="callType" class="input callType {{#if $eq callTypeSet true}}yellow{{else}}red{{/if}} lighten-2">
+        {{#if $eq modeSetting "ViewCallDetail"}}
+            <option value="{{callInfo.type}}" selected>{{callInfo.type}}</option>
+        {{else if $eq modeSetting "NewCall"}}
+            <option value="" disabled selected></option>
+        {{/if}}
+        {{#each callTypeCodes}}
+            <option value="{{callTypeName}}">{{callTypeName}}</option>
+        {{/each}}
+    </select>
+    <label for="callType">Call Type</label>
+</template>

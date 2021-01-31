@@ -1,0 +1,62 @@
+<template name="entityGrid">
+    <div class="row">
+        <div class="col s12">
+            <table id="entityGridTable" class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} responsive-table">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Entity Of
+                        </th>
+                        <th>
+                            Phone
+                        </th>
+                        <th>
+                            Address
+                        </th>
+                        <th>
+                            ORI
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each entitiesInfo}}
+                        <tr class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                            <td class="thin">
+                                {{entityName}}
+                            </td>
+                            <td class="thin">
+                                {{entityType}}
+                            </td>
+                            <td class="thin">
+                                {{entityParent}}
+                            </td>
+                            <td class="thin">
+                                {{entityPrimaryPhone}}
+                            </td>
+                            <td class="thin">
+                                {{entityPrimaryAddress}}
+                            </td>
+                            <td class="thin">
+                                {{entityORI}}
+                            </td>
+                            <td class="thin">
+                                <i class="material-icons iconPointer deleteEntityActual">delete</i>
+                                <i class="material-icons iconPointer editEntityActual">edit</i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+</template>

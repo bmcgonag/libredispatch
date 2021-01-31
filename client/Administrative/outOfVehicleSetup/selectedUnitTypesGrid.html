@@ -1,0 +1,57 @@
+<template name="selectedUnitTypesGrid">
+{{#if Template.subscriptionsReady}}
+    <div class="row">
+        <div class="col s12">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}selected highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <th>
+                            OOV Type
+                        </th>
+                        <th>
+                            OOV Description
+                        </th>
+                        <th class="center">
+                            Unit Remains Available
+                        </th>
+                        <th class="center">
+                            Location Required
+                        </th>
+                        <th>
+                            Applies to Unit Type(s)
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each oovTypesInfo}}
+                        <tr class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                            <td>
+                                {{oovTypeName}}
+                            </td>
+                            <td>
+                                {{oovDescription}}
+                            </td>
+                            <td class="center">
+                                {{#if $eq unitAvailChecked true}}<i class="material-icons">check</i>{{/if}}
+                            </td>
+                            <td class="center">
+                                {{#if $eq requireLocationChecked true}}<i class="material-icons">check</i>{{/if}}
+                            </td>
+                            <td>
+                                {{appliesToUnitTypes}}
+                            </td>
+                            <td>
+                                <i class="material-icons iconPointer deleteOOVType">delete</i>
+                                <i class="material-icons iconPointer editOOVTypes">mode_edit</i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{{/if}}
+</template>

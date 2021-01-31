@@ -1,0 +1,20 @@
+tr.unitGridRow td.unitGridRow{
+    height: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.thin-units {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.activeUnitsHeader {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.activeUnits {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+}

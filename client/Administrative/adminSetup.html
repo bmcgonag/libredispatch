@@ -1,0 +1,117 @@
+<template name="adminSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="row">
+        <div class="col s12 m6 l4">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header grey white-text"><h5>Value List Setup<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "callPrioritySetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="callPrioritySetup"><div>Call Priority Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "callTypeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="callTypeSetup"><div>Call Type Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <!-- <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "vehMakesModelsSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="vehMakesModelsSetup"><div>Vehicle Code Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "generalCodeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}}} collection-item setupBtn" id="generalCodeSetup"><div>General Code Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li> -->
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "quickNotesSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="quickNotesSetup"><div>Quick Notes Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "dispositionSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="dispositionSetup"><div>Disposition Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "transTypeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="transTypeSetup"><div>Transport Type Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "oovTypeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="oovTypeSetup"><div>Out of Vehicle Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "wreckerRotationSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="wreckerRotationSetup"><div>Wrecker Rotation Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "capAndEquipMainSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="capAndEquipMainSetup"><div>Capabilities and Equipment Setup<a href="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m6 l4">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header grey white-text"><h5>Unit Setup<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "unitSubTypeSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="unitSubTypeSetup"><div>Unit Sub-type Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "unitDivisionSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="unitDivisionSetup"><div>Unit Division Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "unitSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="unitSetup"><div>Unit Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "unitCapEquipMain" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="unitCapEquipMain"><div>Unit Capabilities and Equipment<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m6 l4">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header grey white-text"><h5>Personnel Setup<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "personnelSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="personnelSetup"><div>Personnel Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "userGroupSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="userGroupSetup"><div>User Group Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <!-- <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "personnelImport" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="personnelImport"><div>Import Personnel<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "personnelAPIKeyGen" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="personnelAPIKeyGen"><div>Personnel API Key Generation<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li> -->
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m6 l4">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header grey white-text"><h5>Address Setup<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "jurisdictionSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="jurisdictionSetup"><div>Jurisdiction - Zone - District - Beat Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "addressSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="addressSetup"><div>Address Setup<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m6 l4">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header grey white-text"><h5>Tenant System<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "tenantSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="tenantSetup"><div>Tenant System Setup<a hred="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col s12 m6 l4">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header grey white-text"><h5>Alerts Setup<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "alertSeverity" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="alertSeverity"><div>Alert Severity Level Setup<a hred="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "alertTypes" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="alertTypes"><div>Alert Type Setup<a hred="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "alertsSetup" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="alertsSetup"><div>Alerts Setup<a hred="#!" class="secondary-content"><i class="material-icons right">settings</i></a></div></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="col s12 m6 l4">
+            <ul class="collapsible popout" data-collapsible="expandable">
+                <li>
+                    <div class="collapsible-header grey white-text"><h5>Masters Sync Setup<i class="material-icons right">expand_more</i></h5></div>
+                    <div class="collapsible-body">
+                        <ul class="collection">
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "AddressMaster" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="AddressMaster"><div>Address Master Sync<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "NameMaster" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="NameMaster"><div>Name Master Sync<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                            <li class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{#if $eq "VehicleMaster" thisId}}{{userPrefs.highlight}} {{userPrefs.textHighlight}}{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} adminSetupRow{{/if}} collection-item setupBtn" id="VehicleMaster"><div>Vehicle Master Sync<a href="#!" class="secondary-content"><i class="material-icons">settings</i></a></div></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+    {{else}}
+        <div class="CADContainer">
+            <h4>Administrative Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Administrative Setup section of the software without having the appropriate permissions to access the view or information.  If you believe this to be in error, please contact your system administrator.
+            </p>
+        </div>
+    {{/if}}
+</template>

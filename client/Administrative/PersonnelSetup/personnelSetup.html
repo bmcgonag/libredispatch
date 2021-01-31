@@ -1,0 +1,15 @@
+<template name="personnelSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+        <div class="CADContainer">
+            <h4>Personnel Setup</h4>
+            {{> userInfo}}
+        </div>
+    {{else}}
+        <div class="CADContainer">
+            <h4>Personnel Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Personnel Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

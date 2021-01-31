@@ -1,0 +1,78 @@
+<template name="CallSheetMain">
+    {{#if Template.subscriptionsReady}}
+        {{#if isInRole 'GlobalAdmin,LocalAdmin,MobileUser,MobileAdmin'}}
+            {{#if $in mobileView 'home' 'sia'}}
+                <div class="row">
+                    <!-- Calls List Left / Map Right -->
+                    {{#if $eq mySettings.mobileCallListPosition "Left"}}
+                        <div class="col m5 l4 s12 callsList callListView">
+                            {{#if $eq mobileGridView "calls"}}
+                                {{> CallList}}
+                            {{/if}}
+                            {{#if $eq mobileGridView "units"}}
+                                {{> unitsDisplayGrid}}
+                            {{/if}}
+                        </div>
+                        <div class="col m7 l8 s12">
+                            {{#if $in mySettings.themeOverall 'Dark' 'Custom'}}
+                                {{> mapViewLargeDark}}
+                            {{else}}
+                                {{> mapViewLarge}}
+                            {{/if}}
+                        </div>
+                    {{/if}}
+            
+                    <!-- Calls List Right / Map left -->
+                    {{#if $eq mySettings.mobileCallListPosition "Right"}}
+                        <div class="col m7 l8 s12">
+                            {{#if $in mySettings.themeOverall 'Dark' 'Custom'}}
+                                {{> mapViewLargeDark}}
+                            {{else}}
+                                {{> mapViewLarge}}
+                            {{/if}}
+                        </div>
+                        <div class="col m5 l4 s12 callsList callListView">
+                            {{#if $eq mobileGridView "calls"}}
+                                {{> CallList}}
+                            {{/if}}
+                            {{#if $eq mobileGridView "units"}}
+                                {{> unitsDisplayGrid}}
+                            {{/if}}
+                        </div>
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            {{#if $eq mobileView 'assigned'}}
+                <div class="row">
+                    <div class="col s12 m6 l6">
+                        {{> assignedMobile}}
+                    </div>
+                    <div class="col s12 m6 l6">
+                        {{#if $in mySettings.themeOverall 'Dark' 'Custom'}}
+                            {{> mapViewLargeDark}}
+                        {{else}}
+                            {{> mapViewLarge}}
+                        {{/if}}
+                    </div>
+                </div>
+            {{/if}}
+        
+        {{> moduleButtons}}
+        <div class="row mobileCoords">
+            <div class="col s12">
+                <div class="mobileCoords" id="mobileCoords {{mobileCoords}}"></div>
+            </div>
+        </div>
+        {{else}}
+
+            <!-- Message to unauthorized users -->
+            <div class="CADContainer">
+                <h4>Mobile Dispatch View</h4>
+                <p class="flow-text">You appear to have reached this view without appropriate permissions.  If you believe this is an error, please contact your system administrator for assistance.</p>
+            </div>
+        {{/if}}
+    {{else}}
+        {{> spinner}}
+    {{/if}}
+</template>

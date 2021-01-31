@@ -1,0 +1,45 @@
+<template name="startTransModal">
+    <div class="modal modal-small-sts" id="startTransportModal">
+        <div class="modal-header">
+            <h5>Start Transport</h5>
+            <label>Call Sign: </label>{{callSignForTrans}}
+        </div>
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s6">
+                    <select id="transportType">
+                        <option value="" selected></option>
+                        {{#each transTypes}}
+                            <option value="{{transAbbrev}}">{{transAbbrev}} - {{transDesc}}</option>
+                        {{/each}}
+                    </select>
+                    <label for="transportType">Transport Type</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="text" id="toLocation" class="toLocation" />
+                    <label for="toLocation">Transport To</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="text" id="transDescription" class="desc" />
+                    <label for="transDescription">Description</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="number" id="transportStartMileage" class="mileage" />
+                    <label for="transportStartMileage">Starting Mileage</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn orange cancelStartTransport left" id="cancelStartTransport">Cancel</a>
+                </div>
+                <div class="col s6">
+                    <a class="waves-effect waves-light btn saveStartTransport btn-pull-right" id="saveStartTransport"><i class="material-icons left">done</i> Start Transport</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

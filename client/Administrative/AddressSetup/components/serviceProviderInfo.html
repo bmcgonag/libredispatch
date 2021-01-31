@@ -1,0 +1,100 @@
+<template name="serviceProviderInfo">
+    <div class="row {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <input type="text" class="waterSP" id="waterSP" />
+            <label for="waterSP">Water Service Provider</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="tel" class="waterSPPhone" id="waterSPPhone" />
+            <label for="waterSPPhone">Provider Phone</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="waterSPAddress" id="waterSPAddress" />
+            <label for="waterSPAddress">Provider Address</label>
+        </div>
+    </div>
+    <div class="row {{#if $eq userPrefs.themeOverall 'Light'}}grey lighten-2{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <input type="text" class="gasSP" id="gasSP" />
+            <label for="gasSP">Gas Service Provider</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="tel" class="gasSPPhone" id="gasSPPhone" />
+            <label for="gasSPPhone">Provider Phone</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="gasSPAddress" id="gasSPAddress" />
+            <label for="gasSPAddress">Provider Address</label>
+        </div>
+    </div>
+    <div class="row {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <input type="text" class="electricSP" id="electricSP" />
+            <label for="electricSP">Electric Service Provider</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="tel" class="electricSPPhone" id="electricSPPhone" />
+            <label for="electricSPPhone">Provider Phone</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="electricSPAddress" id="electricSPAddress" />
+            <label for="electricSPAddress">Provider Address</label>
+        </div>
+    </div>
+    <div class="row {{#if $eq userPrefs.themeOverall 'Light'}}grey lighten-2{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <input type="text" class="garbageSP" id="garbageSP" />
+            <label for="garbageSP">Garbage Service Provider</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="tel" class="garbageSPPhone" id="garbageSPPhone" />
+            <label for="garbageSPPhone">Provider Phone</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="garbageSPAddress" id="garbageSPAddress" />
+            <label for="garbageSPAddress">Provider Address</label>
+        </div>
+    </div>
+    <div class="row {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <input type="text" class="sewageSP" id="sewageSP" />
+            <label for="sewageSP">Sewage Service Provider</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="tel" class="sewageSPPhone" id="sewageSPPhone" />
+            <label for="sewageSPPhone">Provider Phone</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="sewageSPAddress" id="sewageSPAddress" />
+            <label for="sewageSPAddress">Provider Address</label>
+        </div>
+    </div>
+    <div class="row {{#if $eq userPrefs.themeOverall 'Light'}}grey lighten-2{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <input type="text" class="cableSP" id="cableSP" />
+            <label for="cableSP">Cable Service Provider</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="tel" class="cableSPPhone" id="cableSPPhone" />
+            <label for="cableSPPhone">Provider Phone</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="cableSPAddress" id="cableSPAddress" />
+            <label for="cableSPAddress">Provider Address</label>
+        </div>
+    </div>
+    <div class="row {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <div class="input-field col s3">
+            <input type="text" class="phoneSP" id="phoneSP" />
+            <label for="phoneSP">Phone Service Provider</label>
+        </div>
+        <div class="input-field col s3">
+            <input type="tel" class="phoneSPPhone" id="phoneSPPhone" />
+            <label for="phoneSPPhone">Provider Phone</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="phoneSPAddress" id="phoneSPAddress" />
+            <label for="phoneSPAddress">Provider Address</label>
+        </div>
+    </div>
+</template>

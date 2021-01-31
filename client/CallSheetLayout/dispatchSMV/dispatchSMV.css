@@ -1,0 +1,24 @@
+.unitsListView {
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.unitsListDiv {
+    height: 88vh;
+    overflow-y: auto;
+}
+
+.dispatchView {
+    height: 50vh;
+    overflow-y: auto;
+}
+
+.infoView {
+    height: 30vh;
+    overflow-y: auto;
+}
+
+.unitsWith911 {
+    height: 44vh;
+    overflow-y: auto;
+}

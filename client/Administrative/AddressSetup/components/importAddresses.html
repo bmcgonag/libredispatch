@@ -1,0 +1,42 @@
+<template name="importAddresses">
+    <br />
+    <h5>Import Addresses</h5>
+    <div class="row">
+        <div class="col s12 red white-text">
+            <p>
+                NOTE: Address import is a bulk action which will attempt to import 5000 addresses at a time.  This operation in no way attempts to clean up address data. It simply imports any existing address data from a SQL database.
+                It is highly recommended that all address information be "cleaned up" (duplicates removed, mis-spellings corrected, etc) prior to import.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input type="text" class="serverURL" id="serverURL" />
+            <label for="serverURL">Server URL</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="text" class="dbName" id="dbName" />
+            <label for="dbName">Database Name</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s6">
+            <input type="text" class="dbUser" id="dbUser" />
+            <label for="dbUser">Database User</label>
+        </div>
+        <div class="input-field col s6">
+            <input type="password" class="dbPswd" id="dbPswd" />
+            <label for="dbPswd">Database Password</label>
+        </div>
+    </div>
+    <hr />
+    <br />
+    <div class="row">
+        <div class="col s6">
+            <a class="waves-effect waves-light btn cancelAddressImport orange left">button</a>
+        </div>
+        <div class="col s6">
+            <a class="waves-effect waves-light btn importAddresses green right">Import Addresses</a>
+        </div>
+    </div>
+</template>

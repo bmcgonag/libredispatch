@@ -1,0 +1,109 @@
+<template name="transTypeSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <h4>Transport Type Setup<i class="material-icons iconPointer tooltipped" data-position="right"  data-html="true" data-tooltip="<p>Transport Types Keep it easy to track who performed a transport,<br />when it was done, and where it went.</p>">help</i></h4>
+    <div class="row">
+        <div class="input-field col s4">
+            <input type="text" class="typeAbbrev" id="typeAbbrev" value="{{#if $eq transTypeMode 'edit'}}{{transTypeEditInfo.transAbbrev}}{{/if}}" />
+            <label for="typeAbbrev">Transport Type Abbreviation</label>
+        </div>
+        <div class="input-field col s8">
+            <input type="text" class="typeDesc" id="typeDesc" value="{{#if $eq transTypeMode 'edit'}}{{transTypeEditInfo.transDesc}}{{/if}}" />
+            <label for="typeDesc">Transport Type Description</label>
+        </div>
+    </div>
+    {{#if isInRole 'GlobalAdmin'}}
+    <div class="row">
+        <div class="col s12">
+            <label>
+                <input type="checkbox" class="isSystem" id="isSystem" checked="{{#if $eq transTypeMode 'edit'}}{{#if $eq transTypeEditInfo.isSystem true}}checked{{/if}}{{/if}}" />
+                <span>System Type <i class="material-icons iconPointer tooltipped" data-position="right"  data-html="true" data-tooltip="<p>Transport Types marked as 'System' codes, will be automatically<br />available to all entities in the system, and cannot be<br />deleted by anyone who is not a Global Admin.">help</i></span>
+            </label>
+        </div>
+    </div>
+    {{/if}}
+    <br />
+    <div class="row">
+        <div class="col s12 m4 l4">
+            <a class="waves-effect waves-light btn orange cancelSaveTransType left">Cancel</a>
+        </div>
+        <div class="col s12 m4 l4 center">
+            <a class="waves-effect waves-light btn blue copySystemTransTypes">Copy System Types</a>
+        </div>
+        <div class="col s12 m4 l4">
+            {{#if $eq transTypeMode 'edit'}}
+                <a class="waves-effect waves-light btn green updateTransType right">Save Changes</a>
+            {{else}}
+                <a class="waves-effect waves-light btn green saveTransType right">Save</a>
+            {{/if}}
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="row">
+        <div class="col s12">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <th>Abbreviation</th>
+                        <th>Description</th>
+                        <th>System Code</th>
+                        <th>Owner Entity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each transTypes}}
+                        <tr class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                            <td>{{transAbbrev}}</td>
+                            <td>{{transDesc}}</td>
+                            {{#if isInRole 'GlobalAdmin'}}
+                                {{#if $eq isSystem true}}
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" class="{{_id}}" id="{{_id}}" checked="checked" />
+                                            <span></span>
+                                        </label>
+                                    </td>
+                                {{else}}
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" class="{{_id}}" id="{{_id}}" />
+                                            <span></span>
+                                        </label>
+                                    </td>
+                                {{/if}}
+                            {{else if $eq isSystem true}}
+                                <td>System Code</td>
+                            {{else}}
+                                <td>Non-System</td>
+                            {{/if}}
+                            <td>{{parentEntity}}</td>
+                            <td>
+                                {{#if $eq isSystem true}}
+                                    {{#if isInRole 'GlobalAdmin'}}
+                                        <i class="material-icons clickableIcon removeTransType">delete</i>
+                                        <i class="material-icons clickableIcon editTransType">edit</i>
+                                    {{else}}
+                                        <p>Global Admin Only</p>
+                                    {{/if}}
+                                {{else}}
+                                    <i class="material-icons clickableIcon removeTransType">delete</i>
+                                    <i class="material-icons clickableIcon editTransType">edit</i>
+                                {{/if}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+    {{else}}
+        <div class="CADContainer">
+            <h4>Transport Type Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Transport Type Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

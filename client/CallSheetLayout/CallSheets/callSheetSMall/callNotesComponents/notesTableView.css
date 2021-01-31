@@ -1,0 +1,12 @@
+.twenty {
+    width: 20%;
+}
+
+.sixty {
+    width: 60%;
+}
+
+.notesCSGrid {
+    height: 15vh;
+    overflow-y: auto;
+}

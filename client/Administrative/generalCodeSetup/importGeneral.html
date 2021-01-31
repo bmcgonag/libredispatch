@@ -1,0 +1,70 @@
+<template name="importGeneral">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <h4>General Code Import / Setup</h4>
+    <div class="row">
+        <div class="col s3 contentInfo">
+            <label class="custom-file-upload">
+            <input type="file" name="importFile" id="importFile" accept=".csv" />
+            Click here to Select a .csv file to import
+            </label>
+        </div>
+        <div class="col s3 contentInfo">
+            <label id="customFileUpload" class="custom-file-waiting">
+                selected file will show here
+            </label>
+        </div>
+        <div class="col s3">
+            <select id="genImportFileType">
+                <option value="" disabled selected>Choose a File Type...</option>
+                <option value="states">State Code Import</option>
+                <option value="placeholder">Placeholder</option>
+                <option value="placeholder2">Placeholder 2</option>
+            </select>
+            <label for="genImportFileType">Select Import Type</label>
+        </div>
+        <div class="col s3">
+            <a class="waves-effect waves-light btn-large setupBtn" id="convert"><i class="material-icons left">input</i> Import Codes</a>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a href="#stateAbbrevTab">States and Abbreviations</a></li>
+        <li class="tab col s3"><a href="#placeholdertab">Placeholder Tab</a></li>
+      </ul>
+    </div>
+    <div id="stateAbbrevTab" class="col s12">
+        <h5>State Abbreviations</h5>
+        <div class="stateCodeTableScroll">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <th>State Name</th>
+                        <th>State Abbreviation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each getStates}}
+                        <tr>
+                            <td>{{stateName}}</td>
+                            <td>{{stateAbbrev}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="placeholdertab" class="col s12">
+        <h4>Placeholder Tab Only at this Time</h4>
+    </div>
+  </div>
+  {{else}}
+    <div class="CADContainer">
+        <h4>General Code Setup</h4>
+        <p class="flow-text">
+            You appear to have reached the General Code Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+        </p>
+    </div>
+{{/if}}
+</template>

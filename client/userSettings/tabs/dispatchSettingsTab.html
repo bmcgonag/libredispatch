@@ -1,0 +1,126 @@
+<template name="dispatchSettingsTab">
+    <div class="row">
+        <div class="col s12">
+            <h5>Dispatch View Settings</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6 l4">
+            <select id="unitsGridLayout">
+                <option value="{{mySettings.unitsGridLayout}}">{{mySettings.unitsGridLayout}}</option>
+                <option value="Left">Left</option>
+                <option value="Right">Right</option>
+                <option value="Both Sides">Both Sides</option>
+            </select>
+            <label for="unitsGridLayout">Units Grid Placement</label>
+        </div>
+        <div class="input-field col s12 m6 l4">
+            <select id="callsGridPopout">
+                <option value="{{mySettings.callsGridPopOut}}">{{mySettings.callsGridPopOut}}</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <label for="callsGridPopout">Enlarge Selected Call in Dispatch</label>
+        </div>
+        <div class="input-field col s12 m6 l4">
+            <select id="notesAndMap">
+                <option value="{{mySettings.notesAndMap}}">{{mySettings.notesAndMap}}</option>
+                <option value="Notes Left">Notes Left</option>
+                <option value="Notes Right">Notes Right</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m6 l4">
+            <label>
+                <input type="checkbox" id="unitsGridExpandDefault" checked="{{#if $eq mySettings.unitsGridExpandDefault true}}checked{{/if}}" />
+                <span>Expand Units Grid by Default</span>
+            </label>
+        </div>
+        <div class="col s12 m6 l4">
+            <label>
+                <input type="checkbox" id="callsGridExpandDefault" checked="{{#if $eq mySettings.callsGridExpandDefault true}}checked{{/if}}" />
+                <span>Expand Calls Grid by Default</span>
+            </label>
+        </div>
+        <div class="col s12 m6 l4">
+            <label>
+                <input type="checkbox" id="callsGridOnTop" checked="{{#if $eq mySettings.callsGridOnTop true}}checked{{/if}}" />
+                <span>Calls Grid on Top</span>
+            </label>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="input-field col s12 m6 l4">
+            <select id="alertDisplayWanted">
+                <option value="{{mySettings.alerts.Wanted}}">{{mySettings.alerts.Wanted}}</option>
+                <option value="Pop-up And Overlay">Pop-up and Overlay</option>
+                <option value="Pop-up">Pop-up</option>
+                <option value="Overlay">Overlay</option>
+            </select>
+            <label for="alertDisplayWanted">Wanted Alerts Display</label>
+        </div>
+        <div class="input-field col s12 m6 l4">
+            <select id="alertDisplayStolen">
+                <option value="{{mySettings.alerts.Stolen}}">{{mySettings.alerts.Stolen}}</option>
+                <option value="Pop-up And Overlay">Pop-up and Overlay</option>
+                <option value="Pop-up">Pop-up</option>
+                <option value="Overlay">Overlay</option>
+            </select>
+            <label for="alertDisplayStolen">Stolen Alerts Display</label>
+        </div>
+        <div class="input-field col s12 m6 l4">
+            <select id="alertDisplayDanger">
+                <option value="{{mySettings.alerts.Danger}}">{{mySettings.alerts.Danger}}</option>
+                <option value="Pop-up And Overlay">Pop-up and Overlay</option>
+                <option value="Pop-up">Pop-up</option>
+                <option value="Overlay">Overlay</option>
+            </select>
+            <label for="alertDisplayDanger">Danger Alerts Display</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6 l4">
+            <select id="alertDisplayInfo">
+                <option value="{{mySettings.alerts.Info}}">{{mySettings.alerts.Info}}</option>
+                <option value="Pop-up And Overlay">Pop-up and Overlay</option>
+                <option value="Pop-up">Pop-up</option>
+                <option value="Overlay">Overlay</option>
+            </select>
+            <label for="alertDisplayInfo">Information Alerts Display</label>
+        </div>
+    </div>
+    <br />
+    <h5>Units Grid Options</h5>
+    <div class="row">
+        <div class="col s12 m6 l4">
+            <label>
+                <input type="checkbox" class="showEntity" id="showEntity" checked="{{#if $eq mySettings.showEntity true}}checked{{/if}}" />
+                <span>Show Unit Agency</span>
+            </label>
+        </div>
+        <div class="col s12 m6 l4">
+            <label>
+                <input type="checkbox" class="showAssignedCall" id="showAssignedCall" checked="{{#if $eq mySettings.showAssignedCall true}}checked{{/if}}" />
+                <span>Show Assigned Call Number</span>
+            </label>
+        </div>
+        <div class="col s12 m6 l4">
+            <label>
+                <input type="checkbox" class="showAssignedLocation" id="showAssignedLocation" checked="{{#if $eq mySettings.showAssignedLocation true}}checked{{/if}}" />
+                <span>Show Assigned Call Location</span>
+            </label>
+        </div>
+    </div>
+    <br />
+    <h5>Incoming 911 Grid</h5>
+    <div class="row">
+        <div class="col s12 m6 l4 input-field">
+            <select name="show911Grid" id="show911Grid" class="show911Grid">
+                <option value="Only When 911 Call Exists">Only When 911 Call Exists</option>
+                <option value="Always Visible">Always Visible</option>
+            </select>
+        </div>
+    </div>
+</template>

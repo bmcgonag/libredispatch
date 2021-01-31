@@ -1,0 +1,74 @@
+<template name="contextMenuSetup">
+    {{#if isInRole 'GlobalAdmin'}}
+    <div class="CADContainer">
+        <h3>Context Menu Setup</h3>
+        <div class="row">
+          <div class="col s12 m12">
+            <div class="card-panel red lighten-1">
+              <span class="white-text"><strong>WARNING:</strong> This dialog should <strong>NEVER</strong> be used by a non-developer!  A Context Menu item with no associated actions programmatically created will simply fail!
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="text" class="input contextOptionName" id="contextOptionName" />
+                <label for="contextOptionName">Context Menu Option Name</label>
+            </div>
+            <div class="input-field col s6">
+                <select id="contextOptionType">
+                    <option value="" disabled selected>Choose ...</option>
+                    <option value="unitGrid">Active Units Grid</option>
+                    <option value="unitOnCallsGrid">Unit on Call</option>
+                    <option value="callsGrid">Active Calls Grid</option>
+                    <option value="callGridCaseNumber">Active Calls Grid / Case Number</option>
+                    <option value="callSheetCallNo">Call Sheet / Call Number</option>
+                    <option value="callSheetQCN">Call Shett / Quick Call Number</option>
+                    <option value="callSheetCallDate">Call Sheet / Call Date</option>
+                    <option value="CallSheetCallTime">Call Sheet / Call Time</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn-large cancelAddContextItem orange left" id="convert">Cancel</a>
+            </div>
+            <div class="col s6">
+                <a class="waves-effect waves-light btn-large saveContextItem green right" id="convert">Save</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="contMenuClass">
+                    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                        <thead>
+                            <tr>
+                                <th>Context Item Name</th>
+                                <th>Context Item Type</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{#each getItems}}
+                            <tr class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                                <td class="thin">{{contextOption}}</td>
+                                <td class="thin">{{itemType}}</td>
+                                <td class="thin">
+                                    <i class="material-icons clickableIcon removeContextItem">delete</i>
+                                    <i class="material-icons clickableIcon editContextItem">edit</i>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="CADContainer">
+            <h5>You don't appear to have permissions to view this area. If you believe this is a mistake, please contact your system administrator. You can navigate to your main screen using the menu (<i class="material-icons">menu</i>) in the upper left.</h5>
+    </div>
+    {{/if}}
+    {{> confirmationDialogModal}}
+</template>

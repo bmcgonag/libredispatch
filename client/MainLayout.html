@@ -1,0 +1,13 @@
+<template name="MainLayout">
+    <div id="main" class="main {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">      
+        {{> navHeader}}
+        {{#if currentUser}}
+            {{> Template.dynamic template=main}}
+        {{else}}
+            {{> homeView}}
+        {{/if}}
+    </div>
+    {{> smartBar}}
+    {{> snackbar}}
+    {{> rightClickMenu}}
+</template>

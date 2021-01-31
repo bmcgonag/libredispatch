@@ -1,0 +1,29 @@
+<template name="callSheetFormCallers">
+    <div class="row">
+        <div class="col s11">
+            <div class="row">
+                <div class="input-field col s4">
+                    {{> callerName}}
+                </div>
+                <div class="input-field col s2">
+                    {{> callerTelephone}}
+                </div>
+                <div class="input-field col s2">
+                    {{> makeContact_cbox}}
+                </div>
+                <div class="input-field col s4">
+                    {{> callerAddress}}
+                </div>
+            </div>
+        </div>
+        <div class="col s1">
+            <br />
+            <a class="btn-floating btn-large waves-effect waves-light green addCaller"><i class="material-icons">add</i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            {{> callersTableView}}
+        </div>
+    </div>
+</template>

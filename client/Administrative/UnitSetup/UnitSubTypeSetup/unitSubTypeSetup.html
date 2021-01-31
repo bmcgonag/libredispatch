@@ -1,0 +1,64 @@
+<template name="unitSubTypeSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="row formEntrySubTypes">
+        <div class="col s12">
+            <h4>Unit Sub-type Setup</h4>
+            <p>
+                Select a Unit Type, then setup as many unit Sub-types as needed.<br /><br />
+                A Unit Sub-type is a secondary category which defines a Unit.  Each Unit can only be of a single sub-type. For example, a unit Sub-type might be for the Unit Type "Law" as 'Police', 'Sheriff', 'Constable', 'State Patrol', etc.
+            </p>
+            <div class="row">
+                <div class="col s12 m4 l4">
+                    {{> unitTypesList}}
+                </div>
+                <div class="input-field col s12 m4 l4">
+                    <input type="text" class="input unitSubType {{#if $eq subTypeReq true}}red lighten-2{{/if}}" id="newUnitSubType">
+                    <label for="addSubType">Unit Sub-type *</label>
+                </div>
+                <div class="col s12 m4 l4">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            Unit Sub Type Color  <input type="color" class="input unitSubTypeColor" id="unitSubTypeColor" />
+                        </div>
+                        <div class="col s12 m12 l12">
+                            <label>
+                                <input type="checkbox" class="subTypeIsSystem" id="subTypeIsSystem" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" />
+                                <span>System Sub-type</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m4 l4">
+            <a class="waves-effect waves-light btn orange cancelSaveSubtype left" id="cancelSaveSubtype">Cancel</a>
+        </div>
+        <div class="col s12 m4 l4 center">
+            <a class="waves-effect waves-light btn blue copySubType" id="copySubType">Copy System Sub-types</a>
+        </div>
+        <div class="col s12 m4 l4">
+            {{#if $eq subTypeMode 'edit'}}
+                <a class="waves-effect waves-light btn green updateSubType right" id="updateSubType">Save Changes</a>
+            {{else}}
+                <a class="waves-effect waves-light btn green addSubType right" id="addSubType">Save</a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="subTypesGrid">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                {{> unitSubTypeResultsGrid}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+        <div class="CADContainer">
+            <h4>Unit Sub-type Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Unit Sub-type Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

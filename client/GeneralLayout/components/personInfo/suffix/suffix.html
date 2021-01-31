@@ -1,0 +1,8 @@
+<template name="suffix">
+    <select name="suffix" id="{{id}}" class="suffix">
+        {{#each titles}}
+            <option value="{{abbrev}}">{{abbrev}} - {{full}}</option>
+        {{/each}}
+    </select>
+    <label for="suffix">Suffix</label>
+</template>

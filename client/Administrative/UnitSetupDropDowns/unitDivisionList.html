@@ -1,0 +1,15 @@
+<template name="unitDivisionList">
+    <div class="row">
+        <div class="input-field col s12">
+            <select id="unitPrimaryDivision" class="input unitDivision {{#if $eq divisionReq true}}red lighten-2{{/if}}">
+                <option value="" disabled selected>Choose One...</option>
+                {{#each unitDivisionsFound}}
+                    {{#each unitDivisions}}
+                        <option value="{{division}}">{{division}}</option>
+                    {{/each}}
+                {{/each}}
+            </select>
+            <label for="unitPrimaryDivision">Primary Division</label>
+        </div>
+    </div>
+</template>

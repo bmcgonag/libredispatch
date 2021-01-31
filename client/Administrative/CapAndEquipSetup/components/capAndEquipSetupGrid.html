@@ -1,0 +1,34 @@
+<template name="capAndEquipSetupGrid">
+    <div class="row">
+        <div class="col s12 m12 l12">
+        <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Abbreviation</th>
+                        <th>Description</th>
+                        <th>Person or Apparatus</th>
+                        <th>Entity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each capTypes}}
+                    <tr class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                        <td class="thin">{{type}}</td>
+                        <td class="thin">{{abbrev}}</td>
+                        <td class="thin">{{description}}</td>
+                        <td class="thin">{{unitOrPerson}}</td>
+                        <td class="thin">{{capEntity}}</td>
+                        <td class="actions center thin">
+                            <i class="material-icons clickable editCapGridActions">mode_edit</i>
+                            <i class="material-icons clickable deleteCapGridActions">delete</i>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+</template>

@@ -1,0 +1,102 @@
+<template name="outOfVehicleSetup">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+            <h4>Out of Vehicle Type Setup<i class="material-icons iconPointer tooltipped" data-position="right"  data-html="true" data-tooltip="<p>Out of Vehicle Types define activities a unit may perform<br />where the personnel are on lunch, break, or otherwise out of their unit for various reasons.<br /><br />Each Type can be set so when OOV, the unit is, or is not available to take calls.<br />If not available is set, the unit can't be assigned to a call until put Back In Vehcile.</p>">help</i></h4>
+            <div class="row">
+                <div class="input-field col s12 m6 l3">
+                    <input type="text" class="oovTypeName" id="oovTypeName" maxlength="20" data-length="20" value="{{#if $eq oovTypeMode 'edit'}}{{oovEditInfo.oovTypeName}}{{/if}}" />
+                    <label for="oovTypeName">Out of Vehicle Name</label>
+                </div>
+                <div class="input-field col s12 m6 l3">
+                    <input type="text" class="oovDescription" id="oovDescription" maxlength="100" data-length="100" value="{{#if $eq oovTypeMode 'edit'}}{{oovEditInfo.oovDescription}}{{/if}}" />
+                    <label for="oovDescription">Out of Vehicle Description</label>
+                </div>
+                <div class="col s12 m6 l3">
+                    <div class="row">
+                        <div class="col s12">
+                            <label>
+                                <input type="checkbox" class="availSwitch" id="availSwitch" checked="{{#if $eq oovTypeMode 'edit'}}{{#if $eq oovEditInfo.unitStillAvail true}}checked{{/if}}{{/if}}" />
+                                <span>Still Available?</span>
+                            </label>
+                        </div>
+                        <div class="col s12">
+                            <label>
+                                <input type="checkbox" class="locSwitch" id="locSwitch" checked="{{#if $eq oovTypeMode 'edit'}}{{#if $eq oovEditInfo.requiresLocation true}}checked{{/if}}{{/if}}" />
+                                <span>Location Required?</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5 l3">
+                    <label>
+                        <input type="checkbox" class="isSystem" id="isSystem" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" checked="{{#if $eq oovTypeMode 'edit'}}{{#if $eq oovEditInfo.isSystem true}}checked{{/if}}{{/if}}" />
+                        <span>System Type</span>
+                    </label>
+                </div>
+            </div>
+            {{#if $eq oovTypeMode 'edit'}}
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <p>Edit Units of Type</p>
+                    
+                    <div class="row">
+                        {{#each unitTypes}}
+                        <div class="col s12 m4 l2">
+                            <label>
+                                <input type="checkbox" class="oovAppliesToType" id="{{unitType}}" checked="{{#if $eq unitApplies true}}checked{{/if}}" /> 
+                                <span>{{unitType}}</span>
+                            </label>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <p>Applies To Units of Type</p>
+                    <div class="row">
+                        {{#each unitTypes}}
+                        <div class="col s12 m4 l2">
+                            <label>
+                                <input type="checkbox" class="oovAppliesToType" id="{{unitType}}" /> 
+                                <span>{{unitType}}</span>
+                            </label>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            <br />
+            <div class="row">
+                <div class="col s12 m4 l4">
+                    <a class="waves-effect waves-light btn cancelAddOOV orange left" id="cancelAddOOV">Cancel</a>
+                </div>
+                <div class="col s12 m4 l4">
+                    <a class="waves-effect waves-light btn blue copyOOVTypes" id="copyOOVTypes">Copy System OOV</a>
+                </div>
+                <div class="col s12 m4 l4">
+                    {{#if $eq oovTypeMode 'edit'}}
+                        <a class="waves-effect waves-light btn updateOOVType green right" id="updateOOVType">Save Changes</a>
+                    {{else}}
+                        <a class="waves-effect waves-light btn saveOOV green right" id="saveOOV">Save</a>
+                    {{/if}}
+                </div>
+            </div>
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col s12 m12 l12 oovUnitTypeScroll">
+                    {{> selectedUnitTypesGrid}}
+                </div>
+            </div>
+        {{else}}
+            <div id="NotAuthorizedAdmin" class="NotAutorizedAdmin">
+                <h5>
+                    You do not appear to have permissions for this area.  If you believe this is a mistake, please contact your agency administrator.  You may continue using the system, and return to your home area by using the menu <i class="material-icons">menu</i> button in the upper left corner of the screen.
+                </h5>
+            </div>
+        {{/if}}
+    </div>
+</template>

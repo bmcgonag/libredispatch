@@ -1,0 +1,19 @@
+<template name="rightClickMenu">
+        <table class="striped highlight context-menu z-depth-4">
+            {{#each contextOptions}}
+            <tr class="thin context">
+                <td class="thin">
+                    {{#if $eq unitStatus "AR / TR"}}
+                        {{#if $neq contextOption "Start Transport"}}
+                            {{contextOption}}
+                        {{/if}}
+                    {{else if $neq unitStatus "AR / TR"}}
+                        {{#if $neq contextOption "End Transport"}}
+                            {{contextOption}}
+                        {{/if}}
+                    {{/if}}
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+</template>

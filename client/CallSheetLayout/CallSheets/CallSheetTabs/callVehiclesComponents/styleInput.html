@@ -1,0 +1,10 @@
+<template name="styleInput">
+    <input type="text" class="input styleInput" id="styleInput" list="styleList" />
+    <label for="styleInput">Style</label>
+    <datalist id="styleList">
+        <option value=""></option>
+        {{#each styleOptions}}
+                <option value="{{style_code}}">{{style}}</option>
+        {{/each}}
+    </datalist>
+</template>

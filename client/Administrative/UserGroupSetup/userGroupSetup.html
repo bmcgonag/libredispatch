@@ -1,0 +1,39 @@
+<template name="userGroupSetup">
+    <div class="CADContainer">
+        <h4>Create User Groups</h4>
+        {{#if Template.subscriptionsReady}}
+        <div class="row">
+            <div class="input-field col s12 m6 l6">
+                <input type="text" class="userGroupName" id="userGroupName" value="{{#if $eq groupMode 'edit'}}{{groupData.groupName}}{{/if}}" />
+                <label for="userGroupName">Group Name</label>
+            </div>
+            <div class="input-field col s12 m6 l6">
+                <select name="pickGroupUsers" id="pickGroupUsers" class="pickGroupUsers" multiple>
+                    <option value="" disabled selected>None</option>
+                    {{#each myLocalUsers}}
+                        <option value="{{_id}}" class="{{#if $eq isActive true}}selected{{/if}}">{{username}} - {{profile.userFullName}}</option>
+                    {{/each}}
+                </select>
+                <label for="pickGroupUsers">Group Users</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s6">
+                <a class="waves-effect waves-light btn orange cancelSaveGroup left">Cancel</a>
+            </div>
+            <div class="col s6">
+                {{#if $eq transTypeMode 'edit'}}
+                    <a class="waves-effect waves-light btn green updateGroup right">Save Changes</a>
+                {{else}}
+                    <a class="waves-effect waves-light btn green saveGroup right">Save</a>
+                {{/if}}
+            </div>
+        </div>
+        <div class="row">
+            {{> userGroupGrid}}
+        </div>
+        {{else}}
+            {{> spinner}}
+        {{/if}}
+    </div>
+</template>

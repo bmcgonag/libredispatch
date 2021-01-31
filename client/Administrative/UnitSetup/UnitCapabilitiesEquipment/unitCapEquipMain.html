@@ -1,0 +1,23 @@
+<template name="unitCapEquipMain">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="row unitEquipGridHeight">
+        <div class="col s12 m12 l12">
+            {{> unitCapEquipGrid}}
+        </div>
+    </div>
+    <hr />
+    <br />
+    <div class="row">
+        <div class="col s12 m12 l12">
+            {{> unitCapEquipForm}}
+        </div>
+    </div>
+    {{else}}
+        <div class="CADContainer">
+            <h4>Capability and Equipment Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Capability and Equipment Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

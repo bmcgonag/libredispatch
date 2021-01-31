@@ -1,0 +1,87 @@
+<template name="unitCapEquipForm">
+    {{#if $eq unitCapEditMode "Edit"}}
+    <div class="row">
+        <div class="col s12 m4 l3 input-field">
+            <input type="text" class="editUnitNo" id="editUnitNo" value="{{editCapUnitInfo.callSign}}" />
+            <label for="editUnitNo">Unit No / Call Sign</label>
+        </div>
+        <div class="col s12 m4 l3 input-field">
+            <select name="unitCap" id="unitCap">
+                <option value="{{currCaps}}" disabled selected></option>
+                {{#each capByType}}
+                    <option value="{{capabilities}}">{{capabilities}}</option>
+                {{/each}}
+            </select>
+            <label for="unitCap">Capability</label>
+        </div>
+        <div class="col s12 m4 l3 input-field">
+            <select name="unitEquip" id="unitEquip">
+                <option value="" disabled selected></option>
+                {{#each equipByType}}
+                    <option value="{{equipment}}">{{equipment}}</option>>
+                {{/each}}
+            </select>
+            <label for="unitEquip">Equipment</label>
+        </div>
+        <div class="col s12 m4 l3 input-field">
+            <select name="primDivision" id="primDivision">
+                <option value="{{editCapUnitInfo.primaryDivision}}" selected>{{editCapUnitInfo.primaryDivision}}</option>
+                {{#each currDivisions}}
+                    {{#each unitDivisions}}
+                        <option value="{{divisions}}">{{divisions}}</option>
+                    {{/each}}
+                {{/each}}
+            </select>
+            <label for="primDivision">Primary Division</label>
+        </div>
+        <div class="col s12 m4 l3 input-field">
+            <select name="secDivision" id="secDivision">
+                <option value="{{editCapUnitInfo.secondaryDivision}}">{{editCapUnitInfo.secondaryDivision}}</option>
+                {{#each currDivisions}}
+                    {{#each unitDivisions}}
+                        <option value="{{division}}">{{division}}</option>
+                    {{/each}}
+                {{/each}}
+            </select>
+            <label for="secDivision">Secondary Division</label>
+        </div>
+        <div class="col s12 m4 l3 input-field">
+            <select name="editUnitType" id="editUnitType">
+                <option value="{{editCapUnitInfo.type}}">{{editCapUnitInfo.type}}</option>
+                {{#each unitTypes}}
+                    <option value="{{unitType}}">{{unitType}}</option>
+                {{/each}}
+            </select>
+            <label for="editUnitType">Unit Type</label>
+        </div>
+        <div class="col s12 m4 l3 input-field">
+            <select name="editUnitSubtype" id="editUnitSubtype">
+                <option value="{{editCapUnitInfo.subType}}">{{editCapUnitInfo.subType}}</option>
+                {{#each unitSubTypes}}
+                    <option value="{{unitSubType}}">{{unitSubType}}</option>
+                {{/each}}
+            </select>
+            <label for="editUnitSubtype">Unit Subtype</label>
+        </div>
+        <div class="col s12 m4 l3 input-field">
+            <select name="editUnitEntity" id="editUnitEntity">
+                <option value="{{editCapUnitInfo.unitEntity}}">{{editCapUnitInfo.unitEntity}}</option>
+                {{#each unitEntities}}
+                    <option value="{{entityName}}">{{entityName}}</option>
+                {{/each}}
+            </select>
+            <label for="editUnitEntity">Unit Entity</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            <a class="waves-effect waves-light btn cancelUnitCapEquip orange" id="cancelUnitCapEquip">Cancel</a>
+        </div>
+        <div class="col s6">
+            <a class="waves-effect waves-light btn updateUnitCapEquip green right" id="updateUnitCapEquip">Save Changes</a>
+        </div>
+    </div>
+    {{else}}
+        <p class="center flow-text">Select a Unit above through it's 'Actions' menu to edit it's information.</p>
+    {{/if}}
+</template>

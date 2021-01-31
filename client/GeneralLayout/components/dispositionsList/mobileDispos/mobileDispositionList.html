@@ -1,0 +1,25 @@
+<template name="mobileDispositionList">
+    <div class="modal" id="dispoMenuMobile">
+        <div class="modal-header CADContainer">
+            <h4 id="#titleHeader">
+                Disposition
+            </h4>
+        </div>
+        <div class="modal-content makeItScrollable">
+            <table id="dispoMenuMobile" class="striped highlight">
+                <tbody>
+                    {{#each mobileDispos}}
+                        <tr class="dispoMobile flow-text">
+                            <td>
+                                {{dispoAbbrev}}
+                            </td>
+                            <td>
+                                {{dispoText}}
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

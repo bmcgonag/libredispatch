@@ -1,0 +1,40 @@
+<template name="callCard">
+    <ul class="collapsible {{#if $eq cardSettings.growCallOnExpand true}}popout{{/if}} collapsible-header-mobile-calls">
+        <li>
+            <div class="collapsible-header right-call-no cardLike {{#if $in cardSettings.themeOverall 'Dark' 'Custom'}}{{cardSettings.themeBackground}} {{cardSettings.themeTextColor}}{{/if}}" style="--my-priority-color: {{priorityColor}}">
+                {{> callCardHeader}}
+            </div>
+            <div class="collapsible-body collapsible-header-mobile-calls">
+                <div class="card callCard">
+                    <div id="{{callNo}}" class="card-content {{#if $in cardSettings.themeOverall 'Dark' 'Custom'}}{{cardSettings.themeBackground}} {{cardSettings.themeTextColor}}{{/if}}">
+                        {{> callCardBody}}
+                    </div>
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width {{#if $in cardSettings.themeOverall 'Dark' 'Custom'}}{{cardSettings.themeBackground}} {{cardSettings.themeTextColor}}{{/if}}">
+                            <li class="tab">
+                                <a href="#{{tabSet.tab1}}_{{callNo}}" class="{{tabSet.tab1}}">{{tabSet.label1}}</a>
+                            </li>
+                            <li class="tab">
+                                <a href="#{{tabSet.tab2}}_{{callNo}}" class="{{tabSet.tab2}}">{{tabSet.label2}}</a>
+                            </li>
+                            <li class="tab">
+                                <a href="#{{tabSet.tab3}}_{{callNo}}" class="{{tabSet.tab3}}">{{tabSet.label3}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-content my-card-content" style="--my-card-content-color: {{cardSettings.themeBackground}}">
+                        <div id="response_{{callNo}}" class="notesScroll" style="--my-tabarea-color: {{cardSettings.themeBackground}}">
+                            {{> callCardResponseTab}}
+                        </div>
+                        <div id="notes_{{callNo}}" class="notesScroll" style="--my-tabarea-color: {{cardSettings.themeBackground}}">
+                            {{> callCardNotesTab}}
+                        </div>
+                        <div id="alerts_{{callNo}}" class="notesScroll" style="--my-tabarea-color: {{cardSettings.themeBackground}}">
+                            {{> callCardAlertTab}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</template>

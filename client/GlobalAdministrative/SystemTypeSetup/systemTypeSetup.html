@@ -1,0 +1,27 @@
+<template name="systemTypeSetup">
+    <div class="CADContainer">
+        {{#if isInRole 'GlobalAdmin'}}
+            <h4>System Type Setup</h4>
+            <p class="flow-text">
+                This setting determines what fields, buttons, and other elements of the system will look like, be labeled, and how those elements will behave.  Please choose carefully to ensure the system is setup properly. 
+            </p>
+            <p class="flow-text">
+                <strong>NOTE:</strong> Changing this setting after the system is operational can have potentially destabilizing effects and create critical issues with further use.  If you need to change this setting after it's initially set, you may need to completely reset the system.  
+            </p>
+            <div class="row">
+                <div class="col s4 input-field">
+                    <select name="systemTypeSel" id="systemTypeSel" class="systemTypeSel">
+                        <option value="" disabled selected>{{currSystemType.systemType}}</option>
+                        <option value="Public Safety">Public Safety</option>
+                        <option value="Ride Service">Ride Service</option>
+                        <option value="Public Works">Public Works</option>
+                        <option value="Shipping">Shipping</option>
+                    </select>
+                </div>
+                <div class="col s4">
+                    <a class="btn-floating right btn-large waves-effect waves-light green addSystemType" id="addSystemType"><i class="material-icons">add</i></a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</template>

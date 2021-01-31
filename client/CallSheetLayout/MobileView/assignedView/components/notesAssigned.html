@@ -1,0 +1,31 @@
+<template name="notesAssigned">
+    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+        <tbody>
+            {{#each notesOnCall}}
+            {{#each notes}}
+                <tr class="thin {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{addedOn}}">
+                    <td class="thin">
+                        <tr class="thin">
+                            <td class="thin">
+                                <div class="row">
+                                    <div class="col s12 m6 l6">
+                                        {{updatedBy}}{{addedBy}}
+                                    </div>
+                                    <div class="col s12 m6 l6">
+                                        <span class="right">{{updatedTime}}</span>
+                                    </div> 
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="thin">
+                            <td class="thin">
+                                <p class="flow-text">{{note}}</p>
+                            </td>
+                        </tr>
+                    </td>
+                </tr>
+            {{/each}}
+            {{/each}}
+        </tbody>
+    </table>   
+</template>

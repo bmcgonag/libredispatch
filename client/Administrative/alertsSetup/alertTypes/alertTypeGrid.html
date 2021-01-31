@@ -1,0 +1,39 @@
+<template name="alertTypeGrid">
+    <div class="row">
+        <div class="col s12">
+            <table class="{{#if $eq useerPrefs.themeOverall 'Light'}}highlight striped{{else}}{{useerPrefs.themeBackground}} {{useerPrefs.themeTextColor}}}{{/if}} responsive-table">
+                <thead>
+                    <tr>
+                        <th>Type Name</th>
+                        <th>Association</th>
+                        <th>Severity Level</th>
+                        <th>System Code</th>
+                        {{#if isInRole 'GlobalAdmin, LocalAdmin'}}
+                            <th>Added On</th>
+                            <th>Added By</th> 
+                        {{/if}}
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each alertTypes}}
+                        <tr style="background: {{colorful.severityColor}}; color: {{colorful.severityText}};">
+                            <td class="thin">{{alertTypeName}}</td>
+                            <td class="thin">{{alertTypeAssoc}}</td>
+                            <td class="thin">{{alertTypeSeverity}}</td>
+                            <td class="thin">{{#if $eq isSystem true}}<i class="material-icons">done</i>{{/if}}</td>
+                            {{#if isInRole 'GlobalAdmin, LocalAdmin'}}
+                                <td class="thin">{{addedOnDate}}</td>
+                                <td class="thin">{{addedBy}}</td>
+                            {{/if}}
+                            <td class="thin">
+                                <i class="material-icons clickable deleteAlertType">delete</i>
+                                <i class="material-icons clickable editAlertType">mode_edit</i>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,5 @@
+.dispoTableScroll {
+    height: 65vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}

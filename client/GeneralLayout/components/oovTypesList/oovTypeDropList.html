@@ -1,0 +1,7 @@
+<template name="oovTypeDropList">
+    <select name="oovTypeNameSelect" id="oovTypeNameSelect" class="oovTypeNameSelect">
+        {{#each oovTypes}}
+            <option value="{{oovTypeName}}">{{oovTypeName}} - {{oovDescription}}</option>
+        {{/each}}
+    </select>
+</template>

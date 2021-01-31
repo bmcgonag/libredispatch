@@ -1,0 +1,23 @@
+<template name="messaging">
+        <div id="messageHeader" class="messageHeader">
+                <div class="row">
+                    <div class="col s3 headerConvoWith">
+                        {{convoWith}}
+                    </div>
+                    <div class="col s6 headerTitle center">
+                        Messaging
+                    </div>
+                    <div class="col s3 headerConvoType">
+        
+                    </div>
+                </div>
+            </div>
+    <div class="row">
+        <div class="col s4 col-border">
+            {{> messageUsersList}}
+        </div>
+        <div class="col s8">
+            {{> messageArea}}
+        </div>
+    </div>
+</template>

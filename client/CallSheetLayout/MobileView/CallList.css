@@ -1,0 +1,18 @@
+.callListView {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.callListHorizontalView {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.horizCallCard {
+    width: 35vw;
+}
+
+.horizScrollTbl {
+    width: 100%;
+    table-layout: fixed;
+}

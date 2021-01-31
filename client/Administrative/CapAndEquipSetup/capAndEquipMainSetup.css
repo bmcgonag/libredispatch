@@ -1,0 +1,5 @@
+.capAndEquipScroll {
+    height: 50 vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+}

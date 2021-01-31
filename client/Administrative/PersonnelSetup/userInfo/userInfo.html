@@ -1,0 +1,53 @@
+<template name="userInfo">
+    <h5>Users Awaiting Verification</h5>
+    <div class="row">
+        <div class="col s12">
+            <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Claimed Entity</th>
+                        <th>Email</th>
+                        <th>User Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each userAwaitingVerification}}
+                        <tr id="{{_id}}" class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}">
+                            <td>{{username}}</td>
+                            {{#if $neq currVerifyMode "edit"}}
+                                <td>{{profile.usersEntity}}</td>
+                            {{/if}}
+                            {{#if $eq currVerifyMode "edit"}}
+                                <td>
+                                    <select name="setUsersEntity" class="setUsersEntity">
+                                        <option value="" disabled selected>Choose one...</option>
+                                        {{#each entitiesList}}
+                                            <option value="{{entityName}}">{{entityName}}</option>
+                                        {{/each}}
+                                    </select>
+                                </td>
+                            {{/if}}
+                            <td>{{userEmail}}</td>
+                            <td>{{isAdmin}}</td>
+                            <td>
+                                <select name="userEntityActions" class="userEntityActions">
+                                    <option value="" disabled selected></option>
+                                    <option value="verify">Verify User and Entity</option>
+                                    <option value="deny">Deny User and Entity</option>
+                                    {{#if $neq currVerifyMode "edit"}}
+                                        <option value="edit">Edit User's Entity</option>
+                                    {{/if}}
+                                    {{#if $eq currVerifyMode "edit"}}
+                                        <option value="saveChanges">Save Changes</option>
+                                    {{/if}}
+                                </select>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

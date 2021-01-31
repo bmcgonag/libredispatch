@@ -1,0 +1,90 @@
+<template name="tenantSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="CADContainer">
+        <h5>Tenant Specific Setup</h5>
+        <div class="row">
+            <div class="input-field col s12 m6 l4">
+                <select name="navBarColor" id="navBarColor" class="navBarColor">
+                    {{#if tenantInfo}}
+                        <option value="{{tenantInfo.navBarColor}}" selected>{{tenantInfo.navBarColor}}</option>
+                    {{/if}}
+                    <option value="blue darken-2" class="blue darken-2">Dark Blue 2</option>
+                    <option value="blue darken-3" class="blue darken-3">Dark Blue 3</option>
+                    <option value="blue darken-4" class="blue darken-4">Dark Blue 4</option>
+                    <option value="green darken-2" class="blue darken-2">Dark Green 2</option>
+                    <option value="green darken-3" class="blue darken-3">Dark Green 3</option>
+                    <option value="green darken-4"> class="blue darken-4">Dark Green 4</option>
+                    <option value="orange darken-2" class="orange darken-2">Dark Orange 2</option>
+                    <option value="orange darken-3" class="orange darken-3">Dark Orange 3</option>
+                    <option value="orange darken-4" class="orange darken-4">Dark Orange 4</option>
+                    <option value="red darken-2" class="red darken-2">Dark Red 2</option>
+                    <option value="red darken-3" class="red darken-3">Dark Red 3</option>
+                    <option value="red darken-4" class="red darken-4">Dark Red 4</option>
+                    <option value="yellow darken-2" class="yellow darken-2">Yellow</option>
+                    <option value="yellow darken-3" class="yellow darken-3">Dark Meidum Yellow</option>
+                    <option value="yellow darken-4" class="yellow darken-4">Dark Yellow</option>
+                </select>
+            </div>
+            <div class="col s12 m6 l4">
+                <label>
+                    <input type="checkbox" class="requireInServiceMileage" id="requireInServiceMileage" checked="{{#if $eq tenantInfo.ISMileReq true}}checked{{/if}}" />
+                    <span>In Service Mileage Required?</span>
+                </label>
+            </div>
+            <div class="col s12 m6 l4">
+                <label>
+                    <input type="checkbox" class="requireTransportMileage" id="requireTransportMileage" checked="{{#if $eq tenantInfo.transMileReq true}}checked{{/if}}" />
+                    <span>Transport Mileage Required?</span>
+                </label>
+            </div>
+            <div class="col s12 m6 l4">
+                <label>
+                    <input type="checkbox" class="createRunNumberForAllCalls" id="createRunNumberForAllCalls" checked="{{#if $eq tenantInfo.alwaysRunNo true}}checked{{/if}}" />
+                    <span>Create Run / Case Number for All Calls?</span>
+                </label>
+            </div>
+            <div class="col s12 m6 l4">
+                <label>
+                    <input type="checkbox" class="canAssignSelf" id="canAssignSelf" checked="{{#if $eq tenantInfo.assignSelf true}}checked{{/if}}" />
+                    <span>Can Assign Self to Calls</span>
+                </label>
+            </div>
+            <div class="col s12 m6 l4">
+                <label>
+                    <input type="checkbox" class="canDeassignSelf" id="canDeassignSelf" checked="{{#if $eq tenantInfo.deAssignSelf true}}checked{{/if}}" />
+                    <span>Can De-assign self from calls</span>
+                </label>
+            </div>
+            <div class="col s12 m6 l4">
+                <label>
+                    <input type="checkbox" class="systemTenantSetup" id="systemTenantSetup" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" check="{{#if $eq tenantInfo.isSystem true}}checked{{/if}}" />
+                    <span>System Tenant Setup</span>
+                </label>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col s12 m4 l4">
+                <a class="waves-effect waves-light btn cancelTenantSettings orange" id="cancelTenantSettings">Cancel</a>
+            </div>
+            <div class="col s12 m4 l4 center">
+                <a class="waves-effect waves-light btn blue copySystemSetup" id="copySystemSetup">Copy System Tenant Setup</a>
+            </div>
+            <div class="col s12 m4 l4">
+                {{#if tenantInfo}}
+                    <a class="waves-effect waves-light btn updateTenantSettings green right" id="updateTenantSettings">Save Changes</a>
+                {{else}}
+                    <a class="waves-effect waves-light btn saveTenantSettings green right" id="saveTenantSettings">Save</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+    {{else}}
+        <div class="CADContainer">
+            <h4>Tenant Settings</h4>
+            <p class="flow-text">
+                You appear to have reached the Tenant Settings view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

@@ -1,0 +1,36 @@
+<template name="OOVMobile">
+    <div class="OOVMobileModal modal" id="OOVMobileModal">
+        <div class="modal-header">
+            <h5 id="#titleHeader">
+                Out of Vehicle
+            </h5>
+        </div>
+        <div class="modal-content">
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    {{> oovTypeDropList}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    {{> callLocation}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m12 l12">
+                    {{> latAndLon}}
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col s12 m6 l6">
+                    <a class="waves-effect waves-light btn-large mobileModalButtons cancelMobileOOV orange left" id="cancelMobileOOV">Cancel</a>
+                </div>
+                <div class="col s12 m6 l6">
+                    <a class="waves-effect waves-light btn-large mobileModalButtons saveMobileOOV green right" id="saveMobileOOV">Go OOV</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

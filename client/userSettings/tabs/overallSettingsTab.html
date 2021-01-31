@@ -1,0 +1,46 @@
+<template name="overallSettingsTab">
+    <div class="row">
+        <div class="col s12">
+            <h5>Overall Appearance</h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6 input-field">
+            <select name="themeDarkOrLight" id="themeDarkOrLight" class="themeDarkOrLight">
+                <option value="{{myOverallSettings.themeOverall}}">{{myOverallSettings.themeOverall}}</option>
+                <option value="Light">Light</option>
+                <option value="Dark">Dark</option>
+                <option value="Custom">Custom</option>
+            </select>
+            <label for="themeDarkOrLight">Theme (Dark / Light)</label>
+        </div>
+        {{#if $eq showColorPickers true}}
+        <div class="col s6">
+            <div class="row">
+                <div class="col s12 input-field">
+                    <select name="themeBackground" id="themeBackground" class="themeBackground">
+                        <option value="{{myOverallSettings.themeBackground}}" selected>{{myOverallSettings.themeBackground}}</option>
+                        <option value="grey darken-4|white-text|grey darken-2|blue-text lighten-2|#212121|#ffffff|#616161|#64b5f6">Dark Gray, White-text</option>
+                        <option value="grey darken-2|white-text|grey|blue-text lighten-3|#616161|#ffffff|#9e9e9e|#90caf9">Medium Grey, White-text</option>
+                        <option value="grey|black-text|grey darken-2|blue-text lighten-2|#9e9e9e|#000000|#616161|#64b5f6">Grey, Black-text</option>
+                        <option value="grey lighten-2|black-text|grey darken-1|blue-text lighten-2|#bdbdbd|#000000|#757575|#64b5f6">Light Grey, Black-text</option>
+                        <option value="blue darken-4|white-text|blue darken-3|white-text|#0d47a1|#ffffff|#1565c0|#ffffff">Dark Blue, White-text</option>
+                        <option value="blue-grey darken-4|white-text|blue-grey darken-2|blue-grey-text lighten-5|#263238|#ffffff|#455a64|#eceff1">Blue-Grey, White-text</option>
+                        <option value="blue darken-2|yellow-text|blue|black-text|#1976d2|#ffeb3b|#2196f3|#000000">Blue, Yellow-text</option>
+                        <option value="blue|black-text|blue darken-2|white-text|#2196f3|#000000|#1976d2|#ffffff">Light Blue, Black-text</option>
+                        <option value="yellow|black-text|yellow darken-2|white-text|#ffeb3b|#000000|#fbc02d|#ffffff">Yellow, Black-text</option>
+                        <option value="pink|black-text|#e91e63|pink lighten-2|blue-text darken-4|#000000|#f06292|#0000cc">Pink, Black-text</option>#1565c0
+                        <option value="purple darken-2|white-text|purple lighten-1|white-text|#7b1fa2|#ffffff|#ab47bc|#ffffff">Purple, White-text</option>
+                        <option value="white|blue-text darken-4|blue-grey lighten-4|black-text|#ffffff|#0d47a1|#cfd8dc|#000000">White, Dark Blue-text</option>
+                        <option value="white|black-text|blue-grey lighten-4|blue-text darken-4|#ffffff|#000000|#cfd8dc|#0d47a1">White, Black-text</option>
+                        <option value="red darken-4|white-text|red darken-1|yellow-text|#b71c1c|#ffffff|#e53935|#ffeb3b">Dark Red, White-text</option>
+                        <option value="brown|white-text|brown lighten-2|black-text|#795548|#ffffff|#a1887f|#000000">Brown, White-text</option>
+                        <option value="blue-grey lighten-5|black-text|blue-grey lighten-3|black-text|#eceff1|#000000|#b0bec5|#000000">Silver, Black-text</option>
+                    </select>
+                    <label for="themeBackground">Theme Colors (background, text)</label>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</template>

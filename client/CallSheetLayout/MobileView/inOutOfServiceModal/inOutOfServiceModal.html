@@ -1,0 +1,57 @@
+<template name="inOutOfServiceModal">
+    <div class="modal modal-small-sts" id="goInOutOfService">
+        <div class="modal-header">
+            <h5 id="#titleHeader">
+                In / Out of Service
+            </h5>
+        </div>
+        <div class="modal-content myModalContent">
+            <div class="row">
+                <div class="col s12 m6 l6 input-field">
+                    <!-- put a drop list of available units here for the user's child entity -->
+                    {{> unitNoSelect}}
+                </div>
+                {{#if $in currServiceStatus "goOutService" "changeServiceUnit"}}
+                <div class="col s12 m6 l6 input-field">
+                    <input type="text" class="EndServMiles" id="EndServMiles" />
+                    <label for="EndServMiles">Out of Service Mileage {{#if $eq EntitySetupInfo.ISMileReq true}}*{{/if}}</label>
+                </div>
+                {{/if}}
+                {{#if $in currServiceStatus "goInService" "changeServiceUnit"}}
+                <div class="col s12 m6 l6 input-field">
+                    <input type="text" class="ISStartMiles" id="ISStartMiles" />
+                    <label for="ISStartMiles">In Service Mileage {{#if $eq EntitySetupInfo.ISMileReq true}}*{{/if}}</label>
+                </div>
+                {{/if}}
+            </div>
+            {{#if $eq showMsg true}}
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <div id="messageToUser" class="{{msgType.color}} {{msgType.textColor}}">{{msgType.msgText}}</div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+        <div class="modal-footer popupFooter">
+            <div class="row">
+                <div class="col s12 m4 l4">
+                    <a class="waves-effect waves-light btn-large mobileModalButtons cancelConfirm orange left" id="cancelInOut">Cancel</a>
+                </div>
+                <div class="col s12 m4 l4 center">
+                    {{#if $eq changeService false}}
+                        <a class="waves-effect waves-light btn-large mobileModalButtons confirm blue right {{#if $eq currServiceStatus "goInService"}}disabled{{/if}}" id="changeUnits">Change Units</a>
+                    {{else}}
+                        <a class="waves-effect waves-light btn-large mobileModalButtons confirm green right {{#if $eq currServiceStatus "goInService"}}disabled{{/if}}" id="confirmUnitChange">Confirm Unit Change</a>
+                    {{/if}}
+                </div>
+                <div class="col s12 m4 l4">
+                    {{#if $in currServiceStatus "goOutService" "changeServiceUnit"}}
+                        <a class="waves-effect waves-light btn-large mobileModalButtons confirm green right" id="goOutService">Out of Service</a>
+                    {{else}}
+                        <a class="waves-effect waves-light btn-large mobileModalButtons confirm green right" id="goInService">In Service</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

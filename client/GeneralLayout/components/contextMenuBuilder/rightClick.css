@@ -1,0 +1,16 @@
+.context-menu {
+    background: #fff;
+    display: none;
+    position: absolute;
+    width: 200px;
+    font-size: 14px;
+    z-index: 5;
+}
+
+li.context:hover {
+    background: #e2e2e2;
+}
+
+tr.context:hover {
+    background: #e2e2e2;
+}

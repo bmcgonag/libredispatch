@@ -1,0 +1,9 @@
+<template name="callLocation">
+    {{#if $eq modeCallSheet "NewCall"}}
+        {{> inputAutocomplete settings=settings id="callLocation"}}
+        <label for="callLocation">Location</label>
+    {{else}}
+        {{> inputAutocomplete settings=settings callInfoLocation=callInfoLocation id="callLocation"}}
+        <label for="callLocation">Location</label>
+    {{/if}}
+</template>

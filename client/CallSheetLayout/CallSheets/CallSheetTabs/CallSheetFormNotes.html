@@ -1,0 +1,16 @@
+<template name="callSheetFormNotes">
+    <div class="row">
+        <div class="input-field col s11">
+            {{> callNotesEntry}}
+        </div>
+        <div class="col s1">
+            <br />
+            <a class="btn-floating btn-large waves-effect waves-light {{#if $eq canAddNotes false}}disabled{{else}}pulse{{/if}} green addNote"><i class="material-icons">add</i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            {{> notesTableView}}
+        </div>
+    </div>
+</template>

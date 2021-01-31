@@ -1,0 +1,41 @@
+<template name="setupMessage">
+    <div class="container" id="needsSetup">
+        <div class="row">
+            <div class="col s12">
+                <h5>
+                    Setup Needed to Continue with System Usage
+                </h5>
+                <p id="needSetupMessage">{{messageText}}</p>
+            </div>
+        </div>
+        <ul class="collection">
+            {{#if $eq setupCallType true}}
+            <li class="collection-item iconPointer" id="setupCallPriorities">
+                Setup Call Priorities<a href="#!" class="secondary-content"><i class="material-icons">chevron_right</i></a>
+            </li>
+            <li class="collection-item iconPointer" id="setupCallTypes">
+                Setup Call Types<a href="#!" class="secondary-content"><i class="material-icons">chevron_right</i></a>
+            </li>
+            {{/if}}
+
+            {{#if $eq setupUnitType true}}
+            <li class="collection-item iconPointer" id="setupUnitTypes">
+                Setup Unit Types<a href="#!" class="secondary-content"><i class="material-icons">chevron_right</i></a>
+            </li>
+            {{/if}}
+
+            {{#if $eq setupOOVType true}}
+            <li class="collection-item iconPointer" id="setupOOVTypes">
+                 Setup OOV Types<a href="#!" class="secondary-content"><i class="material-icons">chevron_right</i></a>
+            </li>
+            {{/if}}
+
+            {{#if $eq setupDispo true}}
+            <li class="collection-item iconPointer" id="setupDispos">
+                Setup Dispositions<a href="#!" class="secondary-content"><i class="material-icons">chevron_right</i></a>
+            </li>
+            {{/if}}
+        </ul>
+        
+    </div>
+</template>

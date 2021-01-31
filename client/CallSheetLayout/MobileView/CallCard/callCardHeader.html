@@ -1,0 +1,23 @@
+<template name="callCardHeader">
+    <h5 class="callCardInfo">
+        <span class="badge {{#if $in cardHeaderSettings.themeOverall 'Dark' 'Custom'}}{{cardHeaderSettings.themeTextColor}}{{else}}black-text{{/if}}">{{quickCallNo}}</span>
+        {{type}}
+    </h5>
+    <!-- <div class="row callCardInfo">
+        {{#if $eq cardHeaderSettings.headerPriorityText true}}
+            <div class="col s12 m12 l12">
+                <span style="background: {{priorityColor}};">{{priority}}</span>
+            </div>
+        {{/if}}
+        {{#if $eq cardHeaderSettings.headerCallDateTime true}}
+            <div class="col s12 m12 l12">
+                {{sentToDis}}
+            </div>
+        {{/if}}
+        {{#if $eq cardHeaderSettings.headerCallAddress true}}
+            <div class="col s12 m12 l12">
+                {{location}}
+            </div>
+        {{/if}}
+    </div> -->
+</template>

@@ -1,0 +1,58 @@
+<template name="incoming911">
+    <div class="row">
+        <div class="col s12">
+            <ul class="collapsible searchable">
+                {{#each nonCFS911}}
+                <li>
+                    <div class="collapsible-header {{#if $eq callAck false}}blue-grey darken-2 white-text{{else}}blue-grey oighten-1 white-text{{/if}} call911header">
+                        <div class="row">
+                            <div class="col s12 m6 l6">
+                                {{anialiphoneNo}}
+                            </div>
+                            <div class="col s12 m6 l6">
+                                {{anialicallerName}}
+                            </div>
+                            <div class="col s12">
+                                {{anialiaddress}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col s12 m6 l6">
+                                {{dateRcvd}}
+                            </div>
+                            <div class="col s12 m6 l6">
+                                {{anialilatitude}}, {{anialilongitude}}
+                            </div>
+                            {{#if callAcknowledged}}
+                                <div class="col s12">
+                                    <label>Ack by:</label>{{callAckBy}}
+                                </div>
+                                <div class="col s12">
+                                    <label>Ack On:</label>{{callAckOnFormatted}}
+                                </div>
+                            {{/if}}
+                        </div>
+                        <div class="row">
+                            <div class="col s3 center">
+                                <i class="material-icons iconPointer createCall tooltipped" data-position="top" data-tooltip="Create Call">add_box</i>
+                            </div>
+                            <div class="col s3 center">
+                                <i class="material-icons iconPointer addToExisting tooltipped" data-position="top" data-tooltip="Add to Call">add_to_photos</i>
+                            </div>
+                            <div class="col s3 center">
+                                <i class="material-icons iconPointer markDuplicate tooltipped" data-position="top" data-tooltip="Mark as Duplicate Call-in">content_copy</i>
+                            </div>
+                            <div class="col s3 center">
+                                <i class="material-icons iconPointer deleteFromQueue tooltipped" data-position="top" data-tooltip="Delete this Number">delete</i>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+              </ul>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+</template>

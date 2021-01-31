@@ -1,0 +1,82 @@
+<template name="quickNotesSetup">
+    {{#if isInRole 'GlobalAdmin,LocalAdmin'}}
+    <div class="CADContainer">
+        <h4>Quick Note Setup<i class="material-icons iconPointer tooltipped" data-position="right"  data-html="true" data-tooltip="<p>Quick Notes allow an administrator to setup pre-defined notes used commonly by dispatchers and mobile users.</p><p>Make a shorter abbreviation that helps keep finding the full note simple.</p>">help</i></h4>
+        <div class="row">
+            <div class="input-field col s12 m6 l6">
+                <input type="text" class="input qNoteAbbrev" id="qNoteAbbrev" maxlength="20" data-length="20" value="{{#if $eq qnMode 'edit'}}{{qnEditInfo.qNoteAbbrev}}{{/if}}" />
+                <label for="qNoteAbbrev">Quick Note Abbreviation</label>
+            </div>
+            <div class="col s12 m6 l6">
+                <label>
+                    <input type="checkbox" class="systemQuickNote" id="systemQuickNote" disabled="{{#if isInRole 'GlobalAdmin'}}{{else}}disabled{{/if}}" checked="{{#if $eq qnMode 'edit'}}{{#if $eq qnEditInfo.systemNote true}}checked{{/if}}{{/if}}" />
+                    <span>System Note</span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="qNoteText" class="materialize-textarea" maxlength="500" data-length="500" value="{{#if $eq qnMode 'edit'}}{{qnEditInfo.qNoteText}}{{/if}}"></textarea>
+                <label for="qNoteText">Quick Note Text</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m4 l4">
+                <a class="waves-effect waves-light btn cancelAddQuickNote orange left" id="cancelSaveQuickNote">Cancel</a>
+            </div>
+            <div class="col s12 m4 l4 center">
+                <a class="waves-effect waves-light btn blue copySystemQuickNote" id="copySystemQuickNote">Copy System Notes</a>
+            </div>
+            <div class="col s12 m4 l4">
+                {{#if $eq qnMode 'edit'}}
+                    <a class="waves-effect waves-light btn changeQuickNote green right" id="changeQuickNote">Save</a>
+                {{else}}
+                    <a class="waves-effect waves-light btn saveQuickNote green right" id="saveQuickNote">Save</a>
+                {{/if}}
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col s12">
+                <div class="quickNotesScroll">
+                    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}striped highlight{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                        <thead>
+                            <tr>
+                                <th>Abbreviation</th>
+                                <th>Note Text</th>
+                                <th>Added By</th>
+                                <th>Added On</th>
+                                <th>For Entity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each activeNotes}}
+                                <tr class="{{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}infoRow{{/if}}" id="{{_id}}">
+                                    <td>{{qNoteAbbrev}}</td>
+                                    <td>{{qNoteText}}</td>
+                                    <td>{{addedBy}}</td>
+                                    <td>{{addedOnDate}}</td>
+                                    <td>{{userEntity}}</td>
+                                    <td>
+                                        <i class="material-icons clickableIcon removeQuickNote">delete</i>
+                                        <i class="material-icons clickableIcon editQuickNote">edit</i>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{> confirmationDialogModal}}
+    {{else}}
+        <div class="CADContainer">
+            <h4>Quick Notes Setup</h4>
+            <p class="flow-text">
+                You appear to have reached the Quick Notes Setup view without having appropriate permissions.  If you believe this is in error, please contact your system administrator to have it corrected.
+            </p>
+        </div>
+    {{/if}}
+</template>

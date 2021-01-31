@@ -1,0 +1,70 @@
+<template name="aboutCodeSetup">
+    <div class="row">
+        <div class="col s12">
+            <h4>
+                System and Entity Code Setup
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <ul>
+                            <li class="flow-text">System Code Setup</li>
+                        </ul>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <p class="flow-text">
+                                There are several sets of code lists available for use in the system.
+                            </p>
+                            <p class="flow-text">
+                                System based code sets are added by a Global Administrator and affect the lists for all users in the entire install / instance. 
+                            </p>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <ul>
+                            <li class="flow-text">Entity Code Setup</li>
+                        </ul>
+                    </div>
+                    <div class="collapsible-body">
+                        <ul>
+                            <p class="flow-text">
+                                Most of the code lists available to be setup are Entity / Tenant based.  Each Parent Entity / Tenant can setup their own code lists. This gives better flexibility to the multi-tenant system.
+                            </p>
+                            <p class="flow-text">
+                                Child Entities / Tenants have very few code lists that can be set separate from that of their parent, and instead inherit the parent code lists to keep the system setup much easier for new child / client tenants.
+                            </p>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                        <div class="collapsible-header">
+                            <ul>
+                                <li class="flow-text">Import Codes</li>
+                            </ul>
+                        </div>
+                        <div class="collapsible-body">
+                            <ul>
+                                <p class="flow-text">
+                                    The system has the ability to export and import most of the data contained within it.  Using JSON (Java-script Object Notation based files) so you can much more easily help tenants get setup quickly.
+                                </p>
+                            </ul>
+                        </div>
+                    </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p class="flow-text">
+                In the next few steps you'll be taken to various Code Setup steps.  Whether the code list is a System or Entity based code list will be defined near the top of the screen.
+            </p>
+        </div>
+    </div>
+</template>

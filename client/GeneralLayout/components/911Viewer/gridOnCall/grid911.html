@@ -1,0 +1,39 @@
+<Template name="grid911">
+    <table class="{{#if $eq userPrefs.themeOverall 'Light'}}highlight striped{{else}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}} responsive-table">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Coordinates</th>
+                <th>Accuracy</th>
+                <th>Elevation</th>
+                <th>Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each emerCalls}}
+                <tr class="thin searchable">
+                    <td class="thin">{{anialiphoneNo}}</td>
+                    <td class="thin">{{anialicallerName}}</td>
+                    <td class="thin">{{anialiaddress}}</td>
+                    <td class="thin">{{anialilatitude}}, {{anialilongitude}}</td>
+                    <td class="thin">{{anialiaccuracy}}</td>
+                    <td class="thin">{{anialielevation}}</td>
+                    <td class="thin">{{anialitype}}</td>
+                </tr>
+                {{#each rebid}}
+                    <tr class="thin searchable">
+                        <td class="thin"><strong>Rebid Info</strong></td>
+                        <td class="thin">{{anialicallerName}}</td>
+                        <td class="thin">{{anialiaddress}}</td>
+                        <td class="thin">{{anialilatitude}}, {{anialilongitude}}</td>
+                        <td class="thin">{{anialiaccuracy}}</td>
+                        <td class="thin">{{anialielevation}}</td>
+                        <td class="thin">{{anialitype}}</td>
+                    </tr>
+                {{/each}}
+            {{/each}}
+        </tbody>
+    </table>
+</Template>

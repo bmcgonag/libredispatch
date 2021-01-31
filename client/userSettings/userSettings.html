@@ -1,0 +1,33 @@
+<template name="userSettings">
+    <div class="row">
+        <div class="col s6">
+            <h4>Settings for: {{currentUser.username}}</h4>
+        </div>
+    </div>
+    <hr /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs {{#if $in userPrefs.themeOverall 'Dark' 'Custom'}}{{userPrefs.themeBackground}} {{userPrefs.themeTextColor}}{{/if}}">
+                    <li class="tab col s3 {{#if isInRole 'GlobalAdmin,LocalAdmin,DispatchUser,DispatchAdmin'}}{{else}}disabled{{/if}}"><a href="#DispatchSettings" class="{{#if isInRole 'GlobalAdmin,LocalAdmin,DispatchUser,DispatchAdmin'}}active{{/if}}">Dispatch View</a></li>
+                    <li class="tab col s3 {{#if isInRole 'GlobalAdmin,LocalAdmin,MobileUser,MobileAdmin'}}{{else}}disabled{{/if}}"><a href="#MobileSettings" class="{{#if isInRole 'GlobalAdmin,LocalAdmin,MobileUser,MobileAdmin'}}active{{/if}}">Mobile View</a></li>
+                    <li class="tab col s3 {{#if isInRole 'GlobalAdmin,LocalAdmin,MobileUser,MobileAdmin,DispatchUser,DispatchAdmin,Viewer'}}{{else}}disabled{{/if}}"><a href="#OverallSettings">Overall Look</a></li>
+                </ul>
+            </div>
+            <div id="DispatchSettings" class="col s12">
+                {{> dispatchSettingsTab}}
+            </div>
+            <div id="MobileSettings" class="col s12">
+                {{> mobileSettingsTab}}
+            </div>
+            <div id="OverallSettings" class="col s12">
+                {{> overallSettingsTab}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <a class="waves-effect waves-light btn green saveMySettings">Save My Settings</a>
+            </div>
+        </div>
+    </div>
+</template>
